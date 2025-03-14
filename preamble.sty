@@ -1,0 +1,186 @@
+% Корректность отображения всех шрифтов, кодировок и мат. символов
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amssymb, amsmath, amsthm, mathtools}
+
+% Настройки шрифта
+\usepackage{fontspec}
+\setmainfont{CMU Serif}
+\setsansfont{CMU Sans Serif}
+\setmonofont{CMU Typewriter Text}
+
+% Вставка картинок
+\usepackage{graphicx}
+\usepackage{asymptote}
+\usepackage{float}
+\usepackage{tikz}
+
+\usepackage{caption} % пустые подписи к рисункам:
+\DeclareCaptionFormat{empty}{#1}
+\renewcommand\thefigure{\arabic{section}.\arabic{figure}} % 
+
+\usepackage{setspace}			% расстояния между строками
+\usepackage{cancel}				% зачёркивания
+\usepackage{quiver}				% для коммутативных диаграмм
+\usepackage{wrapfig}			% огибание картинок текстом
+\usepackage{indentfirst}		% отступ у первого абзаца
+\usepackage{enumitem}			% работа со списками
+\usepackage{titlesec}			% для настройки заголовков
+\usepackage{epigraph}			% эпиграфы
+
+% Отступы
+\usepackage[left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}
+
+% Настройка заголовков
+\titleformat{\section}[hang]{\Large\centering\bfseries}{\thesection.\ }{0pt}{}
+\titleformat{\subsection}[hang]{\large\centering\bfseries}{}{0pt}{}
+
+% Колонтитулы
+\def\course{Классическая дифференциальная~геометрия}
+\usepackage{fancyhdr}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+\renewcommand{\subsectionmark}[1]{\markright{#1}}
+\fancyhf{}
+\fancyhead[LE, RO]{\tiny\bfseries\MakeUppercase\course}
+\fancyhead[RE, LO]{\tiny\MakeUppercase\rightmark}
+\fancyfoot[C]{\thepage}
+\pagestyle{fancy}
+\renewcommand{\footrulewidth}{0pt}
+
+% Нумерация уравнений с номером раздела
+\numberwithin{equation}{section}
+
+% Гиперссылки
+\usepackage{hyperref}
+\hypersetup
+{
+	colorlinks=true,
+	linkcolor=red,
+	urlcolor=blue,
+}
+
+% Часто используемые обозначения
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathcal{T}}
+\renewcommand{\o}{\overline{o}}
+\renewcommand{\O}{\underline{O}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\homeo}{\cong}
+\newcommand{\pt}{\mathrm{pt}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\const}{\mathrm{const}}
+\newcommand{\Or}{\mathrm{or}}
+\newcommand{\Vol}{\operatorname{Vol}}
+\newcommand{\rk}{\operatorname{rk}}
+\newcommand{\relint}{\operatorname{relint}}
+\newcommand{\Int}{\operatorname{Int}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\renewcommand{\gcd}{\operatorname{НОД}}
+\newcommand{\lcm}{\operatorname{НОК}}
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\conv}{\operatorname{conv}}
+\newcommand{\proj}{\operatorname{proj}}
+\renewcommand{\span}{\operatorname{span}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+\renewcommand{\vec}[1]{\boldsymbol{#1}}
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\br}[1]{\left(#1\right)}
+\newcommand{\sqbr}[1]{\left[#1\right]}
+\newcommand{\abr}[1]{\left\langle#1\right\rangle]}
+\newcommand{\factor}{\,/\,}
+\newcommand{\aster}{%
+    \newlength{\l@aster}%
+	\settowidth{\l@aster}{$^{\bs{\ast}}$}%
+	$^{\bs{\ast}}$\hspace{-\l@aster}%
+} % звёздочка, не занимающая места
+
+% Римские числа
+\newcommand{\rnum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+
+% Перенос символа на следующую строку в формулах
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}{\hbox{$\mathsurround=0pt #1$}}{}}
+
+\newcounter{cnt}[section]
+\renewcommand{\thecnt}{\arabic{section}{.}\arabic{cnt}}
+
+% Оболочка для теоремы
+\newenvironment{theorem}[1][]{\refstepcounter{cnt}
+	\par\smallskip\noindent
+	\ifthenelse{\equal{#1}{}}
+	{{\bfseries Теорема \thecnt.}}{{\bfseries Теорема \thecnt\;{\mdseries(#1)}.}}
+}{\par\smallskip}
+
+% Оболочка для предложения
+\newenvironment{proposition}[1][]{\refstepcounter{cnt}
+	\par\smallskip\noindent
+	\ifthenelse{\equal{#1}{}}
+	{{\bfseries Предложение \thecnt.}}{{\bfseries Предложение \thecnt\;{\mdseries(#1)}.}}
+}{\par\smallskip}
+
+% Оболочки для леммы
+\newenvironment{lemma}[1][]{\refstepcounter{cnt}
+	\par\smallskip\noindent
+	\ifthenelse{\equal{#1}{}}
+	{{\bfseries Лемма \thecnt.}}{{\bfseries Лемма \thecnt\;{\mdseries(#1)}.}}
+}{\par\smallskip}
+
+% Оболочка для следствия
+\newenvironment{corollary}[1][]{\refstepcounter{cnt}
+	\par\smallskip\noindent
+	\ifthenelse{\equal{#1}{}}
+	{{\bfseries Следствие \thecnt.}}{{\bfseries Следствие \thecnt\;{\mdseries(#1)}.}}
+}{\par\smallskip}
+
+% Оболочка для определения
+\newenvironment{definition}[1][]{\refstepcounter{cnt}
+	\par\smallskip\noindent
+	\ifthenelse{\equal{#1}{}}
+	{{\bfseries Определение \thecnt.}}{{\bfseries Определение \thecnt\;{\mdseries(#1)}.}}
+}{\par\smallskip}
+
+\newenvironment{problem}[1][]{\refstepcounter{cnt}
+	\par\smallskip\noindent
+	\ifthenelse{\equal{#1}{}}
+	{{\bfseries Задача \thecnt.}}{{\bfseries Задача \thecnt\;{\mdseries(#1)}.}}
+}{\par\smallskip}
+
+% Оболочка для упражнения
+\newenvironment{exercise}[1][]{\refstepcounter{cnt}
+	\par\smallskip\noindent
+	\ifthenelse{\equal{#1}{}}
+	{{\bfseries Упражнение \thecnt.}}{{\bfseries Упражнение \thecnt\;{\mdseries(#1)}.}}
+}{\par\smallskip}
+
+% Оболочка для примера
+\newenvironment{example}[1][]{\refstepcounter{cnt}
+	\par\smallskip\noindent
+	\ifthenelse{\equal{#1}{}}
+	{{\bfseries Пример \thecnt.}}{{\bfseries Пример \thecnt\;{\mdseries(#1)}.}}
+}{\par\smallskip}
+
+% Оболочки для доказательства
+\renewenvironment{proof}{
+	\smallskip\noindent{\bfseries Доказательство.}
+}{
+	\hfill\text{\blacksquare}\par\smallskip
+}
+
+\newenvironment{draft}{
+	\smallskip\noindent{\bfseries Схема доказательства.}
+}{
+	\hfill\text{\blacksquare}\par\smallskip
+}
+
+\newenvironment{solution}{
+	\smallskip\noindent{\bfseries Решение.}
+}{
+	\hfill\text{\blacksquare}\par\smallskip
+}
+

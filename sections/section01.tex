@@ -1,0 +1,144 @@
+\subsection*{Обозначения}
+
+\begin{center}
+\begin{minipage}{.9\textwidth}
+	$\R$ --- поле (топологическое пространство) вещественных чисел
+
+	$\vec{x} = (x^1, \ldots, x^n)$ --- вектор (точка) из $\R^n$
+	
+	$(\vec{e}_1, \vec{e}_2, \ldots, \vec{e}_n)$ --- стандартный базис в $\R^n$
+
+	$\span(\vec{v}_1, \ldots, \vec{v}_n)$ --- линейная оболочка векторов $\vec{v}_1, \ldots, \vec{v}_n$
+
+	$S_{\Or}(\vec{u}, \vec{v})$ --- ориентированная площадь параллелограмма, натянутого на векторы $\vec{u}$ и $\vec{v}$, $\Vol_{\Or}(\vec{v}_1, \ldots, \vec{v}_n)$ --- ориентированный объём $n$-мерного параллелепипеда, натянутого на векторы $\vec{v}_1, \ldots, \vec{v}_n$.
+
+	$I$ --- связное подмножество $\R$
+
+	$\Int U$ --- внутренность подмножества $U \subset \R^n$
+
+	$\langle\vec{x}, \vec{y}\rangle$ --- скалярное произведение векторов $\vec{x}, \vec{y} \in \R^n$
+
+	$\vec{x} \times \vec{y}$ --- векторное произведение векторов $\vec{x}, \vec{y} \in \R^3$
+
+	$\rho(\vec{x}, \vec{y})$ --- расстояние между точками $\vec{x}$ и $\vec{y}$ из $\R^n$
+
+	$\vec{r}(t) = (x^1(t), \ldots, x^n(t))$ --- радиус-вектор точки $\vec{x} \in \R^n$
+
+	$\dot{\vec{r}}(t), \ddot{\vec{r}}(t) \ldots$ --- векторы скорости, ускорения и т.\,д. точки $\vec{x} \in \R^n$
+
+	\medskip
+	{\small\textbf{Нотация Эйнштейна}. По дважды повторяющимся индексам, один из которых верхний, а другой нижний, подразумевается суммирование в пределах, устанавливаемых из контекста, а сам такой индекс называется \textit{слепым}. Верхний индекс переменной, появляющейся в знаменателе, считается для выражения нижним, и наоборот.}
+\end{minipage}
+\end{center}
+
+\section{Предварительные сведения и напоминания}
+
+\epigraph{Сначала вы подумаете, что я сумасшедший, а потом вам понравится, и вы сами будете делать так же.}{А.\,В. Пенской}
+
+\subsection*{Математический анализ}
+
+Отображение $\vec{f}\colon \R^n \to \R^m$ называется \textit{дифференцируемым в точке} $\vec{x}_0$, если существует линейное отображение $\mathcal{L}_{\vec{x}_0}$, для которого выполнено
+\[
+	\vec{f}(\vec{x}) = \vec{f}(\vec{x}_0) + \mathcal{L}_{\vec{x}_0}(\vec{x} - \vec{x}_0) + \o(\norm{\vec{x} - \vec{x}_0})\text{ при $\vec{x} \to \vec{x}_0$}.
+\]
+
+При этом отображение $\vec{f}$ не обязано быть определено всюду. Нам будет достаточно, чтобы в область определения отображения $\vec{f}$ входило замыкание некоторой выпуклой открытой области, содержащее точку $\vec{x}_0$. Однозначно определённое линейное отображение $\mathcal{L}_{\vec{x}_0} = \vcentcolon \left.d\vec{f}\right|_{\vec{x_0}}$ называют \textit{дифференциалом} отображения $\vec{f}$ в точке $\vec{x}$.
+
+Матрица $J_{\vec{f}}(\vec{x}_0)$ линейного отображения $\left.d\vec{f}\right|_{\vec{x}_0}$ называется \textit{матрицей Якоби} отображения $\vec{f}$ в точке $\vec{x}_0$ и состоит из \textit{частных производных}:
+
+\[
+	J_{\vec{f}}(\vec{x}_0) =
+	\begin{pmatrix}
+		\ds\left.\frac{\partial f^1}{\partial x^1}\right|_{\vec{x}_0} & \ds\ldots & \ds\left.\frac{\partial f^1}{\partial x^n}\right|_{\vec{x}_0} \\
+		\ds\vdots & \ds\ddots & \ds\vdots \\
+		\ds\left.\frac{\partial f^m}{\partial x^1}\right|_{\vec{x}_0} & \ds\ldots & \ds\left.\frac{\partial f^m}{\partial x^n}\right|_{\vec{x}_0} \\
+	\end{pmatrix} =
+	\begin{pmatrix}
+		\left.\nabla f^1\right|_{\vec{x}_0} \\
+		\vdots\\
+		\left.\nabla f^m\right|_{\vec{x}_0} \\
+	\end{pmatrix}.
+\]
+
+Дифференцируемое отображение $\vec{f}$ определяет новое отображение $\partial \vec{f} / \partial \vec{x}\colon \R^n \to \R^m$. Если последнее также дифференцируемо, то $\vec{f}$ называется \textit{дважды дифференцируемым}, и далее индуктивно: если $\partial\vec{f} / \partial\vec{x}$ дифференцируемо $k$ раз, то $\vec{f}$ дифференцируемо $k + 1$ раз. Если отображение $\vec{f}$ дифференцируемо $k$ раз и при $k$-кратном дифференцировании получается непрерывное отображение, то говорят, что $\vec{f}$ \textit{$k$ раз непрерывно дифференцируемо} или является \textit{отображением класса $C^k$}. В дальнейшем под \textit{гладким отображением} мы будем подразумевать отображение класса $C^k$ для достаточно большого $k$.
+
+\begin{theorem}[О производной сложной функции]
+	Если отображения $\vec{f}\colon \R^n \to \R^m$ и $\vec{g}\colon \R^m \to \R^k$ дифференцируемы, то дифференцируема и композиция $\vec{g} \circ \vec{f}$, причём
+	\[
+		\left.d(\vec{g} \circ \vec{f})\right|_{\vec{x}_0} = \left.d\vec{g}\right|_{\vec{f}(\vec{x_0})} \circ \left.d\vec{f}\right|_{\vec{x}_0}.
+	\]
+\end{theorem}
+
+\begin{theorem}[Об обратном отображении]
+	Гладкое отображение $\vec{f}\colon \R^n \to \R^n$, матрица Якоби которого невырожденна в точке $\vec{x}_0$, локально обратимо в некоторой окрестности точки $\vec{x}_0$, причём обратное отображение также гладкое.
+\end{theorem}
+
+\begin{theorem}[О неявном отображении]
+	Пусть $\vec{f}\colon \R^n \to \R^m$, $m \leqslant n$, --- гладкое отображение, матрица Якоби которого в точке $\vec{x}_0$ имеет ранг $m$. Тогда множество решений уравнения $\vec{f}(\vec{x}) = \vec{f}(\vec{x}_0)$ в окрестности точки $\vec{x}_0$ выглядит как график гладкого отображения, выражающего некоторые $m$ координат через оставшиеся $n - m$, причём эти $m$ координат можно выбрать те, которым соответствуют линейно независимые столбцы в матрице Якоби.
+\end{theorem}
+
+\subsection*{Аналитическая геометрия и линейная алгебра}
+
+Пусть в $\R^n$ есть некоторая поверхность, задаваемая уравнением $F(x^1, \ldots, x^n) = 0$, а по ней движется точка, радиус-вектор которой есть $\vec{x} = \vec{r}(t)$. Тогда можем продифференцировать тождество $F(r^1(t), \ldots, r^n(t)) = 0$ в каждой точке, получив по теореме о сложной функции
+\[
+	\frac{\partial F}{\partial r^1} \cdot \frac{d r^1}{dt} + \ldots + \frac{\partial F}{\partial r^n} \cdot \frac{d r^n}{dt} = 0
+\]
+или, что то же, $\langle \nabla F, \dot{\vec{r}} \rangle = 0$.
+
+Из правила Лейбинца сразу следует важная формула дифференцирования скалярного произведения:
+\[
+	\frac{d}{dt}\langle \vec{x}(t), \vec{y}(t) \rangle = \langle \dot{\vec{x}}(t), \vec{y}(t) \rangle + \langle \vec{x}(t), \dot{\vec{y}}(t) \rangle.
+\]
+
+Важный частный случай: если $\vec{x}(t) \perp \vec{y}(t)$, то $\langle\vec{x}(t), \dot{\vec{y}}(t)\rangle = -\langle\dot{\vec{x}}(t), \vec{y}(t)\rangle$. Аналогичная формула верна и для векторного произведения:
+\[
+	\frac{d}{dt}(\vec{x}(t) \times \vec{y}(t)) = (\dot{\vec{x}}(t) \times \vec{y}(t)) + (\vec{x}(t) \times \dot{\vec{y}}(t)).
+\]
+
+Пусть $\vec{r}\colon \R \to \R^n$. Тогда $\abs{\vec{r}} = \const$ тогда и только тогда, когда $\langle \vec{r}, \dot{\vec{r}} \rangle = 0$. Доказательство простое --- надо продифференцировать тождество $\langle \vec{r}(t), \vec{r}(t) \rangle = \const$.
+
+Проекция вектора $\vec{u}$ на вектор $\vec{v}$ вычисляется по формуле
+\[
+	\proj_{\vec{v}}\vec{u} = \frac{\langle\vec{u}, \vec{v}\rangle}{\langle\vec{v}, \vec{v}\rangle} \cdot \vec{v}.
+\]
+
+\textit{Ортогонализацией Грамма "---Шмидта} называется процедура перехода от линейно независимого набора векторов $\vec{a}_1, \ldots, \vec{a}_k$ к набору попарно ортогональных векторов $\vec{b}_1, \ldots, \vec{b}_k$ такому, что $\span(\vec{a}_1, \ldots, \vec{a}_k) = \span(\vec{b}_1, \ldots, \vec{b}_k)$. Этот процесс описывается индуктивными формулами $\vec{b}_1 \vcentcolon = \vec{a}_1$,
+\[
+	\vec{b}_{i + 1} \vcentcolon = \vec{a}_{i + 1} - \proj_{\vec{b}_1}\vec{a}_{i + 1} - \ldots - \proj_{\vec{b}_i}\vec{a}_{i + 1}.
+\]
+
+%Напомним определение тензора. Пусть $V$ --- линейное пространство над полем $\Bbbk$.
+%
+%\begin{definition}
+%	\textit{Полилинейной функцией типа $(p, q)$} называется функция
+%	\[
+%		\T\colon \underbrace{V^\ast \times \ldots \times V^\ast}_p \times \underbrace{V \times \ldots \times V}_q \to \Bbbk
+%	\]
+%	от $p$ ковекторных и $q$ векторных аргументов, которая линейна по каждому аргументу.
+%\end{definition}
+%
+%Зафиксируем базис $\vec{e}_1, \ldots, \vec{e}_n$ в пространстве $V$. В пространстве $V^\ast$ имеется двойственный базис $\eps^1, \ldots, \eps^n$, где $\eps^i(\vec{e}_j) = \delta^i_j$. Тогда любая полилинейная функция задаётся своими значениями на базисных векторах и ковекторах:
+%\begin{multline} \label{eq:PolylinearBasis}
+%	\T(\xi^1, \ldots, \xi^p, \vec{v}_1, \ldots, \vec{v}_q) = \T(\xi^1_{i_1}\eps^{i_1}, \ldots, \xi^p_{i_p}\eps^{i_p}, v^{j_1}_1\vec{e}_{j_1}, \ldots, v^{j_q}_q\vec{e}_{j_q}) =\\ = \xi^1_{i_1}\ldots\xi^p_{i_p}v^{j_1}_1\ldots v_q^{j_q}\T(\eps^{i_1}, \ldots, \eps^{i_p}, \vec{e}_{j_1}, \ldots, \vec{e}_{j_q}).
+%\end{multline}
+%
+%Сопоставим полилинейной функции $\T$ типа $(p, q)$ и базису $\vec{e}_1, \ldots, \vec{e}_n$ набор из $n^{p + q}$ чисел $T = \{T^{i_1, \ldots, i_p}_{j_1, \ldots, j_q}\}$, где
+%\[
+%	T^{i_1, \ldots, i_p}_{j_1, \ldots, j_q} \vcentcolon = \T(\eps^{i_1}, \ldots, \eps^{i_p}, \vec{e}_{j_1}, \ldots, \vec{e}_{j_q}).
+%\]
+%
+%Посмотрим, как преобразуется этот набор при заменах базиса. Пусть $C = (c^i_{i^\prime})$ --- матрица перехода от базиса $\vec{e}_1, \ldots, \vec{e}_n$ к базису $\vec{e}_{1^\prime}, \ldots, \vec{e}_{n^\prime}$. Тогда имеем $\vec{e}_{j^\prime} = c^j_{j^\prime}\vec{e}_j$, $\eps^{i^\prime} = c^{i^\prime}_i\eps^i$~и
+%\begin{multline} \label{eq:TensorLaw}
+%	T^{i_1^\prime, \ldots, i_p^\prime}_{j_1^\prime, \ldots, j_q^\prime} = \T(\eps^{i_1^\prime}, \ldots, \eps^{i_p^\prime}, \vec{e}_{j_1^\prime}, \ldots, \vec{e}_{j_q^\prime}) = \T(c^{i_1^\prime}_{i_1}\eps^{i_1}, \ldots, c^{i_p^\prime}_{i_p}\eps^{i_p}, c^{j_1}_{j_1^\prime}\vec{e}_{j_1}, \ldots, c^{j_q}_{j_q^\prime}\vec{e}_{j_q}) =\\ = c^{i_1^\prime}_{i_1}\ldots c^{i_p^\prime}_{i_p} c^{j_1}_{j_1^\prime}\ldots c^{j_q}_{j_q^\prime}\T(\eps^{i_1}, \ldots, \eps^{i_p}, \vec{e}_{j_1}, \ldots, \vec{e}_{j_q}) = c^{i_1^\prime}_{i_1}\ldots c^{i_p^\prime}_{i_p} c^{j_1}_{j_1^\prime}\ldots c^{j_q}_{j_q^\prime}T^{i_1, \ldots, i_p}_{j_1, \ldots, j_q}.
+%\end{multline}
+%
+%\begin{definition}
+%	\textit{Тензором} типа $(p, q)$ называется соответствие
+%	\[
+%		\text{базисы в $V$} \leftrightarrow \text{наборы из $n^{p + q}$ чисел $T = \{T^{i_1, \ldots, i_p}_{j_1, \ldots, j_q}\}$},
+%	\]
+%	при котором наборы $T = \{T^{i_1, \ldots, i_p}_{j_1, \ldots, j_q}\}$ и $T^\prime = T^{i_1^\prime, \ldots, i_p^\prime}_{j_1^\prime, \ldots, j_q^\prime}$, соответствующие различным базисам $\vec{e}_1, \ldots, \vec{e}_n$ и $\vec{e}_{1^\prime}, \ldots, \vec{e}_{n^\prime}$, связаны соотношением \[T^{i_1^\prime, \ldots, i_p^\prime}_{j_1^\prime, \ldots, j_q^\prime} = c^{i_1^\prime}_{i_1}\ldots c^{i_p^\prime}_{i_p} c^{j_1}_{j_1^\prime}\ldots c^{j_q}_{j_q^\prime}T^{i_1, \ldots, i_p}_{j_1, \ldots, j_q},\] которое называется \textit{тензорным законом преобразования}.
+%\end{definition}
+%
+%Тензор определяет полилинейную функцию по формулы \eqref{eq:PolylinearBasis}, и наоборот --- полилинейная функция определяет тензор по формуле \eqref{eq:TensorLaw}.
+
