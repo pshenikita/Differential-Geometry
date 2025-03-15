@@ -85,14 +85,14 @@
 \]
 или, что то же, $\langle \nabla F, \dot{\vec{r}} \rangle = 0$.
 
-Из правила Лейбинца сразу следует важная формула дифференцирования скалярного произведения:
+Из правила Лейбинца сразу следует формула дифференцирования скалярного произведения:
 \[
-	\frac{d}{dt}\langle \vec{x}(t), \vec{y}(t) \rangle = \langle \dot{\vec{x}}(t), \vec{y}(t) \rangle + \langle \vec{x}(t), \dot{\vec{y}}(t) \rangle.
+	\frac{d}{dt}\langle \vec{a}(t), \vec{b}(t) \rangle = \langle \dot{\vec{a}}(t), \vec{b}(t) \rangle + \langle \vec{a}(t), \dot{\vec{b}}(t) \rangle.
 \]
 
-Важный частный случай: если $\vec{x}(t) \perp \vec{y}(t)$, то $\langle\vec{x}(t), \dot{\vec{y}}(t)\rangle = -\langle\dot{\vec{x}}(t), \vec{y}(t)\rangle$. Аналогичная формула верна и для векторного произведения:
+Важный частный случай: если $\vec{a}(t) \perp \vec{b}(t)$ для всех значений параметра $t$, то $\langle\vec{a}(t), \dot{\vec{b}}(t)\rangle \hm= -\langle\dot{\vec{a}}(t), \vec{b}(t)\rangle$. Аналогичная формула верна и для векторного произведения:
 \[
-	\frac{d}{dt}(\vec{x}(t) \times \vec{y}(t)) = (\dot{\vec{x}}(t) \times \vec{y}(t)) + (\vec{x}(t) \times \dot{\vec{y}}(t)).
+	\frac{d}{dt}(\vec{a}(t) \times \vec{b}(t)) = (\dot{\vec{a}}(t) \times \vec{b}(t)) + (\vec{a}(t) \times \dot{\vec{b}}(t)).
 \]
 
 Пусть $\vec{r}\colon \R \to \R^n$. Тогда $\abs{\vec{r}} = \const$ тогда и только тогда, когда $\langle \vec{r}, \dot{\vec{r}} \rangle = 0$. Доказательство простое --- надо продифференцировать тождество $\langle \vec{r}(t), \vec{r}(t) \rangle = \const$.
@@ -102,10 +102,7 @@
 	\proj_{\vec{v}}\vec{u} = \frac{\langle\vec{u}, \vec{v}\rangle}{\langle\vec{v}, \vec{v}\rangle} \cdot \vec{v}.
 \]
 
-\textit{Ортогонализацией Грамма "---Шмидта} называется процедура перехода от линейно независимого набора векторов $\vec{a}_1, \ldots, \vec{a}_k$ к набору попарно ортогональных векторов $\vec{b}_1, \ldots, \vec{b}_k$ такому, что $\span(\vec{a}_1, \ldots, \vec{a}_k) = \span(\vec{b}_1, \ldots, \vec{b}_k)$. Этот процесс описывается индуктивными формулами $\vec{b}_1 \vcentcolon = \vec{a}_1$,
-\[
-	\vec{b}_{i + 1} \vcentcolon = \vec{a}_{i + 1} - \proj_{\vec{b}_1}\vec{a}_{i + 1} - \ldots - \proj_{\vec{b}_i}\vec{a}_{i + 1}.
-\]
+\textit{Ортогонализацией Грамма "---Шмидта} называется процедура перехода от линейно независимого набора векторов $\vec{a}_1, \ldots, \vec{a}_k$ к набору попарно ортогональных векторов $\vec{b}_1, \ldots, \vec{b}_k$ такому, что $\span(\vec{a}_1, \ldots, \vec{a}_k) = \span(\vec{b}_1, \ldots, \vec{b}_k)$. Этот процесс описывается индуктивными формулами $\vec{b}_1 = \vec{a}_1$, $\vec{b}_{i + 1} = \vec{a}_{i + 1} - \proj_{\vec{b}_1}\vec{a}_{i + 1} - \ldots - \proj_{\vec{b}_i}\vec{a}_{i + 1}$.
 
 %Напомним определение тензора. Пусть $V$ --- линейное пространство над полем $\Bbbk$.
 %
