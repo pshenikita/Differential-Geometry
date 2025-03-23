@@ -59,6 +59,17 @@
 	urlcolor=blue,
 }
 
+% Параграф с полной шириной внутри списка
+\makeatletter
+\newenvironment{fullwidth}
+    {\par
+     \setlength{\@totalleftmargin}{0pt}%
+     \setlength{\linewidth}{\hsize}%
+     \list{}{\setlength{\leftmargin}{0pt}}
+     \item\relax}
+    {\endlist}
+\makeatother
+
 % Часто используемые обозначения
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
