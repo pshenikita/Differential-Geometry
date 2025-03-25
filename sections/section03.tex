@@ -96,7 +96,7 @@
 					\end{pmatrix}.
 				\end{multline*}
 			\end{fullwidth}
-			 Чтобы вычислить оставшейся определитель, вычтем первую строку матрицы из двух остальных:
+			 Чтобы вычислить оставшийся определитель, вычтем первую строку из двух других:
 			\begin{multline*}
 				\det
 				\begin{pmatrix}
@@ -121,7 +121,7 @@
 					\frac{1}{a_3 - u_1} & \frac{1}{a_3 - u_2} & \frac{1}{a_3 - u_3}
 				\end{pmatrix}.
 			\end{multline*}
-			Здесь вычтем первый столбец из двух оставшихся:
+			Здесь вычтем первый столбец из двух остальных:
 			\begin{multline*}
 				\det\begin{pmatrix}
 					1 & 1 & 1\\
@@ -144,7 +144,7 @@
 				\frac{(u_1 - u_2)(u_1 - u_3)}{(a_2 - u_1)(a_3 - u_1)}\br{\frac{1}{(a_2 - u_2)(a_3 - u_3)} - \frac{1}{(a_3 - u_2)(a_2 - u_3)}} =\\ = \frac{(u_1 - u_2)(u_1 - u_3)(u_2 - u_3)(a_3 - a_2)}{(a_2 - u_1)(a_3 - u_1)(a_2 - u_2)(a_3 - u_3)(a_3 - u_2)(a_2 - u_3)}.
 			\end{multline*}
 
-			Подставляя результат в промежуточную формулу:
+			Подставляем результат в промежуточную формулу:
 			\[
 				\frac{(a_1 - a_2)(a_2 - a_3)(a_3 - a_1)}{-\prod\limits_{i, j = 1}^3(a_i - u_j)}(u_1 - u_2)(u_2 - u_3)(u_3 - u_1).
 			\]
@@ -168,7 +168,7 @@
 \[
 	ds^2 = \langle d\vec{r}, d\vec{r}\rangle = \left\langle\vec{r}_idu^i, \vec{r}_jdu^j\right\rangle = g_{ij}du^idu^j,
 \]
-где $g_{ij} = \langle\vec{r}_i, \vec{r}_j\rangle$ --- элементы матрицы Грама векторов $\vec{r}_1, \ldots, \vec{r}_n$. При переходе к другим координатам $\widetilde{u}^1, \ldots, \widetilde{u}^n$ они преобразуются так, как и положено преобразовываться матрице квадратичной формы:
+где $g_{ij} = \langle\vec{r}_i, \vec{r}_j\rangle$ --- элементы матрицы Грама векторов $\vec{r}_1, \ldots, \vec{r}_n$. При переходе к другим координатам $\widetilde{u}^1, \ldots, \widetilde{u}^n$ матрица Грама преобразуется так, как и положено преобразовываться матрице квадратичной формы (по тензорному закону):
 \begin{equation} \label{eq:RiemannCoordinates}
 	\widetilde{g}_{ij} = \left\langle\frac{\partial \vec{r}}{\partial\widetilde{u}^i}, \frac{\partial \vec{r}}{\partial\widetilde{u}^j}\right\rangle = \left\langle\frac{\partial \vec{r}}{\partial u^k}\frac{\partial u^k}{\partial\widetilde{u}^i}, \frac{\partial \vec{r}}{\partial u^l}\frac{\partial u^l}{\partial\widetilde{u}^j}\right\rangle = \frac{\partial u^k}{\partial\widetilde{u}^i}\frac{\partial u^l}{\partial\widetilde{u}^j}g_{kl}.
 \end{equation}
@@ -181,4 +181,37 @@
 		\item при замене координат изменяется по формулам \eqref{eq:RiemannCoordinates}.
 	\end{enumerate}
 \end{definition}
+
+Пусть имеем параметризованную кривую $\vec{r}(t)$ в криволинейных координатах $(u^1, \ldots, u^n)$ с римановой метрикой, заданной матрицей $G = g_{ij}$. Измеряем длину кривой, заметаемой при изменении параметра от $a$ до $b$:
+\begin{equation} \label{eq:RiemannLength}
+	l = \int\limits_a^b\abs{\frac{d\vec{r}}{dt}}dt = \int\limits_a^b\sqrt{\left\langle \frac{d\vec{r}}{dt}, \frac{d\vec{r}}{dt} \right\rangle}\,dt = \int\limits_a^b\sqrt{\frac{ds^2}{(dt)^2}}\,dt = \int\limits_a^b\sqrt{g_{ij}\frac{du^i}{dt}\frac{du^j}{dt}}\,dt.
+\end{equation}
+
+\begin{problem}
+	Проверить, что матрица
+	\[
+		G(x, y) = \frac{1}{1 - x^2 - y^2}
+		\begin{pmatrix}
+			1 - y^2 & xy\\
+			xy & 1 - x^2
+		\end{pmatrix}
+	\]
+	задаёт риманову метрику в единичном круге. Вычислить в этой метрике длину кривой $x^2 + y^2 = a^2$, где $a > 0$.
+\end{problem}
+
+\begin{proof}
+	Нужно проверить лишь то, что матрица $G$ невырожденна и положительно определена, что сразу следует из критерия Сильвестра. Для минора $1 \times 1$ всё очевидно, остаётся проверить знак определителя всей матрицы $2 \times 2$:
+	\[
+		\det G = \frac{(1 - y^2)(1 - x^2) - x^2y^2}{1 - x^2 - y^2} = \frac{\cancel{1 - x^2 - y^2}}{\cancel{1 - x^2 - y^2}} = 1.
+	\]
+	
+	Если параметризовать нашу кривую как $\vec{r}(t) = (x(t), y(t))$, где $x(t) = a\cos t$, $y(t) = a\sin t$ ($t$ меняется от $0$ до $2\pi$), то длина вычисляется по формуле \eqref{eq:RiemannLength}:
+	\[
+		l = \int\limits_0^{2\pi}\sqrt{\begin{pmatrix}\dot{x}(t) & \dot{y}(t)\end{pmatrix} G \begin{pmatrix}\dot{x}(t) \\ \dot{y}(t) \end{pmatrix}}\,dt.
+	\]
+	Подставляем:
+	\begin{multline*}
+		\int\limits_0^{2\pi}\sqrt{\begin{pmatrix}-a\sin t & a\cos t\end{pmatrix} \cdot \left(\frac{1}{1 - a^2}\begin{pmatrix} 1 - a^2\sin^2t & a^2\sin t\cos t \\ a^2\sin t\cos t & 1 - a^2\cos^2t \end{pmatrix}\right) \cdot \begin{pmatrix} -a\sin t \\ a\cos t \end{pmatrix}}\,dt =\\ = \int\limits_0^{2\pi}\sqrt{\begin{pmatrix} -a\sin t & a\cos t \end{pmatrix} \cdot \left(\frac{1}{\cancel{1 - a^2}}\begin{pmatrix} -a\sin t\cancel{(1 - a^2)} \\ a\cos t\cancel{(1 - a^2)}\end{pmatrix}\right)}\,dt =\\ = \int\limits_0^{2\pi}\sqrt{a^2(\cos^2t + \sin^2t)}\,dt = \int\limits_0^{2\pi}a\,dt = 2\pi a.
+	\end{multline*}
+\end{proof}
 
