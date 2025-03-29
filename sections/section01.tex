@@ -16,7 +16,9 @@
 
 	$\Int U$ --- внутренность подмножества $U \subset \R^n$;
 
-	$\langle\vec{x}, \vec{y}\rangle$ --- скалярное произведение векторов $\vec{x},\,\vec{y} \in \R^n$;
+	$\langle\vec{x}, \vec{y}\rangle$ --- евклидово скалярное произведение векторов $\vec{x},\,\vec{y} \in \R^n$;
+
+	$\langle\vec{x}, \vec{y}\rangle_\G$ --- скалярное произведение векторов $\vec{x},\,\vec{y} \in \R^n$, задаваемое положительно определённой симметричной матрицей $\G$ (то есть $\langle\vec{x}, \vec{y}\rangle_\G = \vec{x}^t\G\vec{y}$);
 
 	$\vec{x} \times \vec{y}$ --- векторное произведение векторов $\vec{x},\,\vec{y} \in \R^3$;
 
@@ -133,10 +135,10 @@
 \shorthandoff{"}%
 \[\begin{tikzcd}
 	{\underset{\mathclap{x,\,y}}{\mathbb{R}}^2} \\
-	& {\mathbb{E}^2} & {\mathbb{R}} \\
+	& {\mathbb{E}^2} && {\mathbb{R}} \\
 	{\underset{\mathclap{\rho,\,\varphi}}{\mathbb{R}}^2}
 	\arrow["\Phi", from=1-1, to=2-2]
-	\arrow["f", from=2-2, to=2-3]
+	\arrow["f", from=2-2, to=2-4]
 	\arrow["\Psi"', from=3-1, to=2-2]
 \end{tikzcd}\]
 \shorthandon{"}%
@@ -153,7 +155,7 @@
 	f(\rho, \varphi) = f\big(x(\rho, \varphi),\,y(\rho, \varphi)\big).
 \]
 
-Действительно, если уж мы согласились с равенством $f(\rho, \varphi) = f(x, y)$, то мы обязаны согласиться и с этим равенством, ведь от первого ко второму можно перейти, рассматривая $x$ и $y$ как функции $x(\rho, \varphi) = \rho\cos\varphi$, $y(\rho, \varphi) = \rho\sin\varphi$. И мы действительно можем с ним согласиться, ведь формально это равенство можно записать как
+Если уж мы согласились с равенством $f(\rho, \varphi) = f(x, y)$, то мы обязаны согласиться и с этим равенством, ведь от первого ко второму можно перейти, рассматривая $x$ и $y$ как функции $x(\rho, \varphi) = \rho\cos\varphi$, $y(\rho, \varphi) = \rho\sin\varphi$. И мы действительно можем с ним согласиться, ведь формально это равенство можно записать как
 \[
 	f \circ \Psi = (f \circ \Phi) \circ (\Phi^{-1} \circ \Psi).
 \]

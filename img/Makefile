@@ -1,4 +1,4 @@
-NAME = Cycloid
+NAME = CycloidEquation
 
 all: $(NAME).pdf
 
