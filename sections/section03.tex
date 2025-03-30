@@ -544,25 +544,20 @@
 \begin{definition}
 	Выражение
 	\[
-		ds^2 = g_{ij}dx^idx^j = g_{11}du^2 + 2g_{12}dudv + g_{22}dv^2
+		ds^2 = g_{ij}dx^idx^j = Edu^2 + 2Fdudv + Gdv^2
 	\]
-	называется \textit{первой квадратичной формой} (или \textit{римановой метрикой}) на поверхности. Здесь коэффициенты $\G = g_{ij}$, вообще говоря, зависят от координат $u$ и $v$.
+	называется \textit{первой квадратичной формой} (или \textit{римановой метрикой}) на поверхности. Здесь коэффициенты матрицы $\G = g_{ij}$, вообще говоря, зависят от координат $u$ и $v$.
 \end{definition}
 
 В каждой точке поверхности эта форма задаёт на касательном пространстве евклидово скалярное произведение:
 \[
-	\vec{\xi} = \xi^i\frac{\partial \vec{r}}{dx^i},\ \eta = \eta^j\frac{\partial \vec{r}}{\partial x^j} \leadsto \langle\xi, \eta\rangle_\G = g_{ij}\xi^i\eta^j.
+	\vec{\xi} = \xi^i\frac{\partial \vec{r}}{dx^i},\ \vec{\eta} = \eta^j\frac{\partial \vec{r}}{\partial x^j} \leadsto \langle\vec{\xi}, \vec{\eta}\rangle_\G = g_{ij}\xi^i\eta^j.
 \]
-С помощью него можно, например, находить длины кривых и углы между касательными векторами (что мы, на самом деле, раньше уже делали).
 
-Сперва нужно доказать корректность этого определения, то есть согласованность с тем, что мы раньше называли римановой метрикой (определение \ref{definition:RiemannMetrics}).
+С помощью него можно, например, находить длины кривых и углы между кривыми на поверхностях (что мы, на самом деле, раньше уже делали). Но сперва нужно доказать корректность этого определения, то есть согласованность с тем, что мы раньше называли римановой метрикой (определение \ref{definition:RiemannMetrics}).
 
 \begin{proposition}
-	Коэффициенты первой квадратичной формы
-	\[
-		g_{ij}dx^idx^j = \widetilde{g}_{kl}d\widetilde{x}^kd\widetilde{x}^l,
-	\]
-	записанной по отношению к разным системам координат, связаны соотношениями
+	Коэффициенты первой квадратичной формы, записанной по отношению к разным системам координат $(x^1, x^2)$ и $(\widetilde{x}^1, \widetilde{x}^2)$, связаны соотношениями
 	\[
 		g_{ij} = \widetilde{g}_{kl}\frac{\partial\widetilde{x}^k}{\partial x^i}\frac{\partial \widetilde{x}^l}{\partial x^j}.
 	\]
@@ -577,6 +572,7 @@
 	\[
 		g_{ij}\xi^i\xi^j = \widetilde{g}_{kl}\widetilde{\xi}^k\widetilde{\xi}^l.
 	\]
+
 	Равенство длин переписывается как $g_{ij}dx^idx^j = \widetilde{g}_{ij}d\widetilde{x}^id\widetilde{x}^j$. Подставляя в правую часть выражения вида $\ds d\widetilde{x}^k = \frac{\partial\widetilde{x}^k}{\partial x^i}dx^i$, получаем
 	\[
 		d_{ij}dx^idx^j = \widetilde{g}^{kl}\frac{\partial\widetilde{x}^k}{\partial x^i}\frac{\partial\widetilde{x}^l}{\partial x^j}dx^idx^j.
