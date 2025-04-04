@@ -168,7 +168,7 @@
 \]
 
 \begin{definition}
-	метр $s$ называется \textit{натуральным параметром} регулярной кривой, если $\abs{d\vec{r} / ds} = 1$.
+	Параметр $s$ называется \textit{натуральным параметром} регулярной кривой, если $\abs{d\vec{r} / ds} = 1$.
 \end{definition}
 
 \begin{proposition} \label{proposition:LengthParameter}
@@ -325,8 +325,8 @@
 		\vec{r}_2(t) = \vec{x}_0 + (t, \o(t), \ldots, \o(t)),\,t \to 0.
 	\]
 
-	Рассмотрим треугольник с вершинами $\vec{x} = \vec{r}_1(t)$, $\vec{x}_1 = \vec{r}_2(t)$, $\vec{x}_2 = \vec{r}_2(\varphi(t))$ при $t \to 0$. Направление вектора $\vec{x}_2 - \vec{x}_1$, если он ненулевой, сближается с направлением вектора скорости второй кривой в точке $\vec{x}_0$, то есть $\vec{v}_0 = (1, 0, \ldots, 0)$. При этом $(\vec{x}_1 - \vec{x}) \perp \vec{v}_0$. Таким образом, угол $\angle \vec{x}\vec{x}_1\vec{x}_2$ стремится к прямому. Мы знаем, что противолежащая ему сторона $\vec{x}\vec{x}_2$ имеет порядок малости $\o(\abs{\vec{x} - \vec{x}_0}^k) = \o(t^k)$. Отсюда, все его стороны имеют по крайней мере такой же порядок малости, в частности, $\abs{\vec{x} - \vec{x}_1} = \abs{\vec{r}_1(t) - \vec{r}_2(t)}$, откуда следует $\eqref{eq:OsculatingCurve}$.
-\end{proof}
+	Рассмотрим треугольник с вершинами $\vec{x} = \vec{r}_1(t)$, $\vec{x}_1 = \vec{r}_2(t)$, $\vec{x}_2 = \vec{r}_2(\varphi(t))$ при $t \hm\to 0$. Направление вектора $\vec{x}_2 - \vec{x}_1$, если он ненулевой, сближается с направлением вектора скорости второй кривой в точке $\vec{x}_0$, то есть $\vec{v}_0 = (1, 0, \ldots, 0)$. При этом $(\vec{x}_1 - \vec{x}) \perp \vec{v}_0$. Таким образом, угол $\angle \vec{x}\vec{x}_1\vec{x}_2$ стремится к прямому. Мы знаем, что противолежащая ему сторона $\vec{x}\vec{x}_2$ имеет порядок малости $\o(\abs{\vec{x} - \vec{x}_0}^k) = \o(t^k)$. Отсюда, все его стороны имеют по крайней мере такой же порядок малости, в частности, $\abs{\vec{x} - \vec{x}_1} = \abs{\vec{r}_1(t) - \vec{r}_2(t)}$, откуда следует $\eqref{eq:OsculatingCurve}$.
+\end{proof} % TODO: картинку!
 
 \begin{definition}
 	\textit{Соприкасающейся окружностью} с данной кривой $\vec{r}(t)$ в точке $\vec{x}_0$ называется окружность, которая имеет соприкосновение второго порядка с этой кривой в точке $\vec{x}_0$.
@@ -912,7 +912,7 @@
 		\abs{\vec{r}^\prime(t)}^2 = (1 - \cos t)^2 + \sin^2t = 2(1 - \cos t) = 4\sin^2\frac{t}{2} \Rightarrow \abs{\vec{r}^\prime(t)} = 2\sin\frac{t}{2},\\
 		\int\limits_\pi^t 2\sin\frac{t}{2}\,dt = 4\int\limits_\pi^t\sin\frac{t}{2}\,d\br{\frac{t}{2}} = -4\left.\cos\frac{t}{2}\right|_\pi^t = -4\cos\frac{t}{2}.
 	\end{gather*}
-	А теперь пишем, собствено, уравнение эвольвенты:
+	А теперь пишем, собственно, уравнение эвольвенты:
 	\begin{multline*}
 		\widehat{\vec{r}}(t) = (t - \sin t, \cos t - 1) - \frac{\bcancel{2}\br{\sin^{\cancel{2}}\frac{t}{2}, -\cancel{\sin\frac{t}{2}}\cos\frac{t}{2}}}{\bcancel{2} \cdot \cancel{\sin\frac{t}{2}}} \cdot \br{-4\cos\frac{t}{2}} =\\ = (t - \sin t, \cos t - 1) + 2\br{2\sin\frac{t}{2}\cos\frac{t}{2}, -2\cos^2\frac{t}{2}} =\\ = (t - \sin t, \cos t - 1) + (2\sin t, -2 - 2\cos t) = (t + \sin t, -\cos t - 3).
 	\end{multline*}
