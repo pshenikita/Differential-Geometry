@@ -17,7 +17,7 @@
 
 \usepackage{caption} % пустые подписи к рисункам:
 \DeclareCaptionFormat{empty}{#1}
-\renewcommand\thefigure{\arabic{section}.\arabic{figure}} % 
+\renewcommand\thefigure{\arabic{section}.\arabic{figure}}
 
 \usepackage{setspace}			% расстояния между строками
 \usepackage{cancel}				% зачёркивания
@@ -80,12 +80,13 @@
 \newcommand{\T}{\mathcal{T}}
 \newcommand{\G}{\mathcal{G}}
 \newcommand{\M}{\mathcal{M}}
+\newcommand{\B}{\mathcal{B}}
 \renewcommand{\o}{\overline{o}}
 \renewcommand{\O}{\underline{O}}
 \newcommand{\eps}{\varepsilon}
 \newcommand{\homeo}{\cong}
 \newcommand{\pt}{\mathrm{pt}}
-\newcommand{\id}{\mathrm{id}}
+\newcommand{\id}{\operatorname{id}}
 \newcommand{\const}{\mathrm{const}}
 \newcommand{\Or}{\mathrm{or}}
 \newcommand{\Vol}{\operatorname{Vol}}
@@ -103,6 +104,9 @@
 \newcommand{\ds}{\displaystyle}
 \newcommand{\bs}[1]{\boldsymbol{#1}}
 \renewcommand{\vec}[1]{\boldsymbol{#1}}
+\newcommand{\I}{\bs{\operatorname{I}}}
+\newcommand{\II}{\bs{\operatorname{II}}}
+
 \newcommand{\abs}[1]{\left\lvert#1\right\rvert}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \newcommand{\br}[1]{\left(#1\right)}

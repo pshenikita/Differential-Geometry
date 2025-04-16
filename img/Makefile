@@ -1,4 +1,4 @@
-NAME = CycloidEquation
+NAME = NormalSection
 
 all: $(NAME).pdf
 
