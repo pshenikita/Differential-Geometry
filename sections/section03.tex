@@ -476,12 +476,13 @@
 \begin{enumerate}[nolistsep]
 	\item[(а)] \textit{областью} на поверхности $\M$ называется такое множество точек $U \subset \M$, что координаты $(x_\alpha^1, x_\alpha^2)$ точек из пересечения множества $U$ с любой картой $U_\alpha$, заполняют область в $\R^2$;
 	\item[(б)] любая область $U$, содержащая точку $\vec{x} \in \M$, называется \textit{окрестностью} точки $\vec{x}$;
-	\item[(в)] функция $f\colon \M \to \R$ называется \textit{гладкой}, если в каждой карте $U_\alpha$ она задаётся как гладкая функция локальных координат $(x_\alpha^1, x_\alpha^2)$.
-	\item[(г)] Отображение поверхностей $\vec{f}\colon \M_1 \to \M_2$ называется \textit{гладким}, если всюду в локальных координатах оно задаётся гладкими функциями
+	\item[(в)] функция $f\colon \M \to \R$ называется \textit{гладкой}, если в каждой карте $U_\alpha$ она задаётся как гладкая функция локальных координат $(x_\alpha^1, x_\alpha^2)$;
+	\item[(г)] отображение поверхностей $\vec{f}\colon \M \to \mathcal{N}$ называется \textit{гладким}, если всюду в локальных координатах оно задаётся гладкими функциями
 		\[
 			(x, y) \mapsto \big(u(x, y), v(x, y)\big),
 		\]
-		где $(x, y)$ --- локальные координаты на $\M_1$, а $(u, v)$ --- локальные координаты на $\M_2$
+		где $(x, y)$ --- локальные координаты на $\M$, а $(u, v)$ --- локальные координаты на $\mathcal{N}$;
+	\item[(д)] отображение поверхностей $\vec{f}\colon \M \to \mathcal{N}$ называется \textit{диффеоморфизмом}, если оно биективное, гладкое и обратное к нему тоже гладкое.
 \end{enumerate}
 
 Из следствия \ref{corollary:SmoothLocal} и теоремы о дифференцируемости сложной функции вытекает, что гладкость функции на поверхности в точке $\vec{x}_0$ достаточно проверить в какой-либо одной локальной системе координат в окрестности $\vec{x}_0$. В частности, получаем корректность определения гладкой функции на поверхности. Однако заметим, что имеет смысл говорить только о гладкости функций, меньшей, чем гладкость замен локальных координат, иначе это понятие станет неинвариантным. Обычно мы говорим о бесконечно гладких параметризациях (класс $C^\infty$), так что этот вопрос не возникает.
@@ -584,9 +585,9 @@
 
 \begin{proposition}
 	Коэффициенты первой квадратичной формы, записанной по отношению к разным системам координат $(x^1, x^2)$ и $(\widetilde{x}^1, \widetilde{x}^2)$, связаны соотношениями\footnotemark
-	\[
+	\begin{equation} \label{eq:QTensorLaw}
 		g_{ij} = \widetilde{g}_{kl}\frac{\partial\widetilde{x}^k}{\partial x^i}\frac{\partial \widetilde{x}^l}{\partial x^j}.
-	\]
+	\end{equation}
 \end{proposition}
 
 \footnotetext{Мы хотим доказать, что первая квадратичная форма действительно является квадратичной формой (на касательном пространстве) в смысле определения из линейной алгебры. Для этого нужно проверить выполнение тензорного закона, что мы здесь и делаем.}
@@ -684,8 +685,6 @@
 			Итак, выписываем первую квадратичную форму:
 			$\big((1 - k\lambda)^2 + \varkappa^2\lambda^2\big)ds^2 + d\lambda^2$.
 	\end{enumerate}
-
-	Обратим внимание на <<непорядочность>> принятых обозначений в пункте $(2)$ --- за $ds$ мы обозначили как единицу длины, так и дифференциал по натуральному параметру на данной кривой. Делать так, конечно же, нехорошо, но дальнейших вычислений у нас нет, поэтому конкретно здесь это не так важно.
 \end{solution}
 
 \begin{problem}
@@ -732,11 +731,11 @@
 	\begin{enumerate}[nolistsep, label=(\arabic*)]
 		\item Если поверхность задана в параметрической форме $\vec{r} = \vec{r}(u, v)$ и $V$ --- такая область на плоскости $(u, v)$, что $\vec{r}(V) = U$, то
 			\[
-				\sigma(U) = \iint\limits_{V}\abs{\vec{r}_u \times \vec{r}_v}du\,dv.
+				\sigma(U) = \iint\limits_{V}\abs{\vec{r}_u \times \vec{r}_v}dudv.
 			\]
 		\item Если поверхность задана как график функции $z = f(x, y)$ и область $U$ проектируется на область $V$ на плоскости $(x, y)$, то
 			\[
-				\sigma(U) = \iint\limits_{V}\sqrt{1 + f_x^2 + f_y^2}dx\,dy.
+				\sigma(U) = \iint\limits_{V}\sqrt{1 + f_x^2 + f_y^2}\,dxdy.
 			\]
 		\item Если поверхность задана уравнением $F(x, y, z) = 0$, $F_z \ne 0$ в области $U$, которая проектируется на область $V$ на плоскости $(x, y)$. Тогда
 			\[
@@ -744,8 +743,6 @@
 			\]
 	\end{enumerate}
 \end{example}
-
-% TODO: Написать про изометрии и конформные отображения + условия Коши-Римана!
 
 \begin{problem}
 	Найти площадь тора
@@ -758,6 +755,12 @@
 	\]
 	где $r < R$, $0 \leqslant \varphi, \psi < 2\pi$.
 \end{problem}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=6cm]{./img/Torus.pdf}
+	\caption{Тор}
+\end{figure}
 
 \begin{solution}
 	Находим частные производные радиус-вектора:
@@ -778,6 +781,107 @@
 		\sigma = \iint\limits_{\varphi, \psi}\sqrt{\det\G}\,d\varphi d\psi = \int\limits_0^{2\pi}d\varphi\int\limits_0^{2\pi}(R + r\cos\psi)r\,d\psi =\\ = 2\pi r\int\limits_0^{2\pi}(R + r\cos\psi)\,d\psi = 2\pi r \cdot 2\pi R = 4\pi^2 Rr.
 	\end{multline*}
 \end{solution}
+
+\begin{definition}
+	Поверхности называют \textit{локально изометричными}, если всюду в локальных координатах между ними существует диффеоморфизм, который сохраняет длины всех кривых.
+\end{definition}
+
+Отображение поверхностей
+\[
+	(x^1, x^2) \mapsto (y^1(x^1, x^2), y^2(x^1, x^2)),
+\]
+записанное в локальных координатах, сохраняет длины всех кривых, если и только если
+\begin{equation} \label{eq:Isometry}
+	\widetilde{g}_{ij}\big|_{\vec{y}(\vec{x})}\,dy^idy^j = g_{kl}\big|_{\vec{x}}\,dx^kdx^l,
+\end{equation}
+где $g_{kl}\,dx^kdx^l$ и $\widetilde{g}_{ij}\,dy^idy^j$ --- первые квадратичные формы поверхностей. Идейно тут всё понятно --- это условие и означает, что на поверхностях <<одинаково измеряются расстояния>>. Распишем строго: пусть $\vec{r}(t) = (x^1(t), x^2(t))$ --- кривая и $\widetilde{\vec{r}}(t)$ --- её образ, $a \leqslant t \leqslant b$,
+\[
+	\int\limits_a^b\sqrt{g_{kl}(\vec{r}(t))\,\dot{x}^k\dot{x}^l}\,dt = \int\limits_a^b\sqrt{\widetilde{g}_{ij}(\widetilde{\vec{r}}(t))\,\dot{y}^i\dot{y}^j}\,dt.
+\]
+
+При изометрии это равенство выполняется для любой кривой $\vec{r}(t)$, что равносильно соотношению \eqref{eq:Isometry}.
+
+\begin{problem}
+	Доказать, что \textit{геликоид}:
+	\[
+		\vec{r}(u, v) = (u\sin v, u\cos v, v),
+	\]
+	где $u, v \in \R$, локально изометричен \textit{катеноиду}:
+	\[
+		\widetilde{\vec{r}}(u, v) = (\ch u\cos v, \ch u\sin v, u),
+	\]
+	где $u \in \R$, $0 \leqslant v < 2\pi$.
+\end{problem}
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}{.4\textwidth}
+		\centering
+		\includegraphics[width=5cm]{./img/Helicoid.pdf}
+	\end{minipage}
+	\begin{minipage}{.4\textwidth}
+		\centering
+		\includegraphics[width=5cm]{./img/Catenoid.pdf}
+	\end{minipage}
+	\vspace{.3cm}
+
+	\begin{minipage}{.4\textwidth}
+		\centering
+		Геликоид
+	\end{minipage}
+	\begin{minipage}{.4\textwidth}
+		\centering
+		Катеноид
+	\end{minipage}
+	
+	\caption[format=empty]{}
+\end{figure}
+
+\begin{solution}
+	Нужно посчитать первые квадратичные формы обеих поверхностей и найти дифферморфизм, сохраняющий длины кривых. Для геликоида:
+	\begin{gather} \label{eq:HelicoidI}
+		\vec{r}_u = (\sin v, \cos v, 0),\quad \vec{r}_v = (u\cos v, -u\sin v, 1),\nonumber\\
+		g_{11} = \langle\vec{r}_u, \vec{r}_u\rangle = {\underbrace{\sin^2v + \cos^2v}_{1}} = 1,\quad g_{12} = \langle\vec{r}_u, \vec{r}_v\rangle = 0,\nonumber\\
+		g_{22} = \langle\vec{r}_v, \vec{r}_v\rangle = u^2{\underbrace{(\sin^2v + \cos^2v)}_{1}} + 1 = u^2 + 1,\nonumber\\
+		ds^2 = du^2 + (u^2 + 1)\,dv^2.
+	\end{gather}
+	Для катеноида:
+	\begin{gather}
+		\widetilde{\vec{r}}_{\widetilde{u}} = (\sh \widetilde{u}\cos \widetilde{v}, \sh \widetilde{u}\sin \widetilde{v}, 1),\quad \widetilde{\vec{r}}_{\widetilde{v}} = (-\ch \widetilde{u}\sin \widetilde{v}, \ch \widetilde{u}\cos \widetilde{v}, 0),\nonumber\\
+		\widetilde{g}_{11} = \langle\widetilde{\vec{r}}_{\widetilde{u}}, \widetilde{\vec{r}}_{\widetilde{u}}\rangle = \sh^2\widetilde{u}\,{\underbrace{(\cos^2\widetilde{v} + \sin^2\widetilde{v})}_{1}} + 1 = \sh^2\widetilde{u} + 1 = \ch^2\widetilde{u},\nonumber\\
+		\widetilde{g}_{12} = \langle\widetilde{\vec{r}}_{\widetilde{u}}, \widetilde{\vec{r}}_{\widetilde{v}}\rangle = 0,\quad
+		\widetilde{g}_{22} = \langle\widetilde{\vec{r}}_{\widetilde{v}}, \widetilde{\vec{r}}_{\widetilde{v}}\rangle = \ch^2\widetilde{u}\,{\underbrace{(\sin^2\widetilde{v} + \cos^2\widetilde{v})}_{1}} = \ch^2\widetilde{u},\nonumber\\
+		d\widetilde{s}^2 = \ch^2\widetilde{u}\,d\widetilde{u}^2 + \ch^2\widetilde{u}\,d\widetilde{v}^2. \label{eq:CatenoidI}
+	\end{gather}
+
+	Теперь нужно подобрать диффеоморфизм $u = u(\widetilde{u})$, $v = v(\widetilde{v})$ такой, что форма \eqref{eq:HelicoidI} перейдёт в \eqref{eq:CatenoidI}. Никаких общих методов для этого нет, только смекалка. Здесь, например, подойдёт отображение $u = \sh\widetilde{u}$, $v = \widetilde{v}$. Действительно,
+	\[
+		du^2 = (d\sh\widetilde{u})^2 = \ch^2\widetilde{u}^2\,d\widetilde{u}^2,\quad(\sh^2\widetilde{u} + 1)\,d\widetilde{v}^2 = \ch^2\widetilde{u}\,d\widetilde{v}^2.
+	\]
+\end{solution}
+
+\begin{problem}
+	Доказать, что деформация гиперболического параболоида, определяемая следующими формулами, сохраняет площадь:
+	\[
+		\begin{cases}
+			x = u,\\
+			y = v,\\
+			\ds z = \frac{1}{2}(u^2 - v^2)
+		\end{cases}
+		\mapsto
+		\begin{cases}
+			x = u,\\
+			y = v,\\
+			\ds z = \frac{\sin t}{2}(u^2 - v^2) + uv\cos t.
+		\end{cases}
+	\]
+\end{problem}
+
+\begin{solution} % TODO: Решить!
+	Появится позже.
+\end{solution}
+
+% TODO: Написать про конформные отображения + условия Коши-Римана!
 
 \subsection{Кривизна поверхности}
 
@@ -851,7 +955,6 @@
 
 \begin{definition}
 	Коэффициент $H$ называется \textit{средней кривизной} поверхности в данной точке\footnotemark, а коэффициент $K$ --- \textit{гауссовой кривизной}. Корни $\lambda_1$ и $\lambda_2$ уравнения \eqref{eq:MainAxes} называются \textit{главными кривизнами}. (По теореме Виета имеем $H = \lambda_1 + \lambda_2$, $K = \lambda_1\lambda_2$.)
-
 \end{definition}
 
 \footnotetext{<<Данная точка>> здесь --- это та, в касательном пространстве к которой мы сейчас находимся.}
@@ -868,8 +971,22 @@
 
 Лобовым раскрытием скобок можем получить явные формулы для гауссовой и средней кривизн через коэффициенты первой и второй квадратичных форм:
 \[
-	K = \frac{g_{11}g_{22} - g_{12}^2}{b_{11}b_{22} - b_{12}^2} = \frac{\det\G}{\det\B},\qquad H = \frac{g_{11}b_{22} + g_{22}b_{11} - 2g_{12}b_{12}}{g_{11}g_{22} - g_{12}^2}.
+	K = \frac{g_{11}g_{22} - g_{12}^2}{b_{11}b_{22} - b_{12}^2} = \frac{\det\G}{\det\B},\qquad H = \frac{g_{11}b_{22} + g_{22}b_{11} - 2g_{12}b_{12}}{g_{11}g_{22} - g_{12}^2} = \tr(\G^{-1}\B).
 \]
+
+\begin{example}
+	Пусь поверхность задана как график функции $z = f(x, y)$. Тогда
+	\begin{gather*}
+		\vec{r}_x = (1, 0, f_x),\quad \vec{r}_{y} = (0, 1, f_y),\quad \vec{r}_x \times \vec{r}_y = (-f_x, -f_y, 1),\\
+		\vec{r}_{xx} = (0, 0, f_{xx}),\quad \vec{r}_{xy} = (0, 0, f_{xy}),\quad \vec{r}_{yy} = (0, 0, f_{yy}),\\
+		\vec{n} = \frac{\vec{r}_x \times \vec{r}_y}{\abs{\vec{r}_x \times \vec{r}_y}} = \frac{(-f_x, -f_y, 1)}{\sqrt{1 + f_x^2 + f_y^2}},\\
+		b_{11} = \frac{f_{xx}}{\sqrt{1 + f_x^2 + f_y^2}},\quad b_{12} = \frac{f_{xy}}{\sqrt{1 + f_x^2 + f_y^2}},\quad b_{22} = \frac{f_{yy}}{\sqrt{1 + f_x^2 + f_y^2}}.
+	\end{gather*}
+	Отсюда, гауссова кривизна поверхности, заданной в виде графика, равна
+	\[
+		K = \frac{\det\G}{\det\B} = \frac{(1 + f_x^2)(1 + f_y^2) - f_x^2f_y^2}{(1 + f_x^2 + f_y^2)^2} = \frac{f_{xx}f_{yy} - f_{xy}^2}{(1 + f_x^2 + f_y^2)^2}.
+	\]
+\end{example}
 
 \begin{problem}
 	Найти главные направления, гауссову и среднюю кривизны у псевдосферы
@@ -996,65 +1113,71 @@
 	z = \frac{\lambda_1}{2}x^2 + \frac{\lambda_2}{2}y^2 + \o(x^2 + y^2).
 \end{equation}
 
-Отбросив $\o(x^2 + y^2)$, мы получим уравнение параболоида, который приближает нашу поверхность вблизи начала координат. Эта соприкасающайся поверхность второго порядка служит аналогом соприкасающейся окружности к кривой.
+Отбросив $\o(x^2 + y^2)$, мы получим уравнение параболоида, который приближает нашу поверхность вблизи начала координат. Эта соприкасающайся поверхность второго порядка служит аналогом соприкасающейся окружности к кривой. В зависимости от вида этой приближающей поверхности, каждую неомбилическую точку поверхности можно отнести к одному из трёх типов.
 
-Далее мы приведём очень явный геометрический смысл главных кривизн. Для этого мы будем рассматривать сечения поверхности плоскостями. 
+\begin{definition}
+	\begin{enumerate}[nolistsep, label=(\arabic*)]
+		\item Если $\lambda_1$ и $\lambda_2$ оба ненулевые и одного знака ($K > 0$), то такая точка называется \textit{эллиптической} (в этом случае приближающая поверхность --- эллиптический параболоид).
+		\item Если $\lambda_1$ и $\lambda_2$ разных знаков ($K < 0$), то такая точка называется \textit{гиперболической} (приближающая поверхность --- гиперболический параболоид).
+		\item Если одно из $\lambda_1$ и $\lambda_2$ нулевое ($K = 0$), то такая точка называется \textit{параболической} (приближающая поверхность --- параболический цилиндр).
+	\end{enumerate}
+\end{definition}
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}{.3\textwidth}
+		\centering
+		\includegraphics[height=2cm]{./img/Elliptic.pdf}
+
+		$K > 0$
+	\end{minipage}
+	\begin{minipage}{.3\textwidth}
+		\centering
+		\includegraphics[height=2cm]{./img/Parabolic.pdf}
+
+		$K = 0$
+	\end{minipage}
+	\begin{minipage}{.3\textwidth}
+		\centering
+		\includegraphics[height=2cm]{./img/Hyperbolic.pdf}
+
+		$K < 0$
+	\end{minipage}
+	\caption{Вид соприкасающегося параболоида в зависимости от гауссовой кривизны}
+\end{figure}
+
+Далее мы опишем геометрический смысл главных кривизн и второй квадратичной формы, для этого мы будем рассматривать сечения поверхности плоскостями. 
 
 \begin{definition}
 	\textit{Нормальным сечением} поверхности $\M$ в некоторой точке $\vec{x} \in \M$ называется кривая в пересечении этой поверхности и плокости, порождённой каким-то касательным вектором $\vec{\xi} \in \T_{\vec{x}}\M$ и нормалью к поверхности в точке $\vec{x}$.
 \end{definition}
 
-В дальнейшем в этом разделе кривизна нормального сечения будет пониматься в контексте ориентированной кривизны.
+%Для начала рассмотрим сечения нашей поверхности координатными плоскостями, например, $\span(\vec{\xi}_1, \vec{n})$ (это плоскость $y = 0$). Вблизи начала координат получающаяся кривая имеет вид
+%\[
+%	z = \frac{\lambda_1}{2}x^2 + \o(x^2).
+%\]
+%
+%Мы утверждаем, что кривизна этой кривой в точке $x = 0$ (то есть, в начале координат) равна $\lambda_1$. Действительно, как уже отмечалось в начале доказательства теоремы \ref{theorem:TouchingCircle}, для подсчёта кривизны достаточно приблизить нашу кривую параболой
+%\[
+%	z = \frac{\lambda_1}{2}x^2,
+%\]
+%кривизну которой посчитать легко. Аналогично, кривизна сечения плоскостью $\span(\vec{\xi}_2, \vec{n})$ равна $\lambda_2$. Это и есть геометрический смысл главных кривизн.
 
-Для начала рассмотрим сечения нашей поверхности координатными плоскостями, например, $\span(\vec{\xi}_1, \vec{n})$ (это плоскость $y = 0$). Вблизи начала координат получающаяся кривая имеет вид
-\[
-	z = \frac{\lambda_1}{2}x^2 + \o(x^2).
-\]
-
-Мы утверждаем, что кривизна этой кривой в точке $x = 0$ (то есть, в начале координат) равна $\lambda_1$. Действительно, как уже отмечалось в начале доказательства теоремы \ref{theorem:TouchingCircle}, для подсчёта кривизны достаточно приблизить нашу кривую параболой
-\[
-	z = \frac{\lambda_1}{2}x^2,
-\]
-кривизну которой посчитать легко. Аналогично, кривизна сечения плоскостью $\span(\vec{\xi}_2, \vec{n})$ равна $\lambda_2$. Это и есть геометрический смысл главных кривизн.
-
-Теперь рассмотрим произвольное нормальное сечение. Его однозначно можно задать углом $\varphi$ ($0 \leqslant \varphi < 2\pi$) относительно вектора $\vec{\xi}_1$.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=5cm]{./img/NormalSection.pdf}
-	\caption[format=empty]{}
-\end{figure}
-
-Можем ввести в плоскости $\span(\vec{\xi}_1, \vec{\xi}_2)$ полярные координаты $(\xi, \varphi)$ и переписать через них формулу \eqref{eq:TailorII}:
-\[
-	z = \frac{\lambda_1\cos^2\varphi + \lambda_2\sin^2\varphi}{2}\xi^2 + \o(\xi^2).
-\]
-
-Аналогично уже сделанным выкладкам, легко посчитать кривизну нормального сечения плоскостью $\span(\vec{n}, \vec{\xi})$.
-
-\begin{theorem}[Формула Эйлера]
-	Кривизна нормального сечения, порождённого касательным вектором $\vec{\xi}$, равна
-	\[
-		\lambda_1\cos^2\varphi + \lambda_2\sin^2\varphi,
-	\]
-	где $\lambda_1$ и $\lambda_2$ --- главные кривизны, а $\varphi$ --- угол между $\vec{\xi}$ и главным направлением $\vec{\xi}_1$ (соответствующим $\lambda_1$).
-\end{theorem}
-
-Положим для определённости $\lambda_1 \leqslant \lambda_2$. Тогда главные кривизны $\lambda_1$ и $\lambda_2$ --- минимум и максимум, соответственно, кривизн нормальных сечений в рассматриваемой точке. (Функция $\lambda_1\cos^2\varphi + \lambda_2\cos^2\varphi$ определена на окружности, а окружность компактна, поэтому максимум и минимум достигаются.) При этом все значения между $\lambda_1$ и $\lambda_2$ достигаются в силу непрерывности. Отметим, что если $\lambda_1\lambda_2 \leqslant 0$, то существует нормальное сечение с нулевой кривизной, то есть прямая.
-
-Обратимся к предложению \ref{proposition:GeomII}. (Здесь также точками обозначены производые по $t$.) Обозначим через $\vec{n}_\rho$ вектор главной нормали кривой $\vec{\rho}$ в рассматриваемой точке, а через $\theta$ --- угол между ним и вектором нормали к поверхности, то есть $\theta = \angle(\vec{n}_\rho, \vec{n})$. Кривизна кривой $\vec{\rho}$ определяется из соотношения
+Обратимся к предложению \ref{proposition:GeomII}. (Здесь также точками обозначены производые по $t$.) Обозначим через $\vec{n}_\rho$ вектор главной нормали кривой $\vec{\rho}$ в рассматриваемой точке, а через $\theta$ --- угол между ним и вектором нормали к поверхности, то есть $\theta = \angle(\vec{n}_\rho, \vec{n})$. Кривизна\footnotemark{} кривой $\vec{\rho}$ определяется из соотношения
 \[
 	\frac{d^2\vec{\rho}}{ds^2} = k_{\Or}\vec{n}_\rho,
 \]
 где $s$ --- натуральный параметр на кривой, то есть $ds$ --- метрика на нашей поверхности (вспомнить предложение \ref{proposition:LengthParameter}). Мы уже поняли, что
 \[
-	\left\langle\frac{d^2\vec{\rho}}{ds^2}, \vec{n}\right\rangle = b_{11}\dot{u}^2 + 2b_{12}\dot{u}\dot{v} + b_{22}\dot{v}^2 = \frac{b_{ij}\,dx^idx^j}{ds^2},
+	\left\langle\frac{d^2\vec{\rho}}{ds^2}, \vec{n}\right\rangle = b_{11}\br{\frac{du}{ds}}^2 + 2b_{12}\frac{du}{ds}\frac{dv}{ds} + b_{22}\br{\frac{dv}{ds}}^2 = \frac{b_{ij}\,dx^idx^j}{ds^2},
 \]
-причём, из определения натурального параметра, $ds^2 = \abs{\dot{\vec{\rho}}}dt^2$:
+причём, из определения натурального параметра, $ds^2 = \abs{\dot{\vec{\rho}}}^2dt^2 = \I(\dot{\vec{\rho}})dt^2$:
 \[
 	k_{\Or}\langle\vec{n}_\rho, \vec{n}\rangle = \left\langle\frac{d^2\vec{\rho}}{ds^2}, \vec{n}\right\rangle = \frac{b_{ij}\dot{x}^i\dot{x}^j}{\I(\dot{\vec{\rho}})} = \frac{\II(\dot{\vec{\rho}})}{\I(\dot{\vec{\rho}})},
 \]
 причём $\langle\vec{n}_\rho, \vec{n}\rangle = \cos\theta$. Таким образом, нами доказана следующая теорема.
+
+\footnotetext{В этом разделе кривизны нормальных сечений будут пониматься в контексте ориентированной кривизны.}
 
 \begin{theorem}
 	Если кривая лежит на поверхности в $\R^3$, то произведение кривизны кривой на косинус угла между нормалью к поверхности и главной нормалью к кривой равно отношению значений второй и первой квадратичных форм на векторе скорости этой кривой.
@@ -1075,11 +1198,28 @@
 
 \noindent%
 При $\theta = 0$ получаем кривизну нормального сечения:
-\[
+\begin{equation} \label{eq:NormalCurvature}
 	k_n = \frac{\II(\vec{\xi})}{\I(\vec{\xi})}.
-\]
+\end{equation}
 Кривизна сечения под углом $\theta$ теперь выражается через кривизну нормального сечения:
 \[
 	k_{\theta} = \frac{k_n}{\cos\theta}.
 \]
+(Обычно теореме Менье формулируют именно в таком виде.)
+
+Уравнение \ref{eq:NormalCurvature} даёт основной геометрический смысл второй квадратичной формы --- её значение на единичном касательном векторе есть кривизна нормального сечения, порождённого этим вектором. Итак, пусть имеем касательный вектор $\vec{\xi} = \xi^1\vec{\xi}_1 + \xi^2\vec{\xi}_2$, тогда:
+\[
+	k_{\vec{\xi}} = \frac{\II(\vec{\xi})}{\I(\vec{\xi})} = \frac{\lambda_1(\xi^1)^2 + \lambda_2(\xi^2)^2}{(\xi^1)^2 + (\xi^2)^2} = \lambda_1\cos^2\varphi + \lambda_2\sin^2\varphi,
+\]
+где $\varphi = \angle(\vec{\xi}, \vec{\xi}_1)$. Таким образом, нами доказана теорема.
+
+\begin{theorem}[Формула Эйлера]
+	Кривизна нормального сечения, порождённого касательным вектором $\vec{\xi}$, равна
+	\[
+		\lambda_1\cos^2\varphi + \lambda_2\sin^2\varphi,
+	\]
+	где $\lambda_1$ и $\lambda_2$ --- главные кривизны, а $\varphi$ --- угол между $\vec{\xi}$ и главным направлением $\vec{\xi}_1$.
+\end{theorem}
+
+Положим для определённости $\lambda_1 \leqslant \lambda_2$. Тогда главные кривизны $\lambda_1$ и $\lambda_2$ --- минимум и максимум, соответственно, кривизн нормальных сечений в рассматриваемой точке. (Функция $\lambda_1\cos^2\varphi + \lambda_2\cos^2\varphi$ определена на окружности, а окружность компактна, поэтому максимум и минимум достигаются.) При этом все значения между $\lambda_1$ и $\lambda_2$ достигаются в силу непрерывности. Отметим, что если $\lambda_1\lambda_2 \leqslant 0$, то существует нормальное сечение с нулевой кривизной, то есть прямая.
 
