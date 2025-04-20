@@ -1,0 +1,145 @@
+\section{Основные уравнения в теории поверхностей}
+
+\subsection{Деривационные формулы}
+
+На протяжении всего этого раздела следует держать в голове, что мы пишем уравнения для двумерных систем криволинейных на поверхностях (которые нам интересно изучать), но можем их написать для любой размерности. По этой причине мы всё время будем использовать тензорную запись.
+
+Мы хотим написать для поверхностей что-то похожее на формулы Френе, то есть наша цель --- научиться дифференцировать векторы
+\[
+	\vec{r}_1 \vcentcolon = \frac{\partial\vec{r}}{\partial x^1}\quad\text{и}\quad
+	\vec{r}_2 \vcentcolon = \frac{\partial\vec{r}}{\partial x^2},
+\]
+для этого нам будет удобно обозначить
+\[
+	\vec{r}_{ij} \vcentcolon = \frac{\partial^2\vec{r}}{\partial x^i\partial x^j}.
+\]
+
+Векторы $(\vec{r}_1, \vec{r}_2, \vec{n})$ образуют базис в каждой точке поверхности, поэтому каждый вектор $\vec{r}_{ij}$ в нём как-то записывается. Заметим, что коэффициент при $\vec{n}$ мы уже знаем --- это соответствующий элемент матрицы второй квадратичной формы $b_{ij}$. Действительно, ведь по определению $b_{ij} = \langle\vec{r}_{ij}, \vec{n}\rangle$.
+
+\begin{definition}
+	Коэффициенты $\Gamma_{ij}^k = \Gamma_{ji}^k$ в разложении
+	\begin{equation} \label{eq:DerivativeGauss}
+		\vec{r}_{ij} = \Gamma_{ij}^k\vec{r}_k + b_{ij}\vec{n}
+	\end{equation}
+	называются \textit{символами Кристоффеля}.
+\end{definition}
+
+\begin{lemma}[Тождества Кристоффеля]
+	Символы Кристоффеля однозначно определяются метрикой на поверхности. Более точно, верна следующая формула:
+	\begin{equation} \label{eq:ChristoffelIdentity}
+		\Gamma_{ij}^k = \frac{g^{kl}}{2}\br{\frac{\partial g_{il}}{\partial x^j} + \frac{\partial g_{jl}}{\partial x^i} - \frac{\partial g_{ij}}{\partial x^l}},
+	\end{equation}
+	где $g^{kl}$ обозначают элементы матрицы $\G^{-1}$.
+\end{lemma}
+
+\begin{proof}
+	Напишем
+	\[
+		\langle\vec{r}_{ij}, \vec{r}_l\rangle = \Gamma_{ij}^k\langle\vec{r}_k, \vec{r}_l\rangle = \Gamma_{ij}^kg_{kl}
+	\]
+	и
+	\[\begin{tikzcd}
+		{\ds\frac{\partial g_{il}}{\partial x^j}} & {\ds\frac{\partial}{\partial x^j}\langle\vec{r}_i, \vec{r}_l\rangle} & {\langle\vec{r}_{ij}, \vec{r}_l\rangle + \langle\vec{r}_i, \vec{r}_{jl}\rangle.}
+		\arrow[equals, from=1-1, to=1-2]
+		\arrow[equals, from=1-2, to=1-3]
+	\end{tikzcd}\]
+	Последнюю формулу напишем три раза, сдвигая координаты:
+	\begin{gather*}
+		\frac{\partial g_{il}}{\partial x^j} = \langle\vec{r}_{ij}, \vec{r}_l\rangle \phantom{{} + \langle\vec{r}_j, \vec{r}_{il}\rangle} + \langle\vec{r}_i, \vec{r}_{jl}\rangle,\\
+		\frac{\partial g_{jl}}{\partial x^i} = \langle\vec{r}_{ij}, \vec{r}_l\rangle + \langle\vec{r}_j, \vec{r}_{il}\rangle \phantom{{} + \langle\vec{r}_i, \vec{r}_{jl}\rangle},\\
+		\frac{\partial g_{ij}}{\partial x^l} = \phantom{\langle\vec{r}_{ij}, \vec{r}_l\rangle + {}} \langle\vec{r}_{il}, \vec{r}_j\rangle + \langle\vec{r}_i, \vec{r}_{jl}\rangle.
+	\end{gather*}
+	Сложим первые две строки из них и вычтем третью, получим
+	\begin{gather*}
+		\langle\vec{r}_{ij}, \vec{r}_l\rangle = \frac{1}{2}\br{\frac{\partial g_{il}}{\partial x^j} + \frac{\partial g_{jl}}{\partial x^i} - \frac{\partial g_{ij}}{\partial x^l}}.
+	\end{gather*}
+	Вспоминаем формулу, которую выписывали в начале этого доказательства, получаем
+	\[
+		g_{lk}\Gamma_{ij}^k = \frac{1}{2}\br{\frac{\partial g_{il}}{\partial x^j} + \frac{\partial g_{jl}}{\partial x^i} - \frac{\partial g_{ij}}{\partial x^l}}.
+	\]
+	Домножаем обе части на $g^{ml}$ и суммируем по $m$. Слева получим $g^{ml}g_{lk}\Gamma^k_{ij} = \delta^m_k\Gamma^k_{ij} = \Gamma^m_{ij}$:
+	\[
+		\Gamma_{ij}^m = \frac{g^{ml}}{2}\br{\frac{\partial g_{il}}{\partial x^j} + \frac{\partial g_{jl}}{\partial x^i} - \frac{\partial g_{ij}}{\partial x^l}}.
+	\]
+	Заменяем $m$ на $k$ и получаем ровно ту формулу, которую мы хотели доказать.
+\end{proof}
+
+Следует отметить, что символы Кристоффеля не задают никакого тензора в касательном пространстве к поверхности.
+
+\begin{problem}
+	Доказать, что при переходе к другим локальным координатам $(\widetilde{u}^1, \widetilde{u}^2)$ символы Кристоффеля преобразуются по следующему закону:
+	\[
+		\widetilde{\Gamma}_{ij}^k = \Gamma_{pq}^r\frac{\partial \widetilde{u}^k}{\partial \widetilde{u}^r}\frac{\partial u^p}{\partial \widetilde{u}^i}\frac{\partial u^q}{\partial \widetilde{u}^j} + \frac{\partial\widetilde{u}^k}{\partial u^p}\frac{\partial^2u^p}{\partial \widetilde{u}^i\partial \widetilde{u}^j}.
+	\]
+\end{problem}
+
+\noindent
+Формулы \eqref{eq:DerivativeGauss} с подстановкой \eqref{eq:ChristoffelIdentity} называются \textit{деривационными формулами Гаусса}.
+
+Теперь хотим дифференцировать вектор $\vec{n}$. Обозначим
+\[
+	\vec{n}_1 \vcentcolon = \frac{\partial \vec{n}}{\partial x^1}\quad\text{и}\quad\vec{n}_2 \vcentcolon = \frac{\partial \vec{n}}{\partial x^2}.
+\]
+
+Поскольку вектор $\vec{n}$ имеет постоянную длину, оба этих вектора ортогональны $\vec{n}$, а значит, выражаются через базисные векторы $\vec{r}_1$, $\vec{r}_2$ касательного пространства в соответствующей точке. Пока напишем формально:
+\begin{equation} \label{eq:DerivativeWeingarten}
+	\vec{n}_i = c^j_i\vec{r}_j,
+\end{equation}
+позже мы придадим коэффициентам $c^j_i$ какой-то смысл.
+
+\begin{lemma}
+	Имеет место равенство
+	\begin{equation} \label{eq:WeingartenIdentity}
+		c^j_i = -g^{jk}b_{ki},
+	\end{equation}
+	где $g^{jk}$ обозначают элементы матрицы $\G^{-1}$.
+\end{lemma}
+
+\begin{proof}
+	Векторы $\vec{n}$ и $\vec{r}_k$ ортогональны (по построению), поэтому
+	\[
+		\langle\vec{n}_i, \vec{r}_k\rangle = -\langle\vec{n}, \vec{r}_{ik}\rangle = -b_{ik}.
+	\]
+	Подставляя выражение для $n_i$, получаем
+	\[
+		c^j_i\langle\vec{r}_j, \vec{r}_k\rangle = c^j_ig_{jk} = -b_{ik}.
+	\]
+	Переписываем в матричном виде (с учётом $b_{ik} = b_{ki}$):
+	\[
+		GC = -B,\,\text{где }C = (c^j_i).
+	\]
+	Из него можно выразить матрицу $C$ как $C = -\G^{-1}\B$, или, в обозначениях Эйнштейна,
+	\[
+		c^j_i = -g^{jk}b_{ki}.
+	\]
+\end{proof}
+
+\noindent
+Уравнения \eqref{eq:DerivativeWeingarten} с подстановкой \eqref{eq:WeingartenIdentity} называются \textit{деривационными формулами Вайнгартена}.
+
+Теперь обсудим смысл коэффициентов $c^j_i$. Разумеется, они зависят от параметризации. Но матрица $C$ преобразуется как матрица линейного оператора в касательном пространстве к поверхности, так как $C = -\G^{-1}\B$.
+
+\begin{definition}
+	\textit{Сферическим отображением} гладкой поверхности $\M$ называется отображение $\nu\colon \M \to S^2$, которое каждой точке $\vec{x}$ поверхности ставит в соответствие единичный вектор нормали $\vec{n}$ к соответствующей касательной плоскости $\T_{\vec{x}}\M$.
+\end{definition}
+
+\begin{proposition}
+	Для любой точки $\vec{x}$ поверхности $\M$ касательные пространства $\T_{\vec{x}}\M$ и $\T_{\nu(\vec{x})}S^2$ совпадают.
+\end{proposition}
+
+\begin{proof}
+	Вектор $\vec{\xi}$ лежит в касательном пространстве $\T_{\vec{x}}\M$ тогда и только тогда, когда $\vec{\xi} \perp \vec{n}$. При этом же условии он лежит в касательном пространстве $\T_{\nu(\vec{x})}S^2$.
+\end{proof}
+
+Последнее предложение означает, что дифференциал $d\nu|_{\vec{x}}$ сферического отображения можно понимать как линейный оператор на касательном пространстве.
+
+\begin{theorem}
+	Оператор $d\nu|_{\vec{x}}$ самосопряжён относительно скалярного произведения, заданного в $\T_{\vec{x}}\M$ первой квадратичной формой. Векторы главных направлений $\vec{\xi}_1$ и $\vec{\xi}_2$ являются для него собственными, а соответствующие им собственные значения суть главные кривизны, взятые с обратным знаком: $-\lambda_1$, $-\lambda_2$. Кроме того, имеют место равенства
+	\[
+		\det\br{d\nu|_{\vec{x}}} = \frac{\det\B}{\det\G} = K.
+	\]
+\end{theorem}
+
+\noindent
+Эта теорема доказывается прямой проверкой сразу из определений.
+
