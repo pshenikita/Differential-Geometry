@@ -1,17 +1,19 @@
-\section{Основные уравнения в теории поверхностей}
+\section{Внутренняя геометрия поверхностей}
 
-\subsection{Деривационные формулы} \label{subsection:DerivativeFormulae}
+\epigraph{Эту формулу надо запомнить, вот как хотите.}{А.\,А. Гайфуллин}
+
+\subsection{Деривационные уравнения}
 
 На протяжении всего этого раздела следует держать в голове, что мы пишем уравнения для двумерных систем криволинейных на поверхностях (которые нам интересно изучать), но можем их написать для любой размерности. По этой причине мы всё время будем использовать тензорную запись.
 
 Мы хотим написать для поверхностей что-то похожее на формулы Френе, то есть наша цель --- научиться дифференцировать векторы
 \[
-	\vec{r}_1 \vcentcolon = \frac{\partial\vec{r}}{\partial x^1}\quad\text{и}\quad
-	\vec{r}_2 \vcentcolon = \frac{\partial\vec{r}}{\partial x^2},
+	\vec{r}_1 \vcentcolon = \frac{\partial\vec{r}}{\partial u^1}\quad\text{и}\quad
+	\vec{r}_2 \vcentcolon = \frac{\partial\vec{r}}{\partial u^2},
 \]
 для этого нам будет удобно обозначить
 \[
-	\vec{r}_{ij} \vcentcolon = \frac{\partial^2\vec{r}}{\partial x^i\partial x^j}.
+	\vec{r}_{ij} \vcentcolon = \frac{\partial^2\vec{r}}{\partial u^i\partial u^j}.
 \]
 
 Векторы $(\vec{r}_1, \vec{r}_2, \vec{n})$ образуют базис в каждой точке поверхности, поэтому каждый вектор $\vec{r}_{ij}$ в нём как-то записывается. Заметим, что коэффициент при $\vec{n}$ мы уже знаем --- это соответствующий элемент матрицы второй квадратичной формы $b_{ij}$. Действительно, ведь по определению $b_{ij} = \langle\vec{r}_{ij}, \vec{n}\rangle$.
@@ -27,58 +29,66 @@
 \begin{lemma}[Тождества Кристоффеля]
 	Символы Кристоффеля однозначно определяются метрикой на поверхности. Более точно, верна следующая формула:
 	\begin{equation} \label{eq:ChristoffelIdentity}
-		\Gamma_{ij}^k = \frac{g^{kl}}{2}\br{\frac{\partial g_{il}}{\partial x^j} + \frac{\partial g_{jl}}{\partial x^i} - \frac{\partial g_{ij}}{\partial x^l}},
+		\Gamma_{ij}^k = \frac{g^{kl}}{2}\br{\frac{\partial g_{il}}{\partial u^j} + \frac{\partial g_{jl}}{\partial u^i} - \frac{\partial g_{ij}}{\partial u^l}},
 	\end{equation}
 	где $g^{kl}$ обозначают элементы матрицы $\G^{-1}$.
 \end{lemma}
 
 \begin{proof}
 	Напишем
-	\[
-		\langle\vec{r}_{ij}, \vec{r}_l\rangle = \Gamma_{ij}^k\langle\vec{r}_k, \vec{r}_l\rangle = \Gamma_{ij}^kg_{kl}
-	\]
+	\begin{equation} \label{eq:FirstFormula}
+		\langle\vec{r}_{ij}, \vec{r}_l\rangle = \Gamma_{ij}^s\langle\vec{r}_s, \vec{r}_l\rangle = \Gamma_{ij}^sg_{sl}
+	\end{equation}
 	и
 	\[\begin{tikzcd}
-		{\ds\frac{\partial g_{il}}{\partial x^j}} & {\ds\frac{\partial}{\partial x^j}\langle\vec{r}_i, \vec{r}_l\rangle} & {\langle\vec{r}_{ij}, \vec{r}_l\rangle + \langle\vec{r}_i, \vec{r}_{jl}\rangle.}
+		{\ds\frac{\partial g_{il}}{\partial u^j}} & {\ds\frac{\partial}{\partial u^j}\langle\vec{r}_i, \vec{r}_l\rangle} & {\langle\vec{r}_{ij}, \vec{r}_l\rangle + \langle\vec{r}_i, \vec{r}_{jl}\rangle.}
 		\arrow[equals, from=1-1, to=1-2]
 		\arrow[equals, from=1-2, to=1-3]
 	\end{tikzcd}\]
 	Последнюю формулу напишем три раза, сдвигая координаты:
-	\begin{gather*}
-		\frac{\partial g_{il}}{\partial x^j} = \langle\vec{r}_{ij}, \vec{r}_l\rangle \phantom{{} + \langle\vec{r}_j, \vec{r}_{il}\rangle} + \langle\vec{r}_i, \vec{r}_{jl}\rangle,\\
-		\frac{\partial g_{jl}}{\partial x^i} = \langle\vec{r}_{ij}, \vec{r}_l\rangle + \langle\vec{r}_j, \vec{r}_{il}\rangle \phantom{{} + \langle\vec{r}_i, \vec{r}_{jl}\rangle},\\
-		\frac{\partial g_{ij}}{\partial x^l} = \phantom{\langle\vec{r}_{ij}, \vec{r}_l\rangle + {}} \langle\vec{r}_{il}, \vec{r}_j\rangle + \langle\vec{r}_i, \vec{r}_{jl}\rangle.
-	\end{gather*}
+	\begin{gather} \label{eq:SecondFormula}
+		\frac{\partial g_{il}}{\partial u^j} = \langle\vec{r}_{ij}, \vec{r}_l\rangle \phantom{{} + \langle\vec{r}_j, \vec{r}_{il}\rangle} + \langle\vec{r}_i, \vec{r}_{jl}\rangle\nonumber,\\
+		\frac{\partial g_{jl}}{\partial u^i} = \langle\vec{r}_{ij}, \vec{r}_l\rangle + \langle\vec{r}_j, \vec{r}_{il}\rangle \phantom{{} + \langle\vec{r}_i, \vec{r}_{jl}\rangle}\nonumber,\\
+		\frac{\partial g_{ij}}{\partial u^l} = \phantom{\langle\vec{r}_{ij}, \vec{r}_l\rangle + {}} \langle\vec{r}_{il}, \vec{r}_j\rangle + \langle\vec{r}_i, \vec{r}_{jl}\rangle.
+	\end{gather}
 	Сложим первые две строки из них и вычтем третью, получим
 	\begin{gather*}
-		\langle\vec{r}_{ij}, \vec{r}_l\rangle = \frac{1}{2}\br{\frac{\partial g_{il}}{\partial x^j} + \frac{\partial g_{jl}}{\partial x^i} - \frac{\partial g_{ij}}{\partial x^l}}.
+		\langle\vec{r}_{ij}, \vec{r}_l\rangle = \frac{1}{2}\br{\frac{\partial g_{il}}{\partial u^j} + \frac{\partial g_{jl}}{\partial u^i} - \frac{\partial g_{ij}}{\partial u^l}}.
 	\end{gather*}
-	Вспоминаем формулу, которую выписывали в начале этого доказательства, получаем
+	Теперь подставляем \eqref{eq:FirstFormula}:
 	\[
-		g_{lk}\Gamma_{ij}^k = \frac{1}{2}\br{\frac{\partial g_{il}}{\partial x^j} + \frac{\partial g_{jl}}{\partial x^i} - \frac{\partial g_{ij}}{\partial x^l}}.
+		g_{ls}\Gamma_{ij}^s = \frac{1}{2}\br{\frac{\partial g_{il}}{\partial u^j} + \frac{\partial g_{jl}}{\partial u^i} - \frac{\partial g_{ij}}{\partial u^l}}.
 	\]
-	Домножаем обе части на $g^{ml}$ и суммируем по $m$. Слева получим $g^{ml}g_{lk}\Gamma^k_{ij} = \delta^m_k\Gamma^k_{ij} = \Gamma^m_{ij}$:
+	Домножаем обе части на $g^{kl}$ и суммируем по $k$. Слева получим $g^{kl}g_{ls}\Gamma^s_{ij} = \delta^k_s\Gamma^s_{ij} = \Gamma^k_{ij}$:
 	\[
-		\Gamma_{ij}^m = \frac{g^{ml}}{2}\br{\frac{\partial g_{il}}{\partial x^j} + \frac{\partial g_{jl}}{\partial x^i} - \frac{\partial g_{ij}}{\partial x^l}}.
+		\Gamma_{ij}^k = \frac{g^{kl}}{2}\br{\frac{\partial g_{il}}{\partial u^j} + \frac{\partial g_{jl}}{\partial u^i} - \frac{\partial g_{ij}}{\partial u^l}}.
 	\]
-	Заменяем $m$ на $k$ и получаем ровно ту формулу, которую мы хотели доказать.
 \end{proof}
+
+Отметим, что попутно мы доказали ещё один набор важных формул. Можно напрямую подставить в \eqref{eq:SecondFormula} формулы вида \eqref{eq:FirstFormula}, получим следующее.
+
+\begin{lemma}
+	Выполнены следующие тождества:
+	\begin{equation} \label{eq:AlmostCristoffelIdentity}
+		\frac{\partial g_{ij}}{\partial u^k} = g_{js}\Gamma^s_{ik} + g_{is}\Gamma^s_{jk}.
+	\end{equation}
+\end{lemma}
 
 Следует отметить, что символы Кристоффеля не задают никакого тензора в касательном пространстве к поверхности.
 
 \begin{problem}
 	Доказать, что при переходе к другим локальным координатам $(\widetilde{u}^1, \widetilde{u}^2)$ символы Кристоффеля преобразуются по следующему закону:
 	\[
-		\widetilde{\Gamma}_{ij}^k = \Gamma_{pq}^r\frac{\partial \widetilde{u}^k}{\partial \widetilde{u}^r}\frac{\partial u^p}{\partial \widetilde{u}^i}\frac{\partial u^q}{\partial \widetilde{u}^j} + \frac{\partial\widetilde{u}^k}{\partial u^p}\frac{\partial^2u^p}{\partial \widetilde{u}^i\partial \widetilde{u}^j}.
+		\widetilde{\Gamma}_{ij}^k = \Gamma_{pq}^r\frac{\partial \widetilde{u}^k}{\partial u^r}\frac{\partial u^p}{\partial \widetilde{u}^i}\frac{\partial u^q}{\partial \widetilde{u}^j} + \frac{\partial\widetilde{u}^k}{\partial u^p}\frac{\partial^2u^p}{\partial \widetilde{u}^i\partial \widetilde{u}^j}.
 	\]
 \end{problem}
 
 \noindent
-Формулы \eqref{eq:DerivativeGauss} с подстановкой \eqref{eq:ChristoffelIdentity} называются \textit{деривационными формулами Гаусса}.
+Уравнения \eqref{eq:DerivativeGauss} с подстановкой \eqref{eq:ChristoffelIdentity} называются \textit{деривационными уравнениями Гаусса}.
 
 Теперь хотим дифференцировать вектор $\vec{n}$. Обозначим
 \[
-	\vec{n}_1 \vcentcolon = \frac{\partial \vec{n}}{\partial x^1}\quad\text{и}\quad\vec{n}_2 \vcentcolon = \frac{\partial \vec{n}}{\partial x^2}.
+	\vec{n}_1 \vcentcolon = \frac{\partial \vec{n}}{\partial u^1}\quad\text{и}\quad\vec{n}_2 \vcentcolon = \frac{\partial \vec{n}}{\partial u^2}.
 \]
 
 Поскольку вектор $\vec{n}$ имеет постоянную длину, оба этих вектора ортогональны $\vec{n}$, а значит, выражаются через базисные векторы $\vec{r}_1$, $\vec{r}_2$ касательного пространства в соответствующей точке. Пока напишем формально:
@@ -116,8 +126,14 @@
 	\]
 \end{proof}
 
-\noindent
-Формулы \eqref{eq:DerivativeWeingarten} с подстановкой \eqref{eq:WeingartenIdentity} называются \textit{деривационными формулами Вайнгартена}.
+Уравнения \eqref{eq:DerivativeWeingarten} с подстановкой \eqref{eq:WeingartenIdentity} называются \textit{деривационными уравнениями Вайнгартена}. Вместе, уравнения
+\begin{equation} \label{eq:DerivativeEquations}
+	\begin{cases}
+		\vec{r}_{ij} = \Gamma_{ij}^k\vec{r}_k + b_{ij}\vec{n},\\
+		\vec{n}_i = c^j_i
+	\end{cases}
+\end{equation}
+называются \textit{деривационными уравнениями Гаусса "---Вайнгартена}. Заметим, что все коэффициенты этих уравнений выражаются через первую и вторую квадратичные формы поверхности. Так что, разрешив эти уравнения относительно $\vec{r}$, по первой и второй квадратичной форме мы восстановим поверхность. Так же мы раньше восстанавливали пространственные кривые по кривизне и кручению. Отметим, однако, что если кривую можно было восстановить про произвольным гладким функциям кривизны и кручения, то теперь для деривационных уравнений имеется нетривиальное условие совместности. Мы вернёмся к этому позже в следующем разделе.
 
 Теперь обсудим смысл коэффициентов $c^j_i$. Разумеется, они зависят от параметризации, но матрица $C$ преобразуется как матрица линейного оператора в касательном пространстве к поверхности, так как $C = -\G^{-1}\B$.
 
@@ -154,4 +170,150 @@
 
 \noindent
 Эта теорема доказывается прямой проверкой всех определений.
+
+\subsection{Уравнения Гаусса "---Кодацци}
+
+Запишем деривационные уравнения \eqref{eq:DerivativeEquations} в матричном виде:
+\[
+	\frac{\partial}{\partial u^i}
+	\begin{pmatrix}
+		\vec{r}_1 & \vec{r}_2 & \vec{n}
+	\end{pmatrix} =
+	\begin{pmatrix}
+		\vec{r}_1 & \vec{r}_2 & \vec{n}
+	\end{pmatrix}A_i,
+\]
+где
+\[
+	A_i =
+	\begin{pmatrix}
+		\Gamma_{i1}^1 & \Gamma_{i1}^2 & -b_{ik}g^{k1}\\
+		\Gamma_{i2}^1 & \Gamma_{i2}^2 & -b_{ik}g^{k2}\\
+		b_{i1} & b_{i2} & 0
+	\end{pmatrix}.
+\]
+
+Если рассматривать эти уравнения как пару дифференциальных уравнений на матрицу $X = (\vec{r}_1, \vec{r}_2, \vec{n})$, то условие совместности \eqref{eq:Darboux} из теоремы Дарбу для них принимает вид
+\[
+	\frac{\partial}{\partial u^1}A_2 + A_1A_2 = \frac{\partial}{\partial u^2}A_1 + A_2A_1,
+\]
+что можно переписать как
+\begin{equation} \label{eq:Jointness}
+	\frac{\partial A_1}{\partial u^2} - \frac{\partial A_2}{\partial u^1} = [A_1, A_2],
+\end{equation}
+где $[A_1, A_2] = A_1A_2 - A_2A_1$ --- коммутатор матриц.
+
+На первый взгляд, система \eqref{eq:Jointness} содержит девять уравнений. Распишем их подробно, чтобы выяснить их истинное число и конкретный вид. Обозначим через $\widehat{G}$ матрицу Грама векторов $(\vec{r}_1, \vec{r}_2, \vec{n})$:
+\[
+	\widehat{G} \vcentcolon =
+	\begin{pmatrix}
+		g_{11} & g_{12} & 0\\
+		g_{12} & g_{22} & 0\\
+		0 & 0 & 1
+	\end{pmatrix}.
+\]
+
+\begin{lemma}
+	Выполнены тождества
+	\[
+		A_i^t\widehat{G} + \widehat{G}A_i = \widehat{G}_{u^i}.
+	\]
+\end{lemma}
+
+\begin{proof}
+	Отметим, что матрица в левой части точно нулевая всюду, кроме главного минора $2 \times 2$. Действительно, для правой нижней клетки это очевидно, а для остальных легко проверить. Проверим, например, для нижней центральной клетки:
+	\[
+		\begin{pmatrix}
+			-b_{ik}g^{k1} & -b_{ik}g^{k2} & 0
+		\end{pmatrix}
+		\begin{pmatrix}
+			g_{12}\\
+			g_{22}\\
+			0
+		\end{pmatrix} +
+		\begin{pmatrix}
+			0 & 0 & 1
+		\end{pmatrix}
+		\begin{pmatrix}
+			\Gamma_{11}^2\\
+			\Gamma_{12}^2\\
+			b_{i2}
+		\end{pmatrix} = -b_{ik}g^{ks}g_{s2} + b_{i2} = -b_{i2} + b_{i2} = 0.
+	\]
+	
+	Таким образом, вне главного минора $2 \times 2$ матрицы в левой и правой частях данного равенства обе нулевые. А внутри него у матрицы в левой части мы получаем правые части формул \eqref{eq:AlmostCristoffelIdentity}, что также совпадает с тем, что мы хотели получить.
+\end{proof}
+
+Ясно, что матрица $\widehat{G}$ невырожденна (её определитель равен определителю матрицы $\G$ первой квадратичной формы), а потому, домножив матрицу в левой части \eqref{eq:Jointness} на $\widehat{G}$, получим равносильную систему уравнений.
+
+\begin{lemma}
+	Матрица $\ds\widehat{G}\br{\frac{\partial A_1}{\partial u^2} - \frac{\partial A_2}{\partial u^1} - A_1A_2 + A_2A_1}$ кососимметрична.
+\end{lemma}
+
+\begin{proof}
+	Обозначим эту матрицу через $S$. Применяя предыдущую лемму, напишем
+	\begin{multline*}
+		S = \frac{\partial(\widehat{G}A_1)}{\partial u^2} - \frac{\partial \widehat{G}}{\partial u^2}A_1 - \frac{\partial(\widehat{G}A_2)}{\partial u^1} + \frac{\partial \widehat{G}}{\partial u^1}A_2 - \widehat{G}A_1A_2 + \widehat{G}A_2A_1 =\\ = \frac{\partial(\widehat{G}A_1)}{\partial u^2} - A_2^t\widehat{G}A_1 - \cancel{\widehat{G}A_2A_1} - \frac{\partial(\widehat{G}A_2)}{\partial u^1} + A_1^t\widehat{G}A_2 + \bcancel{\widehat{G}A_1A_2} - \bcancel{\widehat{G}A_1A_2} + \cancel{\widehat{G}A_2A_1} =\\ = \frac{\partial(\widehat{G}A_1)}{\partial u^2} - \frac{\partial(\widehat{G}A_2)}{\partial u^1} + {\underbrace{A_1^t\widehat{G}A_2 - A_2^t\widehat{G}A_1}_{\text{кососимметрична}}}.
+	\end{multline*}
+	Далее пишем
+	\[
+		S + S^t = \frac{\partial(\widehat{G}A_1 + A_1^t\widehat{G})}{\partial u^2} - \frac{\partial(\widehat{G}A_2 + A_2^t\widehat{G})}{\partial u^1} = \cancel{\frac{\partial^2\widehat{G}}{\partial u^1u^2}} - \cancel{\frac{\partial^2\widehat{G}}{\partial u^1u^2}} = 0.
+	\]
+	Таким образом, матрица $S$ кососимметрична.
+\end{proof}
+
+Итак, мы свели систему уравнений \eqref{eq:Jointness} на матрицу $3 \times 3$ к равносильной системе с кососимметричной матрицей. А у такой системы может быть не более трёх независимых уравнений. Будем изучать их по отдельности.
+
+\begin{definition}
+	Уравнение
+	\[
+		\br{\widehat{G}\br{\frac{\partial A_1}{\partial u^2} - \frac{\partial A_2}{\partial u^1} - A_1A_2 + A_2A_1}}_{12} = 0
+	\]
+	называется \textit{уравнением Гаусса}.
+\end{definition}
+
+\noindent%
+Подставив матрицы $\widehat{G}$ и $A_i$, получаем развёрнутый вид уравнения Гаусса:
+\[
+	g_{1k}\br{\frac{\partial\Gamma^k_{22}}{\partial u^1} - \frac{\partial\Gamma_{21}^k}{\partial u^2} + \Gamma_{k1}^s\Gamma^k_{22} - \Gamma_{s2}^k\Gamma_{21}^s} - b_{12}b_{22} + b_{12}^2 = 0.
+\]
+
+Замечательно в этом уравнении то, что из него можно выразить определитель матрицы второй квадратичной формы через символы Кристоффеля, которые, в свою очередь, определяются только метрикой. Отсюда можем сделать следующие выводы.
+
+\begin{theorem}[Гаусс]
+	Гауссова кривизна однозначно определяется метрикой. Более точно, выполнена следующая формула:
+	\[
+		K = \frac{1}{g_{11}g_{22} - g_{12}^2}g_{1k}\br{\frac{\partial\Gamma^k_{22}}{\partial u^1} - \frac{\partial\Gamma_{21}^k}{\partial u^2} + \Gamma_{k1}^s\Gamma^k_{22} - \Gamma_{s2}^k\Gamma_{21}^s}.
+	\]
+\end{theorem}
+
+\begin{corollary}
+	Если $\vec{\varphi}\colon \M \to \mathcal{N}$ --- изометрия поверхностей, то для всех точек $\vec{x} \in \M$ гауссова кривизна поверхности $\mathcal{N}$ в точке $\vec{\varphi}(\vec{x})$ совпадает с гауссовой кривизной поверхности $\M$ в точке $\vec{x}$.
+\end{corollary}
+
+Обратное, вообще говоря, неверно --- существуют не локально изометричные поверхности с одинаковыми гауссовыми кривизнами. % TODO: привести пример!
+
+\begin{problem}
+	Две поверхности с равными \underline{постоянными} гауссовыми кривизнами локально изометричны.
+\end{problem}
+
+Вернёмся к уравнениям совместности. Мы рассмотрели одно уравнение из трёх независимых, осталось ещё два.
+
+\begin{definition}
+	Уравнения
+	\[
+		\br{\widehat{G}\br{\frac{\partial A_1}{\partial u^2} - \frac{\partial A_2}{\partial u^1} - A_1A_2 + A_2A_1}}_{31} = 0,\quad
+		\br{\widehat{G}\br{\frac{\partial A_1}{\partial u^2} - \frac{\partial A_2}{\partial u^1} - A_1A_2 + A_2A_1}}_{32} = 0
+	\]
+	называются \textit{уравнениями Кодацци}.
+\end{definition}
+
+\noindent
+При выполнении нужных подстановок уравнения Кодацци обретают вид
+\[
+	\frac{\partial b_{12}}{\partial u^1} - \frac{\partial b_{11}}{\partial u^2} + b_{s1}\Gamma_{12}^s - b_{s2}\Gamma_{11}^s = 0,\quad
+	\frac{\partial b_{22}}{\partial u^1} - \frac{\partial b_{21}}{\partial u^2} + b_{s1}\Gamma_{22}^s - b_{s2}\Gamma_{21}^s = 0.
+\]
+
+% TODO: K = -1, теорема Бонне, ковариантное дифференцирование
 

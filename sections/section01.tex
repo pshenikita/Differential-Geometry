@@ -112,9 +112,91 @@
 
 Объём сведений из линейной алгебры, которые необходимы в курсе дифференциальной геометрии (и в других дисциплинах), начинает становиться слишком большим для маленького раздела напоминаний в этом файле, поэтому я решил вынести его в отдельный проект, с которым можно ознакомиться \href{https://github.com/pshenikita/Linal-Teormin}{по ссылке}.
 
+\subsection{Дифференциальные уравнения}
+
+\begin{theorem}[О существовании и единственности]
+	Решение дифференциального уравнения $\dot{\vec{x}} = \vec{v}(\vec{x}, t)$ с начальным условием $\vec{x}(t_0) = \vec{x}_0$ из области гладкости правой части существует и единственно (в том смысле, что всякие два решения с общим начальным условием совпадают в некоторой окрестности точки $t_0$).
+\end{theorem}
+
+Помимо этой классической теоремы, нам понадобится похожее утверждение для систем дифференциальных уравнений с двумя параметрами: 
+\begin{equation} \label{eq:DiffSystem}
+	\begin{cases}
+		\frac{\partial\vec{x}}{\partial u^1} = \vec{f}_1(\vec{x}, u^1, u^2),\\
+		\frac{\partial\vec{x}}{\partial u^2} = \vec{f}_2(\vec{x}, u^1, u^2),
+	\end{cases}
+\end{equation}
+где $\vec{x} = (x^1, \ldots, x^n)$ --- неизвестная функция от $u^1$, $u^2$ со значениями в $\R^n$, а $\vec{f}_i = (\vec{f}_i^1, \ldots, \vec{f}_i^n)$, $i = 1, 2$, --- известные гладкие функции, определённые в некоторой открытой области $\Omega$ фазового пространства $\R^n \times \R \times \R \cong \R^{n + 2}$.
+
+\begin{definition}
+	Система \eqref{eq:DiffSystem} \textit{совместна}, если для любой тройки $(\vec{x}_0, u^1_0, u^2_0) \in \Omega$ она имеет гладкое решение $\vec{x}(u^1, u^2)$ с начальным условием $\vec{x}(u^1_0, u^2_0) = \vec{x}_0$, определённое в некоторой окрестности точки $(u^1_0, u^2_0)$.
+\end{definition}
+
+\begin{theorem}[Дарбу]
+	Система \eqref{eq:DiffSystem} совместна тогда и только тогда, когда функции $\vec{f}_1$, $\vec{f}_2$ удовлетворяет следующему условию всюду в $\Omega$:
+	\begin{equation} \label{eq:Darboux}
+		\frac{\partial \vec{f}_1}{\partial x^i}f^i_2 + \frac{\partial\vec{f}_1}{\partial u^2} = \frac{\partial\vec{f}_2}{\partial x^j}f^j_1 + \frac{\partial\vec{f}_2}{\partial u^1}.
+	\end{equation}
+\end{theorem}
+
+\begin{proof}
+	$\Rightarrow$. Пусть $\vec{x}(u^1, u^2)$ --- гладкое решение системы с начальным условием $(u^1_0, u^2_0, \vec{x})$. Тогда по теореме о дифференцировании сложной функции имеем
+	\begin{multline*}
+		\frac{\partial^2\vec{x}}{\partial u^1\partial u^2} = \frac{\partial\vec{f}_1(\vec{x}(u^1, u^2), u^1, u^2)}{\partial u^2} = \frac{\partial\vec{f}_1}{\partial x^i}(\vec{x}(u^1, u^2), u^1, u^2)\frac{\partial x^i}{\partial u^2} + {}\\{} + \frac{\partial\vec{f}_1}{\partial u^2}(\vec{x}(u^1, u^2), u^1, u^2) = \br{\frac{\partial\vec{f}_1}{\partial x^i}f_2^i + \frac{\partial\vec{f}_1}{\partial u^2}}(\vec{x}(u^1, u^2), u^1, u^2).
+	\end{multline*}
+	Отсюда
+	\[
+		\frac{\partial^2\vec{x}}{\partial u^1\partial u^2} = \br{\frac{\partial\vec{f}_1}{\partial x^i}f_2^i + \frac{\partial\vec{f}_1}{\partial u^2}}(\vec{x}(u^1, u^2), u^1, u^2).
+	\]
+	Аналогично получаем
+	\[
+		\br{\frac{\partial\vec{f}_1}{\partial x^i}f_2^i + \frac{\partial\vec{f}_1}{\partial u^2}}(\vec{x}(u^1, u^2), u^1, u^2) = \frac{\partial^2\vec{x}}{\partial u^1\partial u^2} = \br{\frac{\partial\vec{f}_2}{\partial x^j}f_1^j + \frac{\partial\vec{f}_2}{\partial u^1}}(\vec{x}(u^1, u^2), u^1, u^2).
+	\]
+
+	$\Leftarrow$. Можем рассмотреть первое уравнение данной системы как обыкновенное дифференциальное уравнение по переменной $u^1$ с параметром $u^2$. Из теоремы о существовании и единственности следует, что при каждом значении $u^2 = u^2_0$ существует функция $\vec{y}(u^1)$, определённая в окрестности точки $u^1_0$ такая, что
+	\[
+		\frac{\partial\vec{y}}{\partial u^1} = \vec{f}_1(\vec{x}, u^1, u^2_0),\quad\vec{y}(u^1_0) = \vec{x}_0.
+	\]
+
+	Теперь для каждого $u^1$, для которого определено $\vec{y}(u^1)$, мы можем решить второе уравнение с начальным условием $\vec{x}(u^1, u_0^2) = \vec{y}(u^1)$. По той же теореме о существовании и единственности, полученное решение $\vec{x}(u^1, u^2)$ будет определено для всех $u^2$ из достаточно малой, не зависящей от $u^1$, окрестности точки $u^2_0$, и будет гладкой функцией от $u^1$, $u^2$.
+
+	Итак, в малой окрестности точки $(u^1_0, u^2_0)$ мы построили гладкую функцию $\vec{x}(u^1, u^2)$, удовлетворяющую второму уравнению всюду, а первому --- во всех точках вида $(u^1, u^2_0)$, а также удовлетворяющую начальному условию $\vec{x}(u^1_0, u^2_0) = \vec{x}_0$. Осталось показать, что $\vec{x}(u^1, u^2)$ и первому уравнению удовлетворяет всюду, а не только вдоль прямой $u^2 = u^2_0$.
+
+	Как и выше, получаем
+	\[
+		\frac{\partial^2\vec{x}}{\partial u^1\partial u^2} = \frac{\partial\vec{f}_2}{\partial x^j}(\vec{x}(u^1, u^2), u^1, u^2)\frac{\partial x^j}{\partial u^1} + \frac{\partial\vec{f}_2}{\partial u^1}(\vec{x}(u^1, u^2), u^1, u^2).
+	\]
+	(Только теперь мы ничего не знаем про $\partial x^j / \partial u^1$.) Используем условие \eqref{eq:Darboux}:
+	\[
+		\frac{\partial^2\vec{x}}{\partial u^1\partial u^2} = \underline{\frac{\partial\vec{f}_2}{\partial x^j}(\vec{x}(u^1, u^2), u^1, u^2)\frac{\partial x^j}{\partial u^1}} + \br{\frac{\partial\vec{f}_1}{\partial x^i}f_2^i + \frac{\partial\vec{f}_1}{\partial u^2} - \underline{\frac{\partial\vec{f}_2}{\partial x^j}f_1^j}}(\vec{x}(u^1, u^2), u^1, u^2).
+	\]
+	Далее можем сгруппировать подчёркнутые суммы в одну:
+	\begin{multline*}
+		\frac{\partial\vec{f}_2}{\partial x^j}(\vec{x}(u^1, u^2), u^1, u^2)\br{\frac{\partial x^j}{\partial u^1} - f_1^j(\vec{x}(u^1, u^2), u^1, u^2)} = \frac{\partial^2\vec{x}}{\partial u^1\partial u^2} - {}\\{} - \br{\frac{\partial\vec{f}_1}{\partial x^i}\underline{f_2^i} + \frac{\partial\vec{f}_1}{\partial u^2}}(\vec{x}(u^1, u^2), u^1, u^2) = \left\{\vec{f}_2(\vec{x}(u^1, u^2), u^1, u^2) = \frac{\partial\vec{x}}{\partial u^2}\right\} =\\ = \frac{\partial^2\vec{x}}{\partial u^1\partial u^2} - {\underbrace{\br{\frac{\partial\vec{f}_1}{\partial x^i}\frac{\partial x^i}{\partial u^2} + \frac{\partial\vec{f}_1}{\partial u^2}}(\vec{x}(u^1, u^2), u^1, u^2)}_{\frac{\scriptstyle\partial\vec{f}_1(\vec{x}(u^1, u^2), u^1, u^2)}{\scriptstyle\partial u^2}}} = \frac{\partial}{\partial u^2}\br{\frac{\partial\vec{x}}{\partial u^1} - \vec{f}_1(\vec{x}(u^1, u^2), u^1, u^2)}.
+	\end{multline*}
+	В итоге мы получаем:
+	\[
+		\frac{\partial}{\partial u^2}\underbrace{\br{\frac{\partial\vec{x}}{\partial u^1} - \vec{f}_1(\vec{x}(u^1, u^2), u^1, u^2)}}_{{} \vcentcolon = \vec{g}(u^1, u^2)} = \frac{\partial\vec{f}_2}{\partial x^j}(\vec{x}(u^1, u^2), u^1, u^2)\underbrace{\br{\frac{\partial x^j}{\partial u^1} - f_1^j(\vec{x}(u^1, u^2), u^1, u^2)}}_{g^j(u^1, u^2)},
+	\]
+	это дифференциальное уравнение на функцию $\vec{g}$. Его можно рассмотреть как обыкновенное дифференциальное уравнение по $u^2$ с параметром $u^1$. При этом для всех $u^1$ выполнено начальное условие $\vec{g}(u^1, u^2_0) = \vec{0}$, откуда $\vec{g}(u^1, u^2) \equiv \vec{0}$. Это и означает, что $\vec{x}(u^1, u^2)$ всюду удовлетворяет первому уравнению системы.
+\end{proof}
+
+\begin{example}
+	Если правые части системы \eqref{eq:DiffSystem} не зависят от $\vec{x}$:
+	\[
+		\begin{cases}
+			\frac{\partial\vec{x}}{\partial u^1} = \vec{f}_1(u^1, u^2),\\
+			\frac{\partial\vec{x}}{\partial u^2} = \vec{f}_2(u^1, u^2),
+		\end{cases}
+	\]
+	то условие совместности для них выглядит следующим образом:
+	\[
+		\frac{\vec{f}_1}{\partial u^2} = \frac{\vec{f}_2}{\partial u^1}.
+	\]
+\end{example}
+
 \subsection{Про функции в геометрии}
 
-Фразу, упомянутую в эпиграфе к данному разделу, А.\,В. Пенской произнёс на первой лекции своего курса по дифференциальной геометрии в 2025\,г.
+Фразу, упомянутую в эпиграфе к данному разделу, А.\,В. Пенской произнёс на первой лекции своего курса по дифференциальной геометрии.
 
 Рассмотрим евклидову плоскость\footnotemark{} $\mathbb{E}^2$ и фиксированную точку $O$ на ней. Пусть на этой плоскости задана функция $f(\vec{x}) = \big|\overrightarrow{O\vec{x}}\big|$ (измеряем евклидово расстояние до заданной точки). Мы можем ввести евклидовы координаты в этой плоскости, в них наша функция записывается как $f(x, y) = \sqrt{x^2 + y^2}$. А можем ввести полярные, и тогда функция записывается как $f(\rho, \varphi) = \rho$. Наблюдаем некоторое противоречие --- одна и та же функция $f$ от двух аргументов записывается двумя (очевидно, различными) способами, то есть формально нельзя написать $f(x, y) = f(\rho, \varphi)$. Но мы так пишем, и мы на самом деле хотим так писать. Так в чём же дело?
 
