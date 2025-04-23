@@ -131,7 +131,7 @@
 	Система \eqref{eq:DiffSystem} \textit{совместна}, если для любой тройки $(\vec{x}_0, u^1_0, u^2_0) \in \Omega$ она имеет гладкое решение $\vec{x}(u^1, u^2)$ с начальным условием $\vec{x}(u^1_0, u^2_0) = \vec{x}_0$, определённое в некоторой окрестности точки $(u^1_0, u^2_0)$.
 \end{definition}
 
-\begin{theorem}[Дарбу]
+\begin{theorem}[Дарбу] \label{theorem:Darboux}
 	Система \eqref{eq:DiffSystem} совместна тогда и только тогда, когда функции $\vec{f}_1$, $\vec{f}_2$ удовлетворяет следующему условию всюду в $\Omega$:
 	\begin{equation} \label{eq:Darboux}
 		\frac{\partial \vec{f}_1}{\partial x^i}f^i_2 + \frac{\partial\vec{f}_1}{\partial u^2} = \frac{\partial\vec{f}_2}{\partial x^j}f^j_1 + \frac{\partial\vec{f}_2}{\partial u^1}.
@@ -180,7 +180,7 @@
 	это дифференциальное уравнение на функцию $\vec{g}$. Его можно рассмотреть как обыкновенное дифференциальное уравнение по $u^2$ с параметром $u^1$. При этом для всех $u^1$ выполнено начальное условие $\vec{g}(u^1, u^2_0) = \vec{0}$, откуда $\vec{g}(u^1, u^2) \equiv \vec{0}$. Это и означает, что $\vec{x}(u^1, u^2)$ всюду удовлетворяет первому уравнению системы.
 \end{proof}
 
-\begin{example}
+\begin{example} \label{example:SimpleDiffJointness}
 	Если правые части системы \eqref{eq:DiffSystem} не зависят от $\vec{x}$:
 	\[
 		\begin{cases}

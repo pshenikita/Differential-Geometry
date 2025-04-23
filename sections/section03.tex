@@ -1012,24 +1012,26 @@
 			-a\sin u\sin v & a\sin u\cos v & 0
 		\end{pmatrix} =\\ = a^2 \br{{-\cos^2u\cos v}, -\cos^2u\sin v, \frac{1}{2}\sin 2u}.
 	\end{multline*}
+	\begin{multline*}
+		\abs{\vec{r}_u \times \vec{r}_v}^2 = a^4{\cos^4u\underbrace{(\cos^2v + \sin^2v)}_{1}} + \frac{1}{4}a^4\sin^22u =\\ = a^4\big(\cos^4u + \cos^2u(1 - \cos^2u)\big) = a^4\cos^2u,
+	\end{multline*}
 	\begin{gather*}
-		\abs{\vec{r}_u \times \vec{r}_v}^2 = {\cos^4u\underbrace{(\cos^2v + \sin^2v)}_{1}} + \frac{1}{4}\sin^22u = \cos^4u + \cos^2u(1 - \cos^2u) = \cos^2u,\\
-		\vec{n} = \frac{\vec{r}_u \times \vec{r}_v}{\abs{\vec{r}_u \times \vec{r}_v}} = a(-\cos u\cos v, -\cos u\sin v, \sin u).
+		\vec{n} = \frac{\vec{r}_u \times \vec{r}_v}{\abs{\vec{r}_u \times \vec{r}_v}} = (-\cos u\cos v, -\cos u\sin v, \sin u).
 	\end{gather*}
 	Теперь можем найти коэффициенты второй квадратичной формы:
 	\begin{multline*}
-		b_{11} = \langle\vec{r}_{uu}, \vec{n}\rangle = {a^2\cos u\sin u\underbrace{(\cos^2 v + \sin ^2 v)}_{1}} - a^2\sin u\cos u(2 + \ctg^2u) =\\ = {-a^2\sin u\cos u\underbrace{(1 + \ctg^2 u)}_{1 / \sin^2u}} = -a^2\ctg u,
+		b_{11} = \langle\vec{r}_{uu}, \vec{n}\rangle = {a\cos u\sin u\underbrace{(\cos^2 v + \sin ^2 v)}_{1}} - a\sin u\cos u(2 + \ctg^2u) =\\ = {-a\sin u\cos u\underbrace{(1 + \ctg^2 u)}_{1 / \sin^2u}} = -a\ctg u,
 	\end{multline*}
 	\begin{gather*}
 		b_{12} = \langle\vec{r}_{uv}, \vec{n}\rangle = 0,\\
-		b_{22} = \langle\vec{r}_{vv}, \vec{n}\rangle = {a^2\cos u\sin u\underbrace{(\cos^2 v + \sin ^2 v)}_{1}} = \frac{1}{2}a^2\sin 2u.
+		b_{22} = \langle\vec{r}_{vv}, \vec{n}\rangle = {a\cos u\sin u\underbrace{(\cos^2 v + \sin ^2 v)}_{1}} = \frac{a}{2}\sin 2u.
 	\end{gather*}
 	Можем выписать матрицу второй квадратичной формы:
 	\[
 		\B =
 		\begin{pmatrix}
-			-a^2\ctg u & 0\\
-			0 & \frac{1}{2}a^2\sin 2u
+			-a\ctg u & 0\\
+			0 & \frac{a}{2}\sin 2u
 		\end{pmatrix}.
 	\]
 	Находим главные кривизны:
@@ -1037,14 +1039,14 @@
 		\det(\B - \lambda\G) = 0,\\
 		\det
 		\begin{pmatrix}
-			-\ctg u - \lambda \ctg^2u & 0\\
-			0 & \frac{1}{2}\sin 2u - \lambda \sin^2u
+			-\ctg u - a\lambda \ctg^2u & 0\\
+			0 & \frac{1}{2}\sin 2u - a\lambda \sin^2u
 		\end{pmatrix} = 0,\\
-		\cos^2u \cdot \lambda^2 + \br{{-\frac{\cos^3u}{\sin u}} + \cos u\sin u} \cdot \lambda -\cos^2 u = 0,\ \ \big|\ {:}\,\cos^2u\\
-		\lambda^2 - (\ctg u - \tg u)\lambda - 1 = 0.
+		a^2\cos^2u \cdot \lambda^2 + a\br{{-\frac{\cos^3u}{\sin u}} + \cos u\sin u} \cdot \lambda -\cos^2 u = 0,\ \ \big|\ {:}\,a^2\cos^2u\\
+		\lambda^2 - \frac{\ctg u - \tg u}{a}\lambda - \frac{1}{a^2} = 0.
 	\end{gather*}
 
-	Отсюда, $\lambda_1 = -\tg u$, $\lambda_2 = \ctg u$ и $H = \ctg u - \tg u$, $K \equiv -1$. Наконец, можем найти главные направления.
+	Отсюда, $\lambda_1 = -a^{-1}\tg u$, $\lambda_2 = a^{-1}\ctg u$ и $H = a^{-1}(\ctg u - \tg u)$, $K \equiv -a^{-2}$. Наконец, можем найти главные направления.
 	\begin{gather*}
 		(\B - \lambda_1\G)\vec{\xi}_1 = \vec{0},\\
 		\begin{pmatrix}
