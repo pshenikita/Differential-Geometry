@@ -77,11 +77,45 @@
 Следует отметить, что символы Кристоффеля не задают никакого тензора в касательном пространстве к поверхности.
 
 \begin{problem}
-	Доказать, что при переходе к другим локальным координатам $(\widetilde{u}^1, \widetilde{u}^2)$ символы Кристоффеля преобразуются по следующему закону:
-	\[
-		\widetilde{\Gamma}_{ij}^k = \Gamma_{pq}^r\frac{\partial \widetilde{u}^k}{\partial u^r}\frac{\partial u^p}{\partial \widetilde{u}^i}\frac{\partial u^q}{\partial \widetilde{u}^j} + \frac{\partial\widetilde{u}^k}{\partial u^p}\frac{\partial^2u^p}{\partial \widetilde{u}^i\partial \widetilde{u}^j}.
-	\]
+	Вывести формулы преобразования символов Кристоффеля при переходе к новым координатам. (И убедиться, что они не совпадают с тензорными.)
 \end{problem}
+
+\begin{solution}
+	Для удобства будем обозначать частную производную по $u^i$ через $\partial_i$ (аналогично для других индексов). Мы знаем тождества Кристоффеля:
+	\[
+		\widetilde{\Gamma}_{ij}^k = \frac{g^{kl}}{2}(\partial_ig_{jl} + \partial_jg_{il} - \partial_lg_{ij}).
+	\]
+	Метрика преобразуется, как тензор ранга $2$:
+	\[
+		\widetilde{g}_{ij} = \frac{\partial u^p}{\partial \widetilde{u}^i}\frac{\partial u^q}{\partial \widetilde{u}^j}g_{pq},\quad \widetilde{g}^{kl} = \frac{\partial \widetilde{u}^k}{\partial u^m}\frac{\partial \widetilde{u}^l}{\partial u^n}g^{mn}.
+	\]
+	Вычислим $\partial_ig_{jl}$ в новых координатах:
+	\[
+		\frac{\partial}{\partial \widetilde{u}^i}\widetilde{g}_{jl} = \frac{\partial}{\partial \widetilde{u}^i}\br{\frac{\partial u^q}{\partial \widetilde{u}^j}\frac{\partial u^r}{\partial \widetilde{u}^l}g_{qr}} = \big(\partial_pg_{qr}\big)\frac{\partial u^p}{\partial \widetilde{u}^i}\frac{\partial u^q}{\partial \widetilde{u}^j}\frac{\partial u^r}{\partial \widetilde{u}^l} + g_{qr}\br{\frac{\partial^2u^q}{\partial\widetilde{u}^i\partial\widetilde{u}^j}\frac{\partial u^r}{\partial\widetilde{u}^l} + \frac{\partial^2u^r}{\partial\widetilde{u}^i\partial\widetilde{u}^l}\frac{\partial u^q}{\partial\widetilde{u}^j}}.
+	\]
+	Подставляем в тождества Кристоффеля для $\widetilde{\Gamma}_{ij}^k$:
+	\begin{gather*}
+		\widetilde{\Gamma}_{ij}^k = \frac{\widetilde{g}^{kl}}{2}\left(
+		\big(\partial_pg_{qr}\big)\frac{\partial u^p}{\partial \widetilde{u}^i}\frac{\partial u^q}{\partial \widetilde{u}^j}\frac{\partial u^r}{\partial \widetilde{u}^l} + g_{qr}\br{\frac{\partial^2u^q}{\partial\widetilde{u}^i\partial\widetilde{u}^j}\frac{\partial u^r}{\partial\widetilde{u}^l} + \frac{\partial^2u^r}{\partial\widetilde{u}^i\partial\widetilde{u}^l}\frac{\partial u^q}{\partial\widetilde{u}^j}}\right. + {}\\
+		{} + \big(\partial_qg_{pr}\big)\frac{\partial u^p}{\partial \widetilde{u}^i}\frac{\partial u^q}{\partial \widetilde{u}^j}\frac{\partial u^r}{\partial \widetilde{u}^l} + g_{qr}\br{\frac{\partial^2u^q}{\partial\widetilde{u}^j\partial\widetilde{u}^i}\frac{\partial u^r}{\partial\widetilde{u}^l} + \frac{\partial^2u^r}{\partial\widetilde{u}^j\partial\widetilde{u}^l}\frac{\partial u^q}{\partial\widetilde{u}^i}} - {}\\
+		{} - \left.\big(\partial_rg_{pq}\big)\frac{\partial u^p}{\partial \widetilde{u}^i}\frac{\partial u^q}{\partial \widetilde{u}^j}\frac{\partial u^r}{\partial \widetilde{u}^l} - g_{qr}\br{\frac{\partial^2u^q}{\partial\widetilde{u}^l\partial\widetilde{u}^i}\frac{\partial u^r}{\partial\widetilde{u}^j} + \frac{\partial^2u^r}{\partial\widetilde{u}^l\partial\widetilde{u}^j}\frac{\partial u^q}{\partial\widetilde{u}^i}}\right).
+	\end{gather*}
+	В последней формуле отдельно вынесим первые слагаемые в каждой большой скобке:
+	\begin{multline*}
+		\frac{\widetilde{g}^{kl}}{2}\br{\big(\partial_pg_{qr}\big) + \big(\partial_qg_{pr}\big) - \big(\partial_rg_{pq}\big)}\frac{\partial u^p}{\partial \widetilde{u}^i}\frac{\partial u^q}{\partial \widetilde{u}^j}\frac{\partial u^r}{\partial \widetilde{u}^l} =\\ = \frac{g^{mn}}{2}\frac{\partial\widetilde{u}^k}{\partial u^m}\frac{\partial\widetilde{u}^l}{\partial u^n}\br{\big(\partial_pg_{qr}\big) + \big(\partial_qg_{pr}\big) - \big(\partial_rg_{pq}\big)}\frac{\partial u^p}{\partial \widetilde{u}^i}\frac{\partial u^q}{\partial \widetilde{u}^j}\frac{\partial u^r}{\partial \widetilde{u}^l} =\\ = \frac{g^{mn}}{2}\br{\big(\partial_pg_{qr}\big) + \big(\partial_qg_{pr}\big) - \big(\partial_rg_{pq}\big)}\frac{\partial \widetilde{u}^k}{\partial u^m}\frac{\partial u^p}{\partial \widetilde{u}^i}\frac{\partial u^q}{\partial \widetilde{u}^j}\delta_n^r =\\ = {\underbrace{\frac{g^{mr}}{2}\br{\big(\partial_pg_{qr}\big) + \big(\partial_qg_{pr}\big) - \big(\partial_rg_{pq}\big)}}_{\ds\Gamma_{pq}^m}}\frac{\partial \widetilde{u}^k}{\partial u^m}\frac{\partial u^p}{\partial \widetilde{u}^i}\frac{\partial u^q}{\partial \widetilde{u}^j}.
+	\end{multline*}
+	Эта часть соответствует тензорному закону. Посчитаем остаток:
+	\begin{multline*}
+		\widetilde{g}^{kl}g_{qr}\br{\frac{\partial^2u^q}{\partial\widetilde{u}^i\partial\widetilde{u}^j}\frac{\partial u^r}{\partial\widetilde{u}^l}} = {\underbrace{g^{mn}g_{qr}}_{\delta^m_q\delta^n_r}}\frac{\partial\widetilde{u}^k}{\partial u^m}\frac{\partial\widetilde{u}^l}{\partial u^n}\br{\frac{\partial^2u^q}{\partial\widetilde{u}^i\partial\widetilde{u}^j}\frac{\partial u^r}{\partial\widetilde{u}^l}} =\\ = \frac{\partial\widetilde{u}^k}{\partial u^m}\cancel{\frac{\partial\widetilde{u}^l}{\partial u^n}}\br{\frac{\partial^2u^m}{\partial\widetilde{u}^i\partial\widetilde{u}^j}\cancel{\frac{\partial u^n}{\partial\widetilde{u}^l}}} = \frac{\partial\widetilde{u}^k}{\partial u^m}\frac{\partial^2u^m}{\partial\widetilde{u}^i\partial\widetilde{u}^j}.
+	\end{multline*}
+
+	Таким образом, получаем формулу преобразования символов Кристоффеля при переходе к новым координатам:
+	\[
+		\widetilde{\Gamma}_{ij}^k = \Gamma_{pq}^m\frac{\partial \widetilde{u}^k}{\partial u^m}\frac{\partial u^p}{\partial \widetilde{u}^i}\frac{\partial u^q}{\partial \widetilde{u}^j} + \frac{\partial\widetilde{u}^k}{\partial u^m}\frac{\partial^2u^m}{\partial\widetilde{u}^i\partial\widetilde{u}^j}.
+	\]
+
+	Из полученных формул видно, что символы Кристоффеля преобразуются, как тензоры, тогда и только тогда, когда замена координат $(u^1, u^2) \to (\widetilde{u}^1, \widetilde{u}^2)$ линейна.
+\end{solution}
 
 \noindent
 Уравнения \eqref{eq:DerivativeGauss} с подстановкой \eqref{eq:ChristoffelIdentity} называются \textit{деривационными уравнениями Гаусса}.
