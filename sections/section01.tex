@@ -121,8 +121,10 @@
 Помимо этой классической теоремы, нам понадобится похожее утверждение для систем дифференциальных уравнений с двумя параметрами: 
 \begin{equation} \label{eq:DiffSystem}
 	\begin{cases}
-		\frac{\partial\vec{x}}{\partial u^1} = \vec{f}_1(\vec{x}, u^1, u^2),\\
-		\frac{\partial\vec{x}}{\partial u^2} = \vec{f}_2(\vec{x}, u^1, u^2),
+		\begin{aligned}
+			\frac{\partial\vec{x}}{\partial u^1} = \vec{f}_1(\vec{x}, u^1, u^2),\\
+			\frac{\partial\vec{x}}{\partial u^2} = \vec{f}_2(\vec{x}, u^1, u^2),
+		\end{aligned}
 	\end{cases}
 \end{equation}
 где $\vec{x} = (x^1, \ldots, x^n)$ --- неизвестная функция от $u^1$, $u^2$ со значениями в $\R^n$, а $\vec{f}_i = (\vec{f}_i^1, \ldots, \vec{f}_i^n)$, $i = 1, 2$, --- известные гладкие функции, определённые в некоторой открытой области $\Omega$ фазового пространства $\R^n \times \R \times \R \cong \R^{n + 2}$.
