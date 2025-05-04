@@ -1,4 +1,4 @@
-% Корректность отображения всех шрифтов, кодировок и мат. символов
+% Корректность отображения всех шрифтов, кодировок и математических символов
 \usepackage[utf8]{inputenc}
 \usepackage[russian]{babel}
 \usepackage{amssymb, amsmath, amsthm, mathtools}
@@ -8,7 +8,12 @@
 \setmainfont{CMU Serif}
 \setsansfont{CMU Sans Serif}
 \setmonofont{CMU Typewriter Text}
-\usepackage{microtype}
+\usepackage[
+	activate=true,			% Включить все основные функции
+	expansion=true,			% Разрешить сжатие/растяжение шрифта
+	tracking=smallcaps,		% Особые настройки для капители
+	protrusion=true,		% Включить вынос знаков препинания
+]{microtype}
 
 % Вставка картинок
 \usepackage{graphicx}
@@ -52,7 +57,7 @@
 \numberwithin{equation}{section}
 
 % Гиперссылки
-\usepackage{hyperref}
+\usepackage[pdfencoding=auto]{hyperref}
 \hypersetup
 {
 	colorlinks=true,

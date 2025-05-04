@@ -344,7 +344,7 @@
 		\widetilde{G} \vcentcolon =
 		\begin{pmatrix}
 			\vec{v}_1 & \vec{v}_2 & \vec{n}
-		\end{pmatrix}^t
+		\end{pmatrix}^\top
 		\begin{pmatrix}
 			\vec{v}_1 & \vec{v}_2 & \vec{n}
 		\end{pmatrix}.
@@ -354,16 +354,16 @@
 		\frac{\partial}{\partial u^i}\widetilde{G} = 
 		\begin{pmatrix}
 			\vec{v}_1 & \vec{v}_2 & \vec{n}
-		\end{pmatrix}^t_{u^i}
+		\end{pmatrix}^\top_{u^i}
 		\begin{pmatrix}
 			\vec{v}_1 & \vec{v}_2 & \vec{n}
 		\end{pmatrix} + 
 		\begin{pmatrix}
 			\vec{v}_1 & \vec{v}_2 & \vec{n}
-		\end{pmatrix}^t
+		\end{pmatrix}^\top
 		\begin{pmatrix}
 			\vec{v}_1 & \vec{v}_2 & \vec{n}
-		\end{pmatrix}_{u^i} = A_i^t\widetilde{G} + \widetilde{G}A_i.
+		\end{pmatrix}_{u^i} = A_i^\top\widetilde{G} + \widetilde{G}A_i.
 	\]
 	А теперь рассмотрим матрицу
 	\[
@@ -379,7 +379,7 @@
 	\begin{lemma} \label{lemma:Gui}
 		Выполнено
 		\[
-			A_i^t\widehat{G} + \widehat{G}A_i = \frac{\partial}{\partial u^i}\widehat{G}.
+			A_i^\top\widehat{G} + \widehat{G}A_i = \frac{\partial}{\partial u^i}\widehat{G}.
 		\]
 	\end{lemma}
 
@@ -437,11 +437,11 @@
 \begin{proof}
 	Обозначим эту матрицу через $S$. Применяя лемму \ref{lemma:Gui}, напишем
 	\begin{multline*}
-		S = \frac{\partial(\widehat{G}A_1)}{\partial u^2} - \frac{\partial \widehat{G}}{\partial u^2}A_1 - \frac{\partial(\widehat{G}A_2)}{\partial u^1} + \frac{\partial \widehat{G}}{\partial u^1}A_2 - \widehat{G}A_1A_2 + \widehat{G}A_2A_1 =\\ = \frac{\partial(\widehat{G}A_1)}{\partial u^2} - A_2^t\widehat{G}A_1 - \cancel{\widehat{G}A_2A_1} - \frac{\partial(\widehat{G}A_2)}{\partial u^1} + A_1^t\widehat{G}A_2 + \bcancel{\widehat{G}A_1A_2} - \bcancel{\widehat{G}A_1A_2} + \cancel{\widehat{G}A_2A_1} =\\ = \frac{\partial(\widehat{G}A_1)}{\partial u^2} - \frac{\partial(\widehat{G}A_2)}{\partial u^1} + {\underbrace{A_1^t\widehat{G}A_2 - A_2^t\widehat{G}A_1}_{\text{кососимметрична}}}.
+		S = \frac{\partial(\widehat{G}A_1)}{\partial u^2} - \frac{\partial \widehat{G}}{\partial u^2}A_1 - \frac{\partial(\widehat{G}A_2)}{\partial u^1} + \frac{\partial \widehat{G}}{\partial u^1}A_2 - \widehat{G}A_1A_2 + \widehat{G}A_2A_1 =\\ = \frac{\partial(\widehat{G}A_1)}{\partial u^2} - A_2^\top\widehat{G}A_1 - \cancel{\widehat{G}A_2A_1} - \frac{\partial(\widehat{G}A_2)}{\partial u^1} + A_1^\top\widehat{G}A_2 + \bcancel{\widehat{G}A_1A_2} - \bcancel{\widehat{G}A_1A_2} + \cancel{\widehat{G}A_2A_1} =\\ = \frac{\partial(\widehat{G}A_1)}{\partial u^2} - \frac{\partial(\widehat{G}A_2)}{\partial u^1} + {\underbrace{A_1^\top\widehat{G}A_2 - A_2^\top\widehat{G}A_1}_{\text{кососимметрична}}}.
 	\end{multline*}
 	Далее пишем
 	\[
-		S + S^t = \frac{\partial(\widehat{G}A_1 + A_1^t\widehat{G})}{\partial u^2} - \frac{\partial(\widehat{G}A_2 + A_2^t\widehat{G})}{\partial u^1} = \cancel{\frac{\partial^2\widehat{G}}{\partial u^1u^2}} - \cancel{\frac{\partial^2\widehat{G}}{\partial u^1u^2}} = 0.
+		S + S^\top = \frac{\partial(\widehat{G}A_1 + A_1^\top\widehat{G})}{\partial u^2} - \frac{\partial(\widehat{G}A_2 + A_2^\top\widehat{G})}{\partial u^1} = \cancel{\frac{\partial^2\widehat{G}}{\partial u^1u^2}} - \cancel{\frac{\partial^2\widehat{G}}{\partial u^1u^2}} = 0.
 	\]
 	Таким образом, матрица $S$ кососимметрична.
 \end{proof}
@@ -794,16 +794,16 @@
 				\I = (du^1)^2 + (du^2)^2 + 2\cos\omega(u^1, u^2)\,du^1du^2,\quad \II = 2\sin\omega(u^1, u^2)\,du^1du^2,
 			\end{equation}
 			причём эта система координат определена однозначно с точностью до перестановки координат, их сдвигов на константы и смены знака любой из них.
-		\item В системе координат, указанной в предыдущем пункте, функция $\omega$ удовлетворяет \textit{уравнению $\sin$-Гордон}\footnotemark \label{eq:sinGordon}.
+		\item В системе координат, указанной в предыдущем пункте, функция $\omega$ удовлетворяет \textit{уравнению $\sin$-Гордон}\footnotemark{} \eqref{eq:sinGordon}.
 		\item Для любого этого уравнения с $\sin\omega \ne 0$ существует поверхность постоянной кривизны $K \equiv -1$ с первой и второй квадратичными формами вида \eqref{eq:IIINegativeK}.
 	\end{enumerate}
 \end{theorem}
 
-\footnotetext{Уравнение $\sin$-Гордон играет важную роль в теории солитонов. Я не осознаю, что это значит и не думаю, что должен, но об этом упоминается везде, где написано про это уравнение. Я лишь продолжаю добрую традицию.}
+\footnotetext{Уравнение $\sin$-Гордон играет важную роль в теории солитонов. Я не понимаю, что это значит и не думаю, что должен, но об этом упоминается везде, где написано про это уравнение. Я продолжаю добрую традицию.}
 
 Простейшим нетривиальным решением уравнения $\sin$-Гордон является
 \[
 	\omega = 4\arctg e^{u^1 + u^2}.
 \]
-Оно соответствует псевдосфере Бельтрами.
+Оно соответствует псевдосфере Бельтрами. Про неё, кстати, можно почитать \href{https://etudes.ru/models/pseudosphere-constant-negative-curvature/?ref=calso}{здесь}.
 
