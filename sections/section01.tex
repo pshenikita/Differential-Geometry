@@ -182,12 +182,20 @@
 	это дифференциальное уравнение на функцию $\vec{g}$. Его можно рассмотреть как обыкновенное дифференциальное уравнение по $u^2$ с параметром $u^1$. При этом для всех $u^1$ выполнено начальное условие $\vec{g}(u^1, u^2_0) = \vec{0}$, откуда $\vec{g}(u^1, u^2) \equiv \vec{0}$. Это и означает, что $\vec{x}(u^1, u^2)$ всюду удовлетворяет первому уравнению системы.
 \end{proof}
 
+Отметим, что уравнение \eqref{eq:Darboux} не нужно запоминать. Оно является просто записью, очевидно, необходимого условия
+\[
+	\frac{\partial\vec{x}}{\partial u^1 \partial u^2} = \frac{\partial\vec{x}}{\partial u^2 \partial u^1}.
+\]
+Нетривиальное утверждение теоремы заключается в том, что это условие оказывается не только необходимым, но и достаточным.
+
 \begin{example} \label{example:SimpleDiffJointness}
 	Если правые части системы \eqref{eq:DiffSystem} не зависят от $\vec{x}$:
 	\[
 		\begin{cases}
-			\frac{\partial\vec{x}}{\partial u^1} = \vec{f}_1(u^1, u^2),\\
-			\frac{\partial\vec{x}}{\partial u^2} = \vec{f}_2(u^1, u^2),
+			\begin{aligned}
+				&\frac{\partial\vec{x}}{\partial u^1} = \vec{f}_1(u^1, u^2),\\
+				&\frac{\partial\vec{x}}{\partial u^2} = \vec{f}_2(u^1, u^2),
+			\end{aligned}
 		\end{cases}
 	\]
 	то условие совместности для них выглядит следующим образом:
