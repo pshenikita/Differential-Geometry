@@ -1,4 +1,4 @@
-NAME = NormalSection
+NAME = CurveTriangle
 
 all: $(NAME).pdf
 

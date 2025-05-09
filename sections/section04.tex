@@ -344,7 +344,7 @@
 		\widetilde{G} \vcentcolon =
 		\begin{pmatrix}
 			\vec{v}_1 & \vec{v}_2 & \vec{n}
-		\end{pmatrix}^\top
+		\end{pmatrix}^t
 		\begin{pmatrix}
 			\vec{v}_1 & \vec{v}_2 & \vec{n}
 		\end{pmatrix}.
@@ -354,16 +354,16 @@
 		\frac{\partial}{\partial u^i}\widetilde{G} = 
 		\begin{pmatrix}
 			\vec{v}_1 & \vec{v}_2 & \vec{n}
-		\end{pmatrix}^\top_{u^i}
+		\end{pmatrix}^t_{u^i}
 		\begin{pmatrix}
 			\vec{v}_1 & \vec{v}_2 & \vec{n}
 		\end{pmatrix} + 
 		\begin{pmatrix}
 			\vec{v}_1 & \vec{v}_2 & \vec{n}
-		\end{pmatrix}^\top
+		\end{pmatrix}^t
 		\begin{pmatrix}
 			\vec{v}_1 & \vec{v}_2 & \vec{n}
-		\end{pmatrix}_{u^i} = A_i^\top\widetilde{G} + \widetilde{G}A_i.
+		\end{pmatrix}_{u^i} = A_i^t\widetilde{G} + \widetilde{G}A_i.
 	\]
 	А теперь рассмотрим матрицу
 	\[
@@ -379,7 +379,7 @@
 	\begin{lemma} \label{lemma:Gui}
 		Выполнено
 		\[
-			A_i^\top\widehat{G} + \widehat{G}A_i = \frac{\partial}{\partial u^i}\widehat{G}.
+			A_i^t\widehat{G} + \widehat{G}A_i = \frac{\partial}{\partial u^i}\widehat{G}.
 		\]
 	\end{lemma}
 
@@ -437,11 +437,11 @@
 \begin{proof}
 	Обозначим эту матрицу через $S$. Применяя лемму \ref{lemma:Gui}, напишем
 	\begin{multline*}
-		S = \frac{\partial(\widehat{G}A_1)}{\partial u^2} - \frac{\partial \widehat{G}}{\partial u^2}A_1 - \frac{\partial(\widehat{G}A_2)}{\partial u^1} + \frac{\partial \widehat{G}}{\partial u^1}A_2 - \widehat{G}A_1A_2 + \widehat{G}A_2A_1 =\\ = \frac{\partial(\widehat{G}A_1)}{\partial u^2} - A_2^\top\widehat{G}A_1 - \cancel{\widehat{G}A_2A_1} - \frac{\partial(\widehat{G}A_2)}{\partial u^1} + A_1^\top\widehat{G}A_2 + \bcancel{\widehat{G}A_1A_2} - \bcancel{\widehat{G}A_1A_2} + \cancel{\widehat{G}A_2A_1} =\\ = \frac{\partial(\widehat{G}A_1)}{\partial u^2} - \frac{\partial(\widehat{G}A_2)}{\partial u^1} + {\underbrace{A_1^\top\widehat{G}A_2 - A_2^\top\widehat{G}A_1}_{\text{кососимметрична}}}.
+		S = \frac{\partial(\widehat{G}A_1)}{\partial u^2} - \frac{\partial \widehat{G}}{\partial u^2}A_1 - \frac{\partial(\widehat{G}A_2)}{\partial u^1} + \frac{\partial \widehat{G}}{\partial u^1}A_2 - \widehat{G}A_1A_2 + \widehat{G}A_2A_1 =\\ = \frac{\partial(\widehat{G}A_1)}{\partial u^2} - A_2^t\widehat{G}A_1 - \cancel{\widehat{G}A_2A_1} - \frac{\partial(\widehat{G}A_2)}{\partial u^1} + A_1^t\widehat{G}A_2 + \bcancel{\widehat{G}A_1A_2} - \bcancel{\widehat{G}A_1A_2} + \cancel{\widehat{G}A_2A_1} =\\ = \frac{\partial(\widehat{G}A_1)}{\partial u^2} - \frac{\partial(\widehat{G}A_2)}{\partial u^1} + {\underbrace{A_1^t\widehat{G}A_2 - A_2^t\widehat{G}A_1}_{\text{кососимметрична}}}.
 	\end{multline*}
 	Далее пишем
 	\[
-		S + S^\top = \frac{\partial(\widehat{G}A_1 + A_1^\top\widehat{G})}{\partial u^2} - \frac{\partial(\widehat{G}A_2 + A_2^\top\widehat{G})}{\partial u^1} = \cancel{\frac{\partial^2\widehat{G}}{\partial u^1u^2}} - \cancel{\frac{\partial^2\widehat{G}}{\partial u^1u^2}} = 0.
+		S + S^t = \frac{\partial(\widehat{G}A_1 + A_1^t\widehat{G})}{\partial u^2} - \frac{\partial(\widehat{G}A_2 + A_2^t\widehat{G})}{\partial u^1} = \cancel{\frac{\partial^2\widehat{G}}{\partial u^1u^2}} - \cancel{\frac{\partial^2\widehat{G}}{\partial u^1u^2}} = 0.
 	\]
 	Таким образом, матрица $S$ кососимметрична.
 \end{proof}
