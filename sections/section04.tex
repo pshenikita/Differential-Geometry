@@ -416,7 +416,7 @@
 	так как $\vec{v}_k \perp \vec{n}$.
 \end{proof}
 
-\subsection{Уравнения Гаусса "---Кодацци}
+\subsection{Уравнения Гаусса "---Кодацци, теорема Гаусса}
 
 На первый взгляд, система \eqref{eq:Jointness} содержит девять уравнений. Распишем их подробно, чтобы выяснить их истинное число и конкретный вид. Обозначим через $\widehat{G}$ матрицу Грама векторов $(\vec{r}_1, \vec{r}_2, \vec{n})$:
 \[
@@ -464,11 +464,11 @@
 
 Замечательно в этом уравнении то, что из него можно выразить определитель матрицы второй квадратичной формы через символы Кристоффеля, которые, в свою очередь, определяются только метрикой. Отсюда можем сделать следующие выводы.
 
-\begin{theorem}[Гаусс]
+\begin{theorem}[Гаусс] \label{theorem:Gauss}
 	Гауссова кривизна однозначно определяется метрикой. Более точно, выполнена следующая формула:
-	\[
-		K = \frac{1}{g_{11}g_{22} - g_{12}^2}g_{1k}\br{\frac{\partial\Gamma^k_{22}}{\partial u^1} - \frac{\partial\Gamma_{21}^k}{\partial u^2} + \Gamma_{k1}^s\Gamma^k_{22} - \Gamma_{s2}^k\Gamma_{21}^s}.
-	\]
+	\begin{equation} \label{eq:KfromG}
+		K = \frac{1}{g_{11}g_{22} - g_{12}^2}g_{1k}\br{\frac{\partial\Gamma^k_{22}}{\partial u^1} - \frac{\partial\Gamma_{21}^k}{\partial u^2} + \Gamma_{s1}^k\Gamma^s_{22} - \Gamma_{s2}^k\Gamma_{21}^s}.
+	\end{equation}
 \end{theorem}
 
 \begin{corollary}

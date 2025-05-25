@@ -1,0 +1,134 @@
+\section{Дополнения}
+
+\newcounter{problem}[section]
+\renewenvironment{problem}[1][]{\refstepcounter{problem}
+	\par\smallskip\noindent
+	\ifthenelse{\equal{#1}{}}
+	{{\bfseries Задача \theproblem.}}{{\bfseries Задача \theproblem\;{\mdseries(#1)}.}}
+}{\par\smallskip}
+
+\subsection{Разбор контрольной работы А.\,А. Гайфуллина}
+
+Александр Александрович даёт за семестр две контрольные работы. Почти все задачи из первой контрольной (или аналогичные им) разбросаны по тексту второго раздела. Вторая контрольная проводится на последнем семинаре, здесь представлен разбор одного из её вариантов, предложенных нашей группе.
+
+\begin{problem}
+	Найти первую и вторую квадратичную форму, а также гауссову и среднюю кривизны и главные направления у поверхности
+	\[
+		\vec{r}(u, v) = (u\sin(u + v), u + v - 2, u\cos(u + v)).
+	\]
+\end{problem}
+
+\begin{solution}
+	Находим частные производые параметризации:
+	\begin{gather*}
+		\vec{r}_u = (\sin(u + v) + u\cos(u + v), 1, \cos(u + v) - u\sin(u + v)),\\
+		\vec{r}_v = (u\cos(u + v), 1, -u\sin(u + v)),
+	\end{gather*}
+	а также вектор нормали:
+	\begin{multline*}
+		\vec{r}_u \times \vec{r}_v = \det
+		\begin{pmatrix}
+			\vec{e}_1 & \vec{e}_2 & \vec{e}_3\\
+			\sin(u + v) + u\cos(u + v) & 1 & \cos(u + v) - u\sin(u + v)\\
+			u\cos(u + v) & 1 & -u\sin(u + v)
+		\end{pmatrix} =\\
+		= (-\cos(u + v), u, \sin(u + v)),
+	\end{multline*}
+	\[
+		\vec{n} = \frac{\vec{r}_u \times \vec{r}_v}{\abs{\vec{r}_u \times \vec{r}_v}} = \frac{(-\cos(u + v), u, \sin(u + v))}{\sqrt{1 + u^2}}.
+	\]
+	Вторые производные параметризации:
+	\begin{gather*}
+		\vec{r}_{uu} = (2\cos(u + v) - u\sin(u + v), 0, -2\sin(u + v) - u\cos(u + v)),\\
+		\vec{r}_{uv} = (\cos(u + v) - u\sin(u + v), 0, -\sin(u + v) - u\cos(u + v)),\\
+		\vec{r}_{vv} = (-u\sin(u + v), 0, -u\cos(u + v)).
+	\end{gather*}
+	Находим первую квадратичную форму:
+	\[
+		g_{11} = \langle\vec{r}_u, \vec{r}_u\rangle = u^2 + 2,\quad
+		g_{12} = \langle\vec{r}_u, \vec{r}_v\rangle = u^2 + 1,\quad
+		g_{22} = \langle\vec{r}_v, \vec{r}_v\rangle = u^2 + 1,
+	\]
+	а теперь вторую:
+	\[
+		b_{11} = \langle\vec{r}_{uu}, \vec{n}\rangle = \frac{-2}{\sqrt{1 + u^2}},\quad
+		b_{12} = \langle\vec{r}_{uv}, \vec{n}\rangle = \frac{-1}{\sqrt{1 + u^2}},\quad
+		b_{22} = \langle\vec{r}_{vv}, \vec{n}\rangle = 0.
+	\]
+	Таким образом,
+	\[
+		\G =
+		\begin{pmatrix}
+			u^2 + 2 & u^2 + 1\\
+			u^2 + 1 & u^2 + 1
+		\end{pmatrix},\quad\B = \frac{-1}{\sqrt{1 + u^2}}
+		\begin{pmatrix}
+			2 & 1\\
+			1 & 0
+		\end{pmatrix}.
+	\]
+	Приведём эти две квадратичные формы к главным осям.
+	\begin{gather*}
+		\det(\B - \lambda\G) = 0,\\
+		\det
+		\begin{pmatrix}
+			\dfrac{-2}{\sqrt{1 + u^2}} - \lambda(u^2 + 2) & \dfrac{-1}{\sqrt{1 + u^2}} - \lambda(u^2 + 1)\\[1em]
+			\dfrac{-1}{\sqrt{1 + u^2}} - \lambda(u^2 + 1) & -\lambda(u^2 + 1)
+		\end{pmatrix} = 0,\\
+		\cancel{2\sqrt{u^2 + 1} \cdot \lambda} + \lambda^2(u^2 + 1)(u^2 + 2) - \frac{1}{u^2 + 1} - \cancel{2\sqrt{u^2 + 1}} \cdot \lambda - (u^2 + 1)^2\lambda^2 = 0,\\
+		(u^2 + 1)\lambda^2 - \frac{1}{u^2 + 1} = 0.
+	\end{gather*}
+	Отсюда находим главные кривизны:
+	\[
+		\lambda_{1, 2} = \pm\frac{1}{1 + u^2}.
+	\]
+
+	Сразу легко видим $H = 0$, $\ds K = \frac{1}{(1 + u^2)^2}$ Приступаем к нахождению главных направлений, для удобства обозначив $t \vcentcolon = \sqrt{u^2 + 1}$:
+	\begin{gather*}
+		(\B - \lambda_1\G)\vec{\xi}_1 = \vec{0},\\
+		\begin{pmatrix}
+			-\dfrac{(t + 1)^2}{t^2} & -\dfrac{t^2 + t}{t^2}\\[1em]
+			-\dfrac{t^2 + t}{t^2} & -1
+		\end{pmatrix}\vec{\xi}_1 = \vec{0},\\
+		\begin{pmatrix}
+			\br{1 + \dfrac{1}{t}}^2 & 1 + \dfrac{1}{t}\\
+			1 + \dfrac{1}{t} & 1
+		\end{pmatrix}\vec{\xi}_1 = \vec{0}.
+	\end{gather*}
+
+	Легко видеть, что подходит $\ds\vec{\xi}_1 = -1 - \frac{1}{t}$. Аналогично находим $\ds\vec{\xi}_2 = -1 + \frac{1}{t}$. После подстановки значения $t$:
+	\[
+		\vec{\xi}_{1, 2} = -1 \mp \frac{1}{\sqrt{u^2 + 1}}.
+	\]
+\end{solution}
+
+\begin{problem}
+	На поверхности $y = z^2$ найти кривизну нормального сечения в точке $(2, 4, 2)$ в направлении кривой, полученной сечением поверхностью $x = z^2 / 2$.
+\end{problem}
+
+\begin{solution}
+	В нашем случае кривую в сечении легко параметризовать координатой $z$:
+	\[
+		\vec{\rho}(t) = \br{\frac{t^2}{2}, t^2, t}.
+	\]
+
+	Вектор скорости в интересующей нас точке равен $\vec{v} \vcentcolon = \dot{\vec{\rho}}(2) = (2, 4, 1)$. Из теоремы Менье \ref{theorem:Meusneir}, кривизна нормального сечения в нашей точке есть $k_n = \ds\frac{\II(\vec{v})}{\I(\vec{v})}$. Напомним, что значение первой квадратичной формы на векторе есть просто квадрат его длины, а из предложения \ref{proposition:GeomII}, чтобы найти значение на второй квадратичной форме, достаточно найти скалярное произведение $\langle\ddot{\vec{\rho}}, \vec{n}\rangle$ вектора ускорения кривой на вектор нормали поверхности. Параметризуем нашу поверхность, взяв в качестве криволинейных координат $u = x$, $v = z$:
+	\[
+		\vec{r}(u, v) = (u, v^2, v).
+	\]
+	Находим вектор нормали:
+	\begin{gather*}
+		\vec{r}_u \times \vec{r}_v =
+		\begin{pmatrix}
+			\vec{e}_1 & \vec{e}_2 & \vec{e}_3\\
+			1 & 0 & 0\\
+			0 & 2v & 1
+		\end{pmatrix} = (0, -1, 2v),\\
+		\vec{n} = \frac{\vec{r}_u \times \vec{r}_v}{\abs{\vec{r}_u \times \vec{r}_v}} = \frac{(0, -1, 2v)}{\sqrt{4v^2 + 1}}.
+	\end{gather*}
+	Итак,
+	\[
+		k_n = \frac{\II(\vec{v})}{\I(\vec{v})} = \frac{\langle\vec{\rho}(2), \vec{n}(2, 2)\rangle}{2^2 + 4^2 + 1^2} = \frac{1}{21\sqrt{17}}\langle(1, 2, 0), (0, -1, 4)\rangle = \frac{-2}{21\sqrt{17}}.
+	\]
+\end{solution}
+

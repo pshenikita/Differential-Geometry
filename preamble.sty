@@ -103,6 +103,7 @@
 \newcommand{\sgn}{\operatorname{sgn}}
 \renewcommand{\gcd}{\operatorname{НОД}}
 \newcommand{\lcm}{\operatorname{НОК}}
+\renewcommand{\Re}{\operatorname{Re}}
 \renewcommand{\Im}{\operatorname{Im}}
 \newcommand{\Ker}{\operatorname{Ker}}
 \newcommand{\conv}{\operatorname{conv}}
@@ -132,6 +133,7 @@
 % Перенос символа на следующую строку в формулах
 \newcommand*{\hm}[1]{#1\nobreak\discretionary{}{\hbox{$\mathsurround=0pt #1$}}{}}
 
+% Общий счётчик
 \newcounter{cnt}[section]
 \renewcommand{\thecnt}{\arabic{section}{.}\arabic{cnt}}
 
@@ -170,6 +172,7 @@
 	{{\bfseries Определение \thecnt.}}{{\bfseries Определение \thecnt\;{\mdseries(#1)}.}}
 }{\par\smallskip}
 
+% Оболочка для задачи
 \newenvironment{problem}[1][]{\refstepcounter{cnt}
 	\par\smallskip\noindent
 	\ifthenelse{\equal{#1}{}}
