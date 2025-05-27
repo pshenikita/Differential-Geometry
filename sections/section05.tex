@@ -46,6 +46,25 @@
 
 Отметим глубинный смысл формулы, полученной нами при решении задачи \ref{problem:ChristoffelNotTensor}. Дело в том, что нетензорный характер преобразования символов Кристоффеля компенсирует <<нетензорность>> частной производной. (Ведь ковариантная производная уже обязана меняться, как тензор!) В частности, с помощью этого наблюдения можно более простым путём прийти к формуле преобразования символов Кристоффеля, выведенной нами ранее лобовыми вычислениями.
 
+\begin{proposition} \label{proposition:TranslationProperties}
+	Для любых векторных полей $\vec{v}$, $\vec{v}_1$, $\vec{v}_2$ и векторов $\vec{w}$, $\vec{w}_1$, $\vec{w}_2$ в фиксированной точке $\vec{x}$ поверхности, функции $f$ на $\M$, а также чисел $\lambda_1$, $\lambda_2$ выполнено следующее:
+	\begin{gather*}
+		\nabla_{\vec{w}}(\vec{v}_1 + \vec{v}_2) = \nabla_{\vec{w}}\vec{v}_1 + \nabla_{\vec{w}}\vec{v}_2,\\
+		\nabla_{\vec{w}}(f\vec{v}) = (\nabla_{\vec{w}}f)\vec{v} + f(\nabla_{\vec{w}}\vec{v}),\\
+		\nabla_{\lambda_1\vec{w}_1 + \lambda_2\vec{w}_2}\vec{v} = \lambda_1\nabla_{\vec{w}_1}\vec{v} + \lambda_2\nabla_{\vec{w}_2}\vec{v},\\
+		\nabla_{\vec{w}}\langle\vec{v}_1, \vec{v}_2\rangle = \langle\nabla_{\vec{w}}\vec{v}_1, \vec{v}_2\rangle + \langle\vec{v}_1, \nabla_{\vec{w}}\vec{v}_2\rangle,
+	\end{gather*}
+	где $(\nabla_{\vec{w}}f)(\vec{x}) \vcentcolon = df|_{\vec{x}}(\vec{w})$ --- производная функции $f$ по направлению вектора $\vec{w}$.
+\end{proposition}
+
+\begin{proof}
+	Первые три равенства проверяются непосредственно. Для доказательства последнего нам пригодится тождество \eqref{eq:AlmostCristoffelIdentity}:
+	\begin{multline*}
+		\nabla_{\vec{w}}\langle\vec{v}_1, \vec{v}_2\rangle = W^k\frac{\partial}{\partial u^k}(V_1^iV_2^jg_{ij}) = W^k\br{\frac{\partial V_1^i}{\partial u^k}V_2^jg_{ij} + V_1^i\frac{\partial V_2^j}{\partial u^k}g_{ij} + V_1^iV_2^j\frac{\partial g_{ij}}{\partial u^k}} =\\ = W^k\br{\frac{\partial V_1^i}{\partial u^k}V_2^jg_{ij} + V_1^i\frac{\partial V_2^j}{\partial u^k}g_{ij} + V_1^iV_2^j(g_{js}\Gamma_{ik}^s + g_{is}\Gamma_{jk}^s)} =\\ = \underbrace{W^k\br{\frac{\partial V_1^i}{\partial u^k} + \Gamma_{sk}^iV_1^s}}_{\nabla_{\vec{w}}\vec{v}_1}V_2^jg_{ij} + \underbrace{W^k\br{\frac{\partial V_2^j}{\partial u^k} + \Gamma_{sk}^jV_2^s}}_{\nabla_{\vec{w}}\vec{v}_2}V_1^ig_{ij} = \langle\nabla_{\vec{w}}\vec{v}_1, \vec{v}_2\rangle + \langle\vec{v}_1, \nabla_{\vec{w}}\vec{v}_2\rangle.
+	\end{multline*}
+	В предпоследнем равенстве мы переобозначили несколько индексов. Выкладка выглядит не совсем прозрачной, но в ней нетрудно разобраться.
+\end{proof}
+
 Итак, мы поняли, что <<движением прямо>> вдоль некоторого векторного поля $\vec{w}$ мы хотим называть такое движение, что наша ковариантная производная вдоль этого векторного поля всюду равна нулю.
 
 \begin{definition}
@@ -92,7 +111,7 @@
 	На какой угол повернётся касательный вектор к единичной сфере после параллельного переноса вдоль параллели $\theta = \theta_0$ ($0 \leqslant \theta_0 \leqslant \frac{\pi}{2}$) на угол $2\pi$?
 \end{problem}
 
-\begin{firstsolution} % TODO: перерешать через трюк с конусом и распрямлением
+\begin{firstsolution}
 	Напомним, что параметризация $\vec{r}(\theta, \varphi)$ единичной сферы имеет вид
 	\[
 		x = \sin\theta\cos\varphi,\quad y = \sin\theta\sin\varphi,\quad z = \cos\theta,
