@@ -1,8 +1,220 @@
 \section{Дополнения}
 
+\subsection{Тензор кривизны Римана}
+
+Мы определяли символы Кристоффеля и ковариантную производную для двумерных поверхностей, а затем получили их выражения через метрику. Можно взять выведенные формулы за определения этих понятий в криволинейных координатах (никак не связанных с поверхностями), переходя таким образом к несколько более общей ситуации. Отметим также, что при выводе этих формул размерность нигде не использовалась, так что далее будем работать с криволинейными координатами в области евклидова пространства $\R^n$ для любого $n$.
+
+Зададимся естественным вопросом: можно ли по римановой метрике в области восстановить криволинейные координаты, метрика которой совпадает с указанной? Ответ следует искать в деривационных уравнениях Гаусса:
+\[
+	\frac{\partial^2\vec{r}}{\partial u^i\partial u^j} = \Gamma_{ij}^k\frac{\partial\vec{r}}{\partial u^k}.
+\]
+Действительно, ведь если какая-то матрица претендует быть метрикой криволинейной системы координат, то она должна удовлетворять системе деривационных уравнений, куда она входит через символы Кристоффеля. Запишем для данной системы условия совместности из теоремы Дарбу \ref{theorem:Darboux}:
+\[
+	\frac{\partial^3\vec{r}}{\partial u^i\partial u^j\partial u^l} = \frac{\partial^3\vec{r}}{\partial u^i\partial u^l\partial u^j}.
+\]
+Распишем левую часть:
+\begin{multline*}
+	\frac{\partial^3\vec{r}}{\partial u^i\partial u^j\partial u^l} = \frac{\partial}{\partial u^l}\br{\frac{\partial^2\vec{r}}{\partial u^i\partial u^j}} = \frac{\partial}{\partial u^l}\br{\Gamma_{ij}^k\frac{\partial\vec{r}}{\partial u^k}} =\\ = \frac{\partial\Gamma_{ij}^k}{\partial u^l}\frac{\partial\vec{r}}{\partial u^k} + \Gamma_{ij}^k\frac{\partial^2\vec{r}}{\partial u^k\partial u^l} = \frac{\partial\Gamma_{ij}^k}{\partial u^l}\frac{\partial\vec{r}}{\partial u^k} + \Gamma_{ij}^k\Gamma_{kl}^s\frac{\partial\vec{r}}{\partial u^s} = \br{\frac{\partial\Gamma_{ij}^s}{\partial u^l} + \Gamma_{ij}^k\Gamma_{kl}^s}\frac{\partial\vec{r}}{\partial u^s}.
+\end{multline*}
+Аналогично пишем для правой части, подставляем в условие совместности и раскладываем по базису в криволинейных координатах:
+\begin{gather*}
+	\frac{\partial\Gamma_{ij}^s}{\partial u^l} + \Gamma_{ij}^k\Gamma_{kl}^s = \frac{\partial\Gamma_{il}^s}{\partial u^j} + \Gamma_{il}^k\Gamma_{kj}^s,\\
+	\frac{\partial\Gamma_{il}^s}{\partial u^j} - \frac{\partial\Gamma_{ij}^s}{\partial u^l} + \Gamma_{il}^k\Gamma_{kj}^s - \Gamma_{ij}^k\Gamma_{kl}^s = 0.
+\end{gather*}
+Выражение, стоящее слева, называется \textit{тензором кривизны Римана} и обозначается $R^s_{ijl}$.
+
+\begin{lemma}
+	Выполнено следующее тождество:
+	\[
+		R^s_{ijl}\frac{\partial\vec{r}}{\partial u^s} = [\nabla_j, \nabla_l]\frac{\partial\vec{r}}{\partial u^i}.
+	\]
+	Здесь $[\nabla_j, \nabla_l] = \nabla_j\nabla_l - \nabla_l\nabla_j$ --- коммутатор операторов.
+\end{lemma}
+
+\begin{proof}
+	Для начала посчитаем ковариантную производную $\nabla_j\frac{\partial\vec{r}}{\partial u^i}$. Для поля $\frac{\partial\vec{r}}{\partial u^i} = \vcentcolon \vec{v} = V^s\frac{\partial\vec{r}}{\partial u^s}$ имеем $V^i = 1$, а остальные компоненты нулевые. Тогда
+	\[
+		\nabla_j\frac{\partial \vec{r}}{\partial u^i} = \nabla_j\vec{v} = \br{\frac{\partial V^s}{\partial u^j} + \Gamma_{jk}^sV^k}\frac{\partial\vec{r}}{\partial u^s} = \Gamma_{ij}^s\frac{\partial\vec{r}}{\partial u^s}.
+	\]
+	Теперь посчитаем повторную ковариантную производную $\nabla_l\nabla_j\frac{\partial\vec{r}}{\partial u^i}$. Мы уже получили, что компоненты векторного поля $\nabla_j\frac{\partial\vec{r}}{\partial u^i} = \vcentcolon \vec{w} = W^s\frac{\partial\vec{r}}{\partial u^s}$ равны $W^s = \Gamma_{ij}^s$. Отсюда
+	\[
+		\nabla_l\br{\nabla_j\frac{\partial\vec{r}}{\partial u^i}} = \nabla_l\vec{w} = \br{\frac{\partial W^s}{\partial u^l} + \Gamma_{lk}^sW^k}\frac{\partial\vec{r}}{\partial u^s} = \br{\frac{\partial\Gamma_{ij}^s}{\partial u^l} + \Gamma_{kl}^s\Gamma_{ij}^k}\frac{\partial\vec{r}}{\partial u^s}.
+	\]
+	Итак, получаем
+	\begin{multline*}
+		(\nabla_j\nabla_l - \nabla_l\nabla_j)\frac{\partial\vec{r}}{\partial u^i} = \br{\frac{\partial\Gamma_{il}^s}{\partial u^j} + \Gamma_{il}^k\Gamma_{kj}^s}\frac{\partial\vec{r}}{\partial u^s} - \br{\frac{\partial\Gamma_{ij}^s}{\partial u^l} + \Gamma_{kl}^s\Gamma_{ij}^k}\frac{\partial\vec{r}}{\partial u^s} =\\ = \underbrace{\br{\frac{\partial\Gamma_{il}^s}{\partial u^j} - \frac{\partial\Gamma_{ij}^s}{\partial u^l} + \Gamma_{il}^k\Gamma_{kj}^s - \Gamma_{ij}^k\Gamma_{kl}^s}}_{= R^s_{ijl}}\frac{\partial\vec{r}}{\partial u^s} = R^s_{ijl}\frac{\partial\vec{r}}{\partial u^s}.
+	\end{multline*}
+\end{proof}
+
+Таким образом, условие совместности деривационных уравнений Гаусса есть коммутирование ковариантных производных.
+
+У доказанной леммы есть ещё одно важное следствие --- $R^s_{ijl}$ является тензором типа $(1, 3)$. Действительно, пусть $(u^1, \ldots, u^n)$ и $(u^{1^\prime}, \ldots, u^{n^\prime})$ --- две криволинейные системы координат\footnotemark{}, тогда для любого векторного поля $\vec{v} = V^i\frac{\partial\vec{r}}{\partial u^i} = V^{i^\prime}\frac{\partial\vec{r}}{\partial u^{i^\prime}}$ имеем
+\begin{multline*}
+	R^{s^\prime}_{i^\prime j^\prime l^\prime} = \br{(\nabla_{j^\prime}\nabla_{l^\prime} - \nabla_{l^\prime}\nabla_{j^\prime})\frac{\partial\vec{r}}{\partial u^{i^{\prime}}}}^{s^\prime} = \frac{\partial u^{s^\prime}}{\partial u^s}\br{(\nabla_{j^\prime}\nabla_{l^\prime} - \nabla_{l^\prime}\nabla_{j^\prime})\frac{\partial\vec{r}}{\partial u^{i^\prime}}}^s =\\ = \frac{\partial u^{s^\prime}}{\partial u^s}\frac{\partial u^i}{\partial u^{i^\prime}}\frac{\partial u^j}{\partial u^{j^\prime}}\frac{\partial u^l}{\partial u^{l^\prime}}\underbrace{\br{(\nabla_j\nabla_l - \nabla_l\nabla_j)\frac{\partial\vec{r}}{\partial u^i}}^s}_{=R^s_{ijl}} = \frac{\partial u^{s^\prime}}{\partial u^s}\frac{\partial u^i}{\partial u^{i^\prime}}\frac{\partial u^j}{\partial u^{j^\prime}}\frac{\partial u^l}{\partial u^{l^\prime}}R^s_{ijl}.
+\end{multline*}
+
+\footnotetext{При работе с тензорами для обозначения новых координат оказывается удобным менять не буквы, а индексы. Часто у новых координат индексы обозначают штрихами.}
+
+Из теоремы Дарбу следует, что если тензор кривизны Римана заданной матрицы Грама равен нулю (такие метрики называются \textit{плоскими}), то для неё существует криволинейная система координат, метрика которой совпадает с заданной матрицей Грама.
+
+\begin{theorem}
+	Симметричная положительно определённая матрица $g_{ij}$ является матрицей Грама некоторой криволинейной системы координат тогда и только тогда, когда
+	\begin{enumerate}[nolistsep, label=(\arabic*)]
+		\item существует замена координат, в которой она принимает вид единичной матрицы;
+		\item существует замена координат, в которой символы Кристоффеля обращаются в ноль;
+		\item тензор кривизны Римана обращается в ноль.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Пусть задана матрица $g_{ij}$ с указанными свойствами. Если тензор кривизны для этой матрицы равен нулю, то по теореме Дарбу существует криволинейная система координат с такой матрицей Грама. Для любой матрицы Грама криволинейной системы координат в евклидовом пространстве существует замена координат, с помощью которой она приводится к единичной матрице. Раз матрица Грама единичная, то из формул для символов Кристоффеля следует, что все они равны нулю. Если символы Кристоффеля равны нулю, то и тензор кривизны Римана равен нулю.
+\end{proof}
+
+Мы определяли ковариантное дифференцирование только для векторов, однако можно тем же способом определить его и для тензоров типа $(p, q)$. Пусть $T = T^{i_1 \ldots i_p}_{j_1 \ldots j_q}$, тогда ковариантная производная вдоль вектора $\vec{w} = W^k\partial_k$ даётся формулой
+\[
+	(\nabla_{\vec{w}}T)^{i_1 \ldots i_p}_{j_1 \ldots j_q} = W^k\br{\partial_kT^{i_1 \ldots i_p}_{j_1 \ldots j_q} + \sum_{m = 1}^p\Gamma_{ks}^{i_m}T^{i_1 \ldots i_{m - 1} s i_{m + 1} i_p}_{j_1 \ldots j_q} - \sum_{n = 1}^q\Gamma_{kj_n}^sT^{i_1 \ldots i_p}_{j_1 \ldots j_{n - 1} s j_{n + 1} j_q}}.
+\]
+Отметим, что тождества \eqref{eq:AlmostCristoffelIdentity} дают $\nabla_kg_{ij} \equiv 0$. Иными словами, метрика в криволинейных координатах ковариантно постоянна вдоль любого направления.
+
+\subsection{Поверхности произвольной размерности}
+
+В этом разделе мы перейдём от двумерных поверхностей к высшим размерностям. Определение $k$-мерной поверхности схоже с двумерным случаем.
+
+\begin{definition}
+	\textit{Элементарной $k$-мерной поверхностью} в $\R^n$ называется образ диффеоморфизма из области в $\R^k$, ранг матрицы Якоби которого всюду имеет ранг $k$ (\textit{условие регулярности}).
+\end{definition}
+
+\begin{definition}
+	Подмножество $\M \subset \R^n$ называется \textit{регулярной $k$-мерной поверхностью}, если для любой точки $\vec{x} \in \R^n$ пересечение $\M \cap \overline{B}_{\eps}(\vec{x})$ множества $\M$ с некоторым замкнутым шаром с центром в точке $\vec{x}$ либо пусто, либо является элементарной $k$-мерной поверхностью.
+\end{definition}
+
+Из теоремы о неявной функции сразу следует равносильность локального параметрического задания с локальным заданием в виде множества нулей гладкой функции. Доказывается так же, как и в двумерном случае.
+
+Аналогично с двумерным случаем, можем определить \textit{касательное пространство} в точке $\vec{x} \in \M$ как линейную оболочку касательных векторов координатных линий в этой точке:
+\[
+	\T_{\vec{x}}\M \vcentcolon = \span\br{\left.\frac{\partial\vec{r}}{\partial u^1}\right|_{\vec{x}}, \ldots, \left.\frac{\partial\vec{r}}{\partial u^k}\right|_{\vec{x}}}.
+\]
+В евклидовом пространстве $\R^n$ можем выбрать ортогональное дополнение подпространства $\T_{\vec{x}}\M$, назовём его \textit{нормальным пространством} поверхности $\M$ и будем обозначать через $\mathcal{N}_{\vec{x}}\M$. Тогда имеет место разложение
+\[
+	\T_{\vec{x}}\M \oplus \mathcal{N}_{\vec{x}}\M = \R^n.
+\]
+Выберем в нём ортонормированный базис $(\vec{n}_1, \ldots, \vec{n}_{n - k})$. Размерность $n - k$ нормального пространства называется \textit{коразмерностью} поверхности $\M$.
+
+Выведем аналоги деривационных уравнений для $k$-мерных поверхностей. Так же, как и в двумерном случае, опеределяем риманову метрику $\ds g_{ij} \vcentcolon = \left\langle\frac{\partial\vec{r}}{\partial u^i}, \frac{\partial\vec{r}}{\partial u^j}\right\rangle$. По ней можно определить тензор кривизны Римана, как мы это делали для произвольных систем криволинейных координат. Отметим лишь, что теперь тензор кривизны не обязан обращаться в ноль. Можем формально написать
+\[
+	\begin{cases}
+		\begin{aligned}
+			&\frac{\partial^2\vec{r}}{\partial u^i \partial u^j} = \Gamma_{ij}^k\frac{\partial\vec{r}}{\partial u^k} + \sum_{\alpha = 1}^{n - k}b_{ij, \alpha}\vec{n}_\alpha,\\
+			&\frac{\partial\vec{n}_\alpha}{\partial u^i} = c_{i, \alpha}^k\frac{\partial\vec{r}}{\partial u^k} + \sum_{\beta = 1}^{n - k}d_{i, \alpha\beta}\vec{n}_\beta.
+		\end{aligned}
+	\end{cases}
+\]
+
+Первое разложение называется \textit{разложением Гаусса}, второе --- \textit{разложением Вайнгартена} (при найденных коэффициентах). Коэффициенты $\Gamma_{ij}^k = \Gamma_{ji}^k$, как и раньше, называются \textit{символами Кристоффеля}. Аналогично двумерному случаю доказываются тождества
+\[
+	\Gamma_{ij}^k = \frac{g^{kl}}{2}\br{\frac{\partial g_{il}}{\partial u^j} + \frac{\partial g_{jl}}{\partial u^i} - \frac{\partial g_{ij}}{\partial u^l}}.
+\]
+
+Теперь рассмотрим коэффициенты $b_{ij, \alpha} = b_{ji, \alpha}$, которые называются \textit{вторыми квадратичными формами}. (Для каждого базисного вектора нормального пространства имеем свою квадратичную форму, всего их $n - k$.) Из разложения Гаусса сразу очевидны формулы
+\[
+	b_{ij, \alpha} = \left\langle\frac{\partial\vec{r}}{\partial u^i \partial u^j}, \vec{n}_{\alpha}\right\rangle.
+\]
+
+Коэффициенты $c_{i, \alpha}^k$ называются, по аналогии с двумерным случаем, операторами Вайнгартена. Вычисляются они схожим образом:
+\[
+	c_{i, \alpha}^kg_{kl} = \left\langle\frac{\partial\vec{n}_\alpha}{\partial u^i}, \frac{\partial\vec{r}}{\partial u^l}\right\rangle \stackrel{\abs{\vec{n}_\alpha} = 1}{=\joinrel=} -\left\langle\vec{n}_\alpha, \frac{\partial\vec{r}}{\partial u^i \partial u^l}\right\rangle = -b_{il, \alpha} \Rightarrow c_{i, \alpha}^k = -g^{kl}b_{il, \alpha}.
+\]
+
+Коэффициенты $d_{i, \alpha\beta}$ называются \textit{коэффициентами кручения} поверхности и также являются её фундаментальными геометрическими характеристиками. Для них
+\[
+	d_{i, \alpha\beta} = \left\langle\frac{\partial\vec{n}_\alpha}{\partial u^i}, \vec{n}_\beta\right\rangle \stackrel{\abs{\vec{n}_\alpha} = 1}{=\joinrel=} -\left\langle \vec{n}_\alpha, \frac{\vec{n}_\beta}{\partial u^i}\right\rangle = -d_{i, \beta\alpha}.
+\]
+Таким образом, коэффициенты кручения кососимметричны по индексам $\alpha$ и $\beta$. Если в нормальном пространстве существует базис, в котором все коэффициенты кручения равны нулю, то такая поверхность называется \textit{поверхностью без кручения}. Поверхности коразмерности $1$ всегда не имеют кручения.
+
+Легко проверить, что при заменах координат коэффициенты $b_{ij, \alpha}$, $c_{i, \alpha}^k$ и $b_{i, \alpha\beta}$ меняются как тензоры типа $(0, 2)$, $(1, 1)$ и $(0, 1)$ соответственно.
+
+На $k$-мерных регулярных поверхностях можно, как и в двумерном случае, определить ковариантное дифференцирование. Все формулы при этом, как легко видеть, сохраняются. По определению ковариантной производной как проекции обычной производной на касательное пространство, можем переписать разложение Гаусса в виде
+\[
+	\frac{\partial^2\vec{r}}{\partial u^i\partial u^j} = \nabla_j\frac{\partial\vec{r}}{\partial u^i} + \sum_{\alpha = 1}^{n - k}b_{ij, \alpha}\vec{n}_\alpha
+\]
+или, обобщая на произвольное векторное поле $\vec{v}$,
+\begin{equation} \label{eq:Covariantkdim}
+	\frac{\partial\vec{v}}{\partial u^i} = \nabla_i\vec{v} + \sum_{\alpha = 1}^{n - k}\left\langle\frac{\partial\vec{v}}{\partial u^i}, \vec{n}_\alpha\right\rangle\vec{n}_\alpha.
+\end{equation}
+
+Будем смотреть на эти уравнения как на систему дифференциальных уравнений относительно компонент векторов касательного и нормального пространств и запишем для них условие совместности из теоремы Дарбу \ref{theorem:Darboux}. Для разложения Гаусса эти условия имеют вид
+\[
+	\frac{\partial^3\vec{r}}{\partial u^i\partial u^j\partial u^l} = \frac{\partial^3\vec{r}}{\partial u^i\partial u^l\partial u^j}.
+\]
+Распишем подробнее:
+\begin{gather*}
+	\frac{\partial}{\partial u^l}\br{\nabla_j\frac{\partial\vec{r}}{\partial u^i} + \sum_{\alpha = 1}^{n - k}b_{ij, \alpha}\vec{n}_\alpha} = \frac{\partial}{\partial u^j}\br{\nabla_l\frac{\partial\vec{r}}{\partial u^i} + \sum_{\alpha = 1}^{n - k}b_{il, \alpha}\vec{n}_\alpha},\\
+	\frac{\partial}{\partial u^l}\br{\nabla_j\frac{\partial\vec{r}}{\partial u^i}} + \br{\sum_{\alpha = 1}^{n - k}b_{ij, \alpha}\vec{n}_\alpha} = \frac{\partial}{\partial u^j}\br{\nabla_l\frac{\partial\vec{r}}{\partial u^i}} + \br{\sum_{\alpha = 1}^{n - k}b_{il, \alpha}\vec{n}_\alpha}.
+\end{gather*}
+Пользуясь \eqref{eq:Covariantkdim}, напишем
+\begin{multline} \label{eq:GaussCodazzikdim}
+	(\nabla_l\nabla_j - \nabla_j\nabla_l)\br{\frac{\partial\vec{r}}{\partial u^i}} + \sum_{\alpha = 1}^{n - k}\left\langle\vec{n}_\alpha, \frac{\partial}{\partial u^l}\br{\nabla_j\frac{\partial\vec{r}}{\partial u^i}} - \frac{\partial}{\partial u^j}\br{\nabla_l\frac{\partial\vec{r}}{\partial u^i}}\right\rangle\vec{n}_\alpha + {}\\{} + \sum_{\alpha = 1}^{n - k}\br{\frac{\partial b_{ij, \alpha}}{\partial u^l} - \frac{\partial b_{il, \alpha}}{\partial u^j}}\vec{n}_\alpha + \sum_{\alpha = 1}^{n - k}\br{b_{ij, \alpha}\frac{\partial\vec{n}_\alpha}{\partial u^l} - b_{il, \alpha}\frac{\partial\vec{n}_\alpha}{\partial u^j}} = 0.
+\end{multline}
+Далее рассмотрим компоненту этого вектора, лежащую в касательном пространстве:
+\begin{gather*}
+	(\nabla_l\nabla_j - \nabla_j\nabla_l)\br{\frac{\partial\vec{r}}{\partial u^i}} + \sum_{\alpha = 1}^{n - k}(b_{ij, \alpha}c^k_{l, \alpha} - b_{il, \alpha}c^k_{j, \alpha})\frac{\partial\vec{r}}{\partial u^s} = 0,\\
+	{\underbrace{(\nabla_l\nabla_j - \nabla_j\nabla_l)\br{\frac{\partial\vec{r}}{\partial u^i}}}_{= \frac{\scriptstyle\partial\vec{r}}{\scriptstyle\partial u^k}R^k_{ilj}}} = \frac{\partial\vec{r}}{\partial u^k}g^{km}\sum_{\alpha = 1}^{n - k}\br{b_{ij, \alpha}b_{ml, \alpha} - b_{il, \alpha}b_{mj, \alpha}},\\
+	R^k_{ijl} = g^{km}\sum_{\alpha = 1}^{n - k}\br{b_{il, \alpha}b_{mj, \alpha} - b_{ij, \alpha}b_{ml, \alpha}}.
+\end{gather*}
+Опустив индекс у тензора кривизны, получим
+\[
+	R_{mijl} = g_{mk}R^k_{ijl} = \sum_{\alpha = 1}^{n - k}\br{b_{il, \alpha}b_{mj, \alpha} - b_{ij, \alpha}b_{ml, \alpha}}.
+\]
+(Часто тензор $R_{mijl}$, полученный из тензора кривизны Римана опусканием индекса, тоже называют \textit{тензором Римана}) Это уравнение называется \textit{уравнением Гаусса}. Из него видны следующие симметрии тензора Римана:
+\[
+	R_{mijl} = -R_{imjl},\quad R_{mijl} = -R_{milj},\quad R_{mijl} = R_{jlmi}.
+\]
+Таких симметрий достаточно много, поэтому в случае двумерных поверхностей единственной нетривиальной компонентой остаётся $R_{1212} = b_{11}b_{22} - b_{12}^2 = \det\B$. Можем также записать
+\[
+	\frac{R_{1212}}{\det\G} = \frac{\det\B}{\det\G} = K.
+\]
+
+Далее расписываем нормальную компоненту вектора в левой части уравнения \eqref{eq:GaussCodazzikdim}:
+\[
+	\left\langle\vec{n}_\alpha, \frac{\partial}{\partial u^l}\br{\nabla_j\frac{\partial\vec{r}}{\partial u^i}}\right\rangle - \left\langle\vec{n}_\alpha, \frac{\partial}{\partial u^j}\br{\nabla_l\frac{\partial\vec{r}}{\partial u^i}}\right\rangle + \frac{\partial b_{ij, \alpha}}{\partial u^l} - \frac{\partial b_{il, \alpha}}{\partial u^j} + \sum_{\beta = 1}^{n - k}(b_{ij, \alpha}d_{l, \beta\alpha} - b_{il, \alpha}d_{j, \beta\alpha}) = 0.
+\]
+Посчитаем первое слагаемое (второе аналогично):
+\begin{multline*}
+	\left\langle\vec{n}_\alpha, \frac{\partial}{\partial u^l}\br{\nabla_j\frac{\partial\vec{r}}{\partial u^i}}\right\rangle = \left\langle\vec{n}_\alpha, \frac{\partial}{\partial u^l}\br{\Gamma_{ij}^p\frac{\partial\vec{r}}{\partial u^p}}\right\rangle =\\ = {\underbrace{\left\langle\vec{n}_\alpha, \frac{\partial\Gamma_{ij}^p}{\partial u^l}\frac{\partial\vec{r}}{\partial u^p}\right\rangle}_{= 0}} + \Gamma_{ij}^p\left\langle\vec{n}_\alpha, \frac{\partial^2\vec{r}}{\partial u^p\partial u^l}\right\rangle = \Gamma_{ij}^pb_{pl, \alpha}.
+\end{multline*}
+Получаем
+\[
+	\Gamma_{ij}^pb_{pl, \alpha} - \Gamma_{il}^pb_{pj, \alpha} + \frac{\partial b_{ij, \alpha}}{\partial u^l} - \frac{\partial b_{il, \alpha}}{\partial u^j} + \sum_{\beta = 1}^{n - k}(b_{ij, \alpha}d_{l, \beta\alpha} - b_{il, \alpha}d_{j, \beta\alpha}) = 0.
+\]
+Эти уравнения называются \textit{уравнениями Кодацци}. Они принимают более компактный вид, если переписать их через ковариантные производные:
+\[
+	\nabla_lb_{ij, \alpha} - \nabla_jb_{il, \alpha} = \sum_{\beta = 1}^{n - k}(b_{ij, \alpha}d_{l, \alpha\beta} - b_{il, \alpha}d_{j, \alpha\beta}).
+\]
+Для гиперповерхностей (коразмерности $1$) уравнения Кодацци принимают вид $\nabla_lb_{ij} = \nabla_jb_{il}$. Выражение $\nabla_lb_{ij}$ является тензором типа $(0, 3)$, который называется \textit{тензором Кодацци}. Отметим, что он симметричен по всем индексам, что следует из уравнений Кодацци и симметричности второй квадратичной формы.
+
+Теперь выпишем условия совместности для разложения Вайнгартена. Оно имеет вид
+\[
+	\frac{\partial^2\vec{n}_\alpha}{\partial u^i\partial u^j} = \frac{\partial^2\vec{n}_\alpha}{\partial u^j\partial u^i}.
+\]
+Распишем левую часть, пользуясь разложениями Гаусса и Вайнгартена:
+\begin{multline*}
+	\frac{\partial^2\vec{n}_\alpha}{\partial u^i\partial u^j} = \frac{\partial}{\partial u^j}\br{c_{i, \alpha}^k\frac{\partial\vec{r}}{\partial u^k} + \sum_{\beta = 1}^{n - k}d_{i, \alpha\beta}\vec{n}_\beta} = \frac{\partial c_{i, \alpha}^k}{\partial u^j}\frac{\partial\vec{r}}{\partial u^k} + {}\\{} + c_{i, \alpha}^k\br{\Gamma_{jk}^s\frac{\partial\vec{r}}{\partial u^s} + \sum_{\gamma = 1}^{n - k}b_{jk, \gamma}\vec{n}_\gamma} + \sum_{\beta = 1}^{n - k}\frac{d_{i, \alpha\beta}}{\partial u^j}\vec{n}_{\beta} + \sum_{\beta = 1}^{n - k}d_{i, \alpha\beta}\br{c_{j, \beta}^s\frac{\partial\vec{r}}{\partial u^s} + \sum_{\gamma = 1}^{n - k}d_{j, \beta\gamma}\vec{n}_\gamma}.
+\end{multline*}
+Если рассмотреть уравнение, полученное приравниванием коэффициентов при вектора касательного пространства после смены индексов $i$ и $j$, то получится уравнение Кодацци. (Доказательство появится здесь позже.) Если же приравнять коэффициенты при векторах нормального пространства $\vec{n}_{\gamma}$, мы получим \textit{уравнения Риччи}:
+\[
+	c_{i, \alpha}^kb_{kj, \gamma} - c_{j, \alpha}^kb_{ki, \gamma} + \frac{\partial d_{i, \alpha\gamma}}{\partial u^l} - \frac{\partial d_{j, \alpha\gamma}}{\partial u^i} + \sum_{\beta = 1}^{n - k}(d_{i, \alpha\beta}d_{j, \beta\gamma} - d_{j, \alpha\beta}d_{i, \beta\gamma}) = 0.
+\]
+(Здесь дополнительно следует заменить операторы Вайнгартена и коэффициенты кручения через первую и вторые квадратичные формы.) Если поверхность не имеет кручения, то уравнения Риччи обращаются в условие коммутирования операторов Вайнгартена. Но в случае коразмерности $1$ у нас всего один оператор Вайнгартена, который, конечно, сам с собой коммутирует. Так что уравнений Риччи для гиперповерхностей нет.
+
+Как и в двумерном случае, здесь имеет место теорема Бонне, которая говорит о восстановлении поверхности по её геометрическим характеристикам: метрике, вторым квадратичным формам и коэффициентам кручения.
+
+\begin{theorem}[Бонне]
+	Пусть в некоторой замкнутой односвязной области $\Omega \subset \R^k$ заданы гладкие по $u^1, \ldots, u^k$: симметричная положительно определённая матрица $g_{ij}(u^1, \ldots, u^k)$, симметричные матрицы $b_{ij, \alpha}(u^1, \ldots, u^k)$ и кососимметричные по индексам $\alpha$ и $\beta$ коэффициенты $d_{i, \alpha\beta}(u^1, \ldots, u^k)$. Тогда, если приведённые объекты удовлетворяют уравнениям Гаусса, Кодацци и Риччи, то существует единственная с точностью до движения $k$-мерная регулярная поверхность, у которой первой квадратичной формой будет матрица $g_{ij}$, вторыми квадратичными формами будут матрицы $b_{ij, \alpha}$, а коэффициентами кручения будут $d_{i, \alpha\beta}$.
+\end{theorem}
+
 \subsection{Модели плоскости Лобачевского}
 
-Ближе к концу предыдущего раздела мы классифицировали поверхности с постоянной гауссовой кривизной. Заметим, что для $K \geqslant 0$ мы можем предъявить поверхность без края, гауссова кривизна которой всюду равна $K$. Для $K > 0$ это сфера радиуса $1 / \sqrt{K}$, а для $K = 0$ --- плоскость (<<сфера бесконечного радиуса>>).
+Мы классифицировали поверхности постоянной гауссовой кривизны. Заметим, что для $K \geqslant 0$ мы можем предъявить поверхность без края, гауссова кривизна которой всюду равна $K$. Для $K > 0$ это сфера радиуса $1 / \sqrt{K}$, а для $K = 0$ --- плоскость (на которую можно смотреть как на сферу бесконечного радиуса).
 
 Гильберт доказал, что гладкие поверхности постоянной отрицательной гауссовой кривизны в евклидовом пространстве $\R^3$ не могут быть полными, что в контексте настоящего курса означает, что любая такая поверхность обязательно имеет край. (Со схемой доказательства теоремы Гильберта можно ознакомиться в \S 4{.}4 книги \cite{NT14}.) Однако существует способ построить не имеющий края аналог сферы с постоянной отрицательной кривизной, если отказаться от евклидовости пространства $\R^3$.
 
@@ -148,7 +360,9 @@ $\begin{pmatrix}
 	\rho_{\mathbb{L}}(z_1, z_2) = \int\limits_{x_1}^{x_2}\frac{2dx}{1 - x^2} = \int\limits_{x_1}^{x_2}\br{\frac{1}{1 + x} + \frac{1}{1 - x}}\,dx =\\ = \left.\big(\ln(1 + x) - \ln(1 - x)\big)\right|_{x_1}^{x_2} = \left.\ln\br{\frac{1 + x}{1 - x}}\right|_{x_1}^{x_2} = \ln\br{\frac{1 - x_1}{1 + x_1}\frac{1 + x_2}{1 - x_2}}.
 \end{multline*}
 
-Вывод формулы для произвольных $z_1$ и $z_2$ опустим. Идея в том, что нужно рассмотреть движение, переводящее $z_1$ и $z_2$ на действительную ось. Движение сохраняет расстояния, а на действительной оси формула расстояния нам уже известна.
+Отметим, что поворот с центром в начале координат в модели Пуанкаре, конечно, является движением. Поэтому выведенная нами формула годится для измерения расстояний от любой точки до центра единичного круга.
+
+Вывод формулы для произвольных точек опустим. Идея в том, что нужно рассмотреть движение, переводящее одну из них в начало координат. Движение сохраняет расстояния, а формула измерения расстояния до начала координат нам уже известна. Итоговая формула выглядит весьма громоздко, да и почти никогда не нужна. Важно понимать идею, что можно сначала одну из точек перевести в начало координат, и лишь потом мерять расстояния.
 
 Изучим геодезические в модели Пуанкаре в круге плоскости Лобачевского. Нетрудно проверить, что диаметр единичного круга является геодезической. (Написать уравнение геодезических и подставить в него этот диаметр.) Движения, как мы знаем, переводят геодезические в геодезические. Все движения на плоскости Лобачевского суть дробно-линейные преобразования, которые переводят прямые и окружности в прямые и окружности и сохраняют углы между кривыми. Поэтому такими движениями можно перевести наш диаметр в любой другой диаметр или в любую дугу окружности, перпендикулярной абсолюту. Но для каждой точки и для каждого направления найдётся кривая такого вида, проходящая через эту точку с таким направлением, поэтому других геодезических нет. (Этот же трюк мы уже применяли для нахождения геодезических на сфере в задаче \ref{eq:GeodesicSphere}.) Таким образом, имеем следующее утверждение.
 
@@ -187,16 +401,80 @@ $\begin{pmatrix}
 
 Геодезические в модели в верхней полуплоскости являются образами геодезических в модели в круге. Теперь это вертикальные лучи и полуокружности, перпендикулярные абсолюту (напомним, что абсолют в полуплоскости есть прямая $y = 0$).
 
-%\newcounter{problem}[section]
-%\renewenvironment{problem}[1][]{\refstepcounter{problem}
-%	\par\smallskip\noindent
-%	\ifthenelse{\equal{#1}{}}
-%	{{\bfseries Задача \theproblem.}}{{\bfseries Задача \theproblem\;{\mdseries(#1)}.}}
-%}{\par\smallskip}
+\newcounter{problem}[section]
+\renewenvironment{problem}[1][]{\refstepcounter{problem}
+	\par\smallskip\noindent
+	\ifthenelse{\equal{#1}{}}
+	{{\bfseries Задача \theproblem.}}{{\bfseries Задача \theproblem\;{\mdseries(#1)}.}}
+}{\par\smallskip}
+
+%\subsection{Задачи А.\,А. Гайфуллина}
 %
-%\subsection{Разбор контрольной работы А.\,А. Гайфуллина}
+%Александр Александрович проводил для нас две контрольные. Почти все задачи из первой контрольной работы разобраны по ходу текста, её материал включал в себя теорию кривых и криволинейные координаты.
 %
-%Александр Александрович проводил для нас две контрольные. Почти все задачи из первой контрольной работы разобраны по ходу текста, её материал включал в себя теорию кривых и криволинейные координаты. Разбор второй контрольной представлен здесь.
+%Во второй контрольной и в зачётном варианте было много задач, в которых понимание происходящего намного ускоряет решение, здесь приведём разбор некоторых из них.
+%
+%\begin{problem}
+%	На поверхности $z = 2z^2 + 9y^2$ найти кривизну нормального сечения в начале координат в направлении вектора, делящего пополам угол между главными нормалями.
+%\end{problem}
+%
+%\begin{solution}
+%	Данная поверхность является эллиптическим цилиндром
+%\end{solution}
+%
+%\begin{problem}
+%	В точке $(1, -1, 2)$ однополостного гиперболоида $4x^2 + y^2 - z^2 = 1$ выбрать произвольный касательный вектор, касающийся сечения этого гиперболоида плоскостью $z = 2$. Перенести этот вектор параллельно по однополостному гиперболоиду вдоль одной из его прямолинейных образующих до пересечения с горловым эллипсом $4x^2 + y^2 = 1$, $z = 0$.
+%\end{problem}
+%
+%\begin{solution}
+%	Напомним, что нормаль в каждой точке поверхности $F(x, y, z) = 0$ задаётся вектором $\grad F$. Для $F(x, y, z) = 4x^2 + y^2 - z^2 - 1$ имеем
+%	\[
+%		\grad F(x, y, z) = (8x, 2y, -2z).
+%	\]
+%	Находим нормаль в заданной точке: $\vec{n} = \grad F(1, -1, 2) = (8, -2, -4)$. Нам нужно выбрать вектор $\vec{\xi}$ такой, что $\vec{\xi} \perp \vec{n}$ и $\vec{\xi} \perp \vec{e}_3$.
+%	\[
+%		\vec{n} \times \vec{e}_3 = \det
+%		\begin{pmatrix}
+%			\vec{e}_1 & \vec{e}_2 & \vec{e}_3\\
+%			8 & -2 & -4\\
+%			0 & 0 & 1
+%		\end{pmatrix} = (-2, -8, 0).
+%	\]
+%	Таким образом, можем взять вектор $\vec{\xi} = (1, 4, 0)$. Напишем уравнения прямолинейных образующих:
+%	\begin{gather*}
+%		4x^2 - z^2 = 1 - y^2,\\
+%		(2x - z)(2x + z) = (1 - y)(1 + y),\\
+%		\mathrm{(I)}\colon
+%		\begin{cases}
+%			(2x + z)\alpha = 1 - y,\\
+%			2x - z = \alpha(1 + y),
+%		\end{cases}\quad
+%		\mathrm{(II)}\colon
+%		\begin{cases}
+%			(2x + z)\beta = 1 + y,\\
+%			2x - z = \beta(1 - y).
+%		\end{cases}\quad
+%	\end{gather*}
+%
+%	Мы написали два семейства прямолинейных образующих на нашем гиперболоиде (здесь $\alpha, \beta \ne 0$). Можем выбрать образующую любого семейства, проходящую через данную точку $(1, -1, 2)$, например, возьмём образующую из первого семейства. Подставим нашу точку, найдём $\alpha = \frac{1}{2}$. Итак, можем задать прямолинейную образующую через данную точку следующим образом:
+%	\[
+%		\ell\colon
+%		\begin{cases}
+%			2x + 2y + z - 2 = 0,\\
+%			4x - y - 2z - 1 = 0.
+%		\end{cases}
+%	\]
+%	Вектор скорости этой прямой есть $\vec{v} = (3, -8, 10)$. Образующая пересекает горловой эллипс (плоскость $z = 0$) в точке $\br{\frac{2}{5}, \frac{3}{5}, 0}$.
+%
+%	Отметим, что прямолинейная образующая $\ell$ целиком содержится в гиперболоиде, а потому является геодезической на нём. А при параллельном переносе по геодезической угол между переносимым вектором и этой геодезической не меняется. Поэтому искомый вектор $\widetilde{\vec{\xi}}$ удовлетворяет следующим свойствам:
+%	\begin{enumerate}[nolistsep, label=(\arabic*)]
+%		\item он является касательным к гиперболоиду в точке $\br{\frac{2}{5}, \frac{3}{5}, 0}$;
+%		\item его длина равна длине $\vec{\xi}$;
+%		\item угол между ним и вектором $\vec{v}$ равен углу $\angle(\vec{\xi}, \vec{v})$.
+%	\end{enumerate}
+%
+%	Из геометрических соображений ясно, что таких векторов может быть два. Правильный из них --- тот, что в касательной плоскости ориентирован относительно $\vec{v}$ так же, как и $\vec{\xi}$. Это можно проверить, сравнив направления векторных произведений $\vec{\xi} \times \vec{v}$ и $\widetilde{\vec{\xi}} \times \vec{v}$ (эти векторы должны смотреть либо оба внутрь, либо оба вне гиперболоида). Конкретные вычисления слишком громоздки, чтобы их здесь приводить.
+%\end{solution}
 %
 %\subsection{Разбор контрольной работы О.\, И. Мохова}
 %

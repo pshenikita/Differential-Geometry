@@ -6,7 +6,7 @@
 
 	$\vec{x} = (x^1, \ldots, x^n)$ --- вектор (точка) из $\R^n$;
 	
-	$(\vec{e}_1, \ldots, \vec{e}_n)$ --- стандартный базис в $\R^n$;
+	$(\vec{e}_1, \ldots, \vec{e}_n)$ --- стандартный базис в $\R^n$, если не сказано иное;
 
 	$\span(\vec{v}_1, \ldots, \vec{v}_n)$ --- линейная оболочка векторов $\vec{v}_1, \ldots, \vec{v}_n$;
 
@@ -141,7 +141,7 @@
 \end{theorem}
 
 \begin{proof}
-	$\Rightarrow$. Пусть $\vec{x}(u^1, u^2)$ --- гладкое решение системы с начальным условием $(u^1_0, u^2_0, \vec{x})$. Тогда по теореме о дифференцировании сложной функции имеем
+	$\Rightarrow$. Пусть $\vec{x}(u^1, u^2)$ --- гладкое решение системы с начальным условием $(u^1_0, u^2_0, \vec{x}_0)$. Тогда по теореме о дифференцировании сложной функции имеем
 	\begin{multline*}
 		\frac{\partial^2\vec{x}}{\partial u^1\partial u^2} = \frac{\partial\vec{f}_1(\vec{x}(u^1, u^2), u^1, u^2)}{\partial u^2} = \frac{\partial\vec{f}_1}{\partial x^i}(\vec{x}(u^1, u^2), u^1, u^2)\frac{\partial x^i}{\partial u^2} + {}\\{} + \frac{\partial\vec{f}_1}{\partial u^2}(\vec{x}(u^1, u^2), u^1, u^2) = \br{\frac{\partial\vec{f}_1}{\partial x^i}f_2^i + \frac{\partial\vec{f}_1}{\partial u^2}}(\vec{x}(u^1, u^2), u^1, u^2).
 	\end{multline*}
