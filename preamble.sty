@@ -25,7 +25,7 @@
 \DeclareCaptionFormat{empty}{#1}
 \renewcommand\thefigure{\arabic{section}.\arabic{figure}}
 
-\usepackage{setspace}			% расстояния между строками
+\usepackage{array}				% расстояния между строками
 \usepackage{cancel}				% зачёркивания
 \usepackage{quiver}				% для коммутативных диаграмм
 \usepackage{wrapfig}			% огибание картинок текстом
@@ -50,6 +50,7 @@
 \fancyhead[L]{\tiny\bfseries\MakeUppercase\course}
 \fancyhead[R]{\tiny\MakeUppercase\rightmark}
 \fancyfoot[C]{\thepage}
+\setlength{\headsep}{20pt}
 \pagestyle{fancy}
 \renewcommand{\footrulewidth}{0pt}
 
@@ -91,6 +92,7 @@
 \renewcommand{\L}{\mathcal{L}}
 \renewcommand{\o}{\overline{o}}
 \renewcommand{\O}{\underline{O}}
+\renewcommand{\d}{\mathop{}\!\mathrm{d}}
 \newcommand{\eps}{\varepsilon}
 \newcommand{\homeo}{\cong}
 \newcommand{\pt}{\mathrm{pt}}

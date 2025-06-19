@@ -228,9 +228,9 @@
 	\vec{r} = \vec{r}(u^1, \ldots, u^n),\text{ где $\vec{r} = (x^1, \ldots, x^n)$}.
 \]
 
-Векторы $\vec{r}_i = \partial \vec{r} / \partial u^i$ имеют направления касательных к координатным линиям, так что в каждой точке области $U$ они линейно независимы. Они определяют в окрестности некоторой точки $(u^1, \ldots, u^n)$ малый вектор $d\vec{r} = \vec{r}_idu^i$. Квадрат его длины, выраженный в криволинейных координатах, определяет метрику:
+Векторы $\vec{r}_i \vcentcolon = \partial \vec{r} / \partial u^i$ имеют направления касательных к координатным линиям, так что в каждой точке области $U$ они линейно независимы. Они определяют в окрестности некоторой точки $(u^1, \ldots, u^n)$ малый вектор $\d\vec{r} = \vec{r}_i\d u^i$. Квадрат его длины, выраженный в криволинейных координатах, определяет метрику:
 \[
-	ds^2 = \langle d\vec{r}, d\vec{r}\rangle = \left\langle\vec{r}_idu^i, \vec{r}_jdu^j\right\rangle = g_{ij}du^idu^j,
+	\d s^2 = \langle \d\vec{r}, \d\vec{r}\rangle = \left\langle\vec{r}_i\d u^i, \vec{r}_j\d u^j\right\rangle = g_{ij}\d u^i\d u^j,
 \]
 где $g_{ij} = \langle\vec{r}_i, \vec{r}_j\rangle$ --- элементы матрицы Грама векторов $\vec{r}_1, \ldots, \vec{r}_n$. При переходе к другим координатам $\widetilde{u}^1, \ldots, \widetilde{u}^n$ матрица Грама преобразуется так, как и положено преобразовываться матрице квадратичной формы (по тензорному закону):
 \begin{equation} \label{eq:RiemannCoordinates}
@@ -253,19 +253,19 @@
 \begin{solution}
 	Запишем дифференциалы евклидовых координат:
 	\begin{gather*}
-		dx = d(\rho\cos\varphi) = \cos\varphi\,d\rho - \rho\sin\varphi\,d\varphi,\\
-		dy = d(\rho\sin\varphi) = \sin\varphi\,d\rho + \rho\cos\varphi\,d\varphi,\\
-		dz = dh.
+		\d x = \d(\rho\cos\varphi) = \cos\varphi\d\rho - \rho\sin\varphi\d\varphi,\\
+		\d y = \d(\rho\sin\varphi) = \sin\varphi\d\rho + \rho\cos\varphi\d\varphi,\\
+		\d z = \d h.
 	\end{gather*}
 	Подставляем их в запись евклидовой метрики:
 	\begin{multline*}
-		ds^2 = dx^2 + dy^2 + dz^2 = (\cos\varphi\,d\rho - \rho\sin\varphi\,d\varphi)^2 + (\sin\varphi\,d\rho + \rho\cos\varphi\,d\varphi)^2 + dh^2 =\\ = \underbrace{(\cos^2\varphi + \sin^2\varphi)}_{= 1}\,d\rho^2 - \cancel{\rho\sin(2\varphi)\,d\rho d\varphi} + \rho^2\underbrace{(\cos^2\varphi + \sin^2\varphi)}_{= 1}\,d\varphi^2 + {}\\{} + \cancel{\rho\sin(2\varphi)\,d\rho d\varphi} + dh^2 = d\rho^2 + \rho^2\,d\varphi^2 + dh^2.
+		\d s^2 = \d x^2 + \d y^2 + \d z^2 = (\cos\varphi\d\rho - \rho\sin\varphi\d\varphi)^2 + (\sin\varphi\d\rho + \rho\cos\varphi\d\varphi)^2 + \d h^2 =\\ = \underbrace{(\cos^2\varphi + \sin^2\varphi)}_{= 1}\d\rho^2 - \cancel{\rho\sin(2\varphi)\d\rho\d\varphi} + \rho^2\underbrace{(\cos^2\varphi + \sin^2\varphi)}_{= 1}\d\varphi^2 + {}\\{} + \cancel{\rho\sin(2\varphi)\d\rho\d\varphi} + \d h^2 = \d\rho^2 + \rho^2\d\varphi^2 + \d h^2.
 	\end{multline*}
 \end{solution}
 
 Пусть имеем параметризованную кривую $\vec{r}(t)$ в криволинейных координатах $(u^1, \ldots, u^n)$ с римановой метрикой, заданной матрицей $G = g_{ij}$. Измеряем длину кривой, заметаемой при изменении параметра от $a$ до $b$:
 \begin{equation} \label{eq:RiemannLength}
-	l = \int\limits_a^b\abs{\frac{d\vec{r}}{dt}}dt = \int\limits_a^b\sqrt{\left\langle \frac{d\vec{r}}{dt}, \frac{d\vec{r}}{dt} \right\rangle}\,dt = \int\limits_a^b\sqrt{\frac{ds^2}{(dt)^2}}\,dt = \int\limits_a^b\sqrt{g_{ij}\frac{du^i}{dt}\frac{du^j}{dt}}\,dt.
+	\ell = \int\limits_a^b\abs{\frac{\d\vec{r}}{\d t}}\d t = \int\limits_a^b\sqrt{\left\langle \frac{\d\vec{r}}{\d t}, \frac{\d\vec{r}}{\d t} \right\rangle}\d t = \int\limits_a^b\sqrt{\frac{\d s^2}{(\d t)^2}}\d t = \int\limits_a^b\sqrt{g_{ij}\frac{\d u^i}{\d t}\frac{\d u^j}{\d t}}\d t.
 \end{equation}
 
 \begin{problem}
@@ -288,11 +288,11 @@
 	
 	Если параметризовать нашу кривую как $\vec{r}(t) = (u(t), v(t))$, где $u(t) = a\cos t$, $v(t) = a\sin t$ (где $t$ меняется от $0$ до $2\pi$), то длина вычисляется по формуле \eqref{eq:RiemannLength}:
 	\[
-		l = \int\limits_0^{2\pi}\sqrt{\begin{pmatrix}\dot{u}(t) & \dot{v}(t)\end{pmatrix} \G \begin{pmatrix}\dot{u}(t) \\ \dot{v}(t) \end{pmatrix}}\,dt.
+		\ell = \int\limits_0^{2\pi}\sqrt{\begin{pmatrix}\dot{u}(t) & \dot{v}(t)\end{pmatrix} \G \begin{pmatrix}\dot{u}(t) \\ \dot{v}(t) \end{pmatrix}}\d t.
 	\]
 	Подставляем:
 	\begin{multline*}
-		\int\limits_0^{2\pi}\sqrt{\begin{pmatrix}-a\sin t & a\cos t\end{pmatrix} \cdot \left(\frac{1}{1 - a^2}\begin{pmatrix} 1 - a^2\sin^2t & a^2\sin t\cos t \\ a^2\sin t\cos t & 1 - a^2\cos^2t \end{pmatrix}\right) \cdot \begin{pmatrix} -a\sin t \\ a\cos t \end{pmatrix}}\,dt =\\ = \int\limits_0^{2\pi}\sqrt{\begin{pmatrix} -a\sin t & a\cos t \end{pmatrix} \cdot \left(\frac{1}{\cancel{1 - a^2}}\begin{pmatrix} -a\sin t\cancel{(1 - a^2)} \\ a\cos t\cancel{(1 - a^2)}\end{pmatrix}\right)}\,dt =\\ = \int\limits_0^{2\pi}\sqrt{a^2(\cos^2t + \sin^2t)}\,dt = \int\limits_0^{2\pi}a\,dt = 2\pi a.
+		\int\limits_0^{2\pi}\sqrt{\begin{pmatrix}-a\sin t & a\cos t\end{pmatrix} \cdot \left(\frac{1}{1 - a^2}\begin{pmatrix} 1 - a^2\sin^2t & a^2\sin t\cos t \\ a^2\sin t\cos t & 1 - a^2\cos^2t \end{pmatrix}\right) \cdot \begin{pmatrix} -a\sin t \\ a\cos t \end{pmatrix}}\d t =\\ = \int\limits_0^{2\pi}\sqrt{\begin{pmatrix} -a\sin t & a\cos t \end{pmatrix} \cdot \left(\frac{1}{\cancel{1 - a^2}}\begin{pmatrix} -a\sin t\cancel{(1 - a^2)} \\ a\cos t\cancel{(1 - a^2)}\end{pmatrix}\right)}\d t =\\ = \int\limits_0^{2\pi}\sqrt{a^2(\cos^2t + \sin^2t)}\d t = \int\limits_0^{2\pi}a\d t = 2\pi a.
 	\end{multline*}
 \end{proof}
 
@@ -301,7 +301,7 @@
 \begin{problem}
 	Найти угол между кривыми $v = 2u + 1$ и $v = -2u + 1$ на плоскости с координатами $(u, v)$ с метрикой
 	\[
-		ds^2 = 2du^2 + 2dudv + 4dv^2.
+		\d s^2 = 2\d u^2 + 2\d u\d v + 4\d v^2.
 	\]
 \end{problem}
 
@@ -485,7 +485,7 @@
 \]
 Вектор скорости равен
 \[
-	\frac{d\vec{r}\big(u(t), v(t)\big)}{dt} = \vec{r}_u\dot{u} + \vec{r}_v\dot{v}.
+	\frac{\d\vec{r}\big(u(t), v(t)\big)}{\d t} = \vec{r}_u\dot{u} + \vec{r}_v\dot{v}.
 \]
 
 Более того, любой вектор вида $\vec{\xi} = \xi^1\vec{r}_u(u_0, v_0) + \xi^2\vec{r}_v(u_0, v_0)$ является вектором скорости некоторой кривой на поверхности. Например, можно взять кривую, имеющую в локальных координатах вид
@@ -562,7 +562,7 @@
 \]
 то по теореме о производной сложной функции в координатах $(u_\beta^1, u_\beta^2)$ этот же касательный вектор записывается как
 \[
-	\vec{\xi}_\beta = \br{\frac{du_\beta^1(u_\alpha^1(t), u_\alpha^2(t))}{dt}, \frac{du_\beta^2(u_\alpha^1(t), u_\alpha^2(t))}{dt}} = \br{\frac{\partial u_\beta^1}{\partial u^i_\alpha}\dot{u}_\alpha^i, \frac{\partial u_\beta^2}{\partial u^i_\alpha}\dot{u}_\alpha^i}.
+	\vec{\xi}_\beta = \br{\frac{\d u_\beta^1(u_\alpha^1(t), u_\alpha^2(t))}{\d t}, \frac{\d u_\beta^2(u_\alpha^1(t), u_\alpha^2(t))}{\d t}} = \br{\frac{\partial u_\beta^1}{\partial u^i_\alpha}\dot{u}_\alpha^i, \frac{\partial u_\beta^2}{\partial u^i_\alpha}\dot{u}_\alpha^i}.
 \]
 
 Это значит, что для касательных векторов к поверхности выполнен тензорный закон, при заменах координат они меняются так, как и положено меняться векторам. Поэтому \textit{касательный вектор двумерного многообразия} в точке $\vec{x}_0$ может быть определён как объект $\vec{\xi} = (\xi^1, \xi^2)$, записи которого $\vec{\xi}_\alpha$, $\vec{\xi}_\beta$ в различных локальных координатах связаны соотношением
@@ -586,18 +586,18 @@
 %<<Возня>> с аналитическим определением касательных векторов нужна, потому что не все двумерные многообразия вкладываются в $\R^3$ как гладкие поверхности, и геометрическое определение касательных векторов (в том виде, в котором оно написано здесь) перестаёт работать. Пожалуй, самым известным примером гладкого двумерного многообразия, не вложимого в $\R^3$, является бутылка Клейна.
 %
 \begin{definition}
-	Если $\vec{f}\colon\M \to \R^m$ --- гладкая функция на поверхности $\M$, то её \textit{дифференциал} в точке $\vec{x} \in \M$ --- это линейная функция $d\vec{f}|_{\vec{x}}$ на касательной плоскости $\T_{\vec{x}}\M$, определяемая как
+	Если $\vec{f}\colon\M \to \R^m$ --- гладкая функция на поверхности $\M$, то её \textit{дифференциал} в точке $\vec{x} \in \M$ --- это линейная функция $\d\vec{f}|_{\vec{x}}$ на касательной плоскости $\T_{\vec{x}}\M$, определяемая как
 	\[
-		d\vec{f}|_{\vec{x}}(\vec{\xi}) = \xi^i\frac{\partial \vec{f}}{\partial u^i}.
+		\d\vec{f}|_{\vec{x}}(\vec{\xi}) = \xi^i\frac{\partial \vec{f}}{\partial u^i}.
 	\]
 \end{definition}
 
-Таким образом, мы можем придать смысл выражениям $du$ и $dv$. Они задают линейные функции на касательном пространстве, причём $(du)(\vec{r}_u) = (dv)(\vec{r}_v) = 1$, $(du)(\vec{r}_v) = (dv)(\vec{r}_u) = 0$. Так что дифференциалы $(du, dv)$ задают двойственный к $(\vec{r}_u, \vec{r}_v)$ базис пространства, двойственного к касательному (его часто называют \textit{кокасательным}).
+Таким образом, мы можем придать смысл выражениям $\d u$ и $\d v$. Они задают линейные функции на касательном пространстве, причём $(\d u)(\vec{r}_u) = (\d v)(\vec{r}_v) = 1$, $(\d u)(\vec{r}_v) \hm = (\d v)(\vec{r}_u) = 0$. Так что дифференциалы $(\d u, \d v)$ задают двойственный к $(\vec{r}_u, \vec{r}_v)$ базис пространства, двойственного к касательному (его часто называют \textit{кокасательным}).
 
 \begin{proposition}
 	Пусть имеем гладкое отображение поверхностей $\vec{f}\colon \M \to \mathcal{N}$. Тогда
 	\[
-		\Im d\vec{f}|_{\vec{x}} \subset \T_{\vec{f}(\vec{x})}\mathcal{N}.
+		\Im\d\vec{f}|_{\vec{x}} \subset \T_{\vec{f}(\vec{x})}\mathcal{N}.
 	\]
 \end{proposition}
 
@@ -623,7 +623,7 @@
 \]
 Длина (фрагмента) этой кривой равна
 \[
-	l = \int\limits_a^b\sqrt{\dot{x}^2 + \dot{y}^2 + \dot{z}^2}\,dt.
+	\ell = \int\limits_a^b\sqrt{\dot{x}^2 + \dot{y}^2 + \dot{z}^2}\d t.
 \]
 Подставляя в подынтегральное выражение формулы для $\dot{x}$, $\dot{y}$ и $\dot{z}$, получаем
 \[
@@ -652,7 +652,7 @@
 \begin{definition}
 	Выражение
 	\[
-		ds^2 = g_{ij}du^idu^j = Edu^2 + 2Fdudv + Gdv^2
+		\d s^2 = g_{ij}\d u^i\d u^j = E\d u^2 + 2F\d u\d v + G\d v^2
 	\]
 	называется \textit{первой квадратичной формой} (или \textit{римановой метрикой}) на поверхности. Здесь коэффициенты матрицы $\G \vcentcolon = (g_{ij})$, вообще говоря, зависят от координат $u$ и $v$.
 \end{definition}
@@ -753,7 +753,7 @@
 			\footnotetext{Выкладка: $\ds\br{\ln\tg\frac{u}{2}}^\prime = \frac{1}{\tg\frac{u}{2}} \cdot \frac{1}{\cos^2\frac{u}{2}} \cdot \frac{1}{2} = \frac{1}{2\sin\frac{u}{2}\cos\frac{u}{2}} = \frac{1}{\sin u}$.}%
 			Пишем первую квадратичную форму:
 			\[
-				ds^2 = a^2\ctg^2u\,du^2 + a^2\sin^2u\,dv^2.
+				\d s^2 = a^2\ctg^2u\d u^2 + a^2\sin^2u\d v^2.
 			\]
 		\item Считаем частные производные, пользуясь формулами Френе:
 			\[
@@ -767,7 +767,7 @@
 			\end{gather*}
 			Итак, выписываем первую квадратичную форму:
 			\[
-				ds^2 = \big((1 - k\lambda)^2 + \varkappa^2\lambda^2\big)dt^2 + d\lambda^2.
+				\d s^2 = \big((1 - k\lambda)^2 + \varkappa^2\lambda^2\big)\d t^2 + \d\lambda^2.
 			\]
 	\end{enumerate}
 \end{solution}
@@ -809,19 +809,19 @@
 \begin{definition}
 	\textit{Площадью} области $U$ на поверхности $\vec{r} = \vec{r}(u, v)$ называется величина
 	\[
-		\sigma(U) \vcentcolon = \iint\limits_{U}\sqrt{\deg\G}\,dudv.
+		\sigma(U) \vcentcolon = \iint\limits_{U}\sqrt{\deg\G}\d u\d v.
 	\]
 	(Здесь область $U$ задана параметрически координатами $u$ и $v$.)
 \end{definition}
 
-Это определение (как и определение длины кривой) принимается как данность. Мотивировка такого определения в том, что $\sqrt{\det\G}$ --- это (ориентированная) площадь параллелограмма, натянутого на касательные вектора $\vec{r}_u$ и $\vec{r}_v$. Естественно назвать выражение $d\sigma \vcentcolon = \sqrt{\det\G}\,dudv$ \textit{элементом площади}. Тогда определение площади принимает вид
+Это определение (как и определение длины кривой) принимается как данность. Мотивировка такого определения в том, что $\sqrt{\det\G}$ --- это (ориентированная) площадь параллелограмма, натянутого на касательные вектора $\vec{r}_u$ и $\vec{r}_v$. Естественно назвать выражение $\d\sigma \vcentcolon = \sqrt{\det\G}\d u\d v$ \textit{элементом площади}. Тогда определение площади принимает вид
 \[
-	\sigma(U) = \iint\limits_{U}\,d\sigma.
+	\sigma(U) = \iint\limits_{U}\d\sigma.
 \]
 
 Площадь можно определить таким же образом не только на поверхности, но и в целом для римановой метрики в криволинейных координатах.
 
-\begin{problem}
+\begin{problem} \label{problem:AreaTriangle}
 	В модели геометрии Лобачевского в верхней полуплоскости найти площадь треугольника, ограниченного кривыми
 	\[
 		x = 0,\quad (x - 1)^2 + y^2 = 4,\quad x^2 + y^2 = 9.
@@ -831,15 +831,15 @@
 \begin{solution}
 	Метрика в модели геометрии Лобачевского в верхней полуплоскости имеет вид
 	\[
-		ds^2 = \frac{dx^2 + dy^2}{y^2},
+		\d s^2 = \frac{\d x^2 + \d y^2}{y^2},
 	\]
 	и $\sqrt{\det\G(x, y)} = 1 / y^2$. Следовательно, площадь нашего треугольника равна
 	\[
-		\sigma(U) = \iint\limits_{U}\frac{1}{y^2}\,dxdy,
+		\sigma(U) = \iint\limits_{U}\frac{1}{y^2}\d x\d y,
 	\]
 	что после перехода к повторному интегралу даёт выражение
 	\begin{multline*}
-		\sigma(U) = \int\limits_0^3 dx\int\limits_{\sqrt{4 - (x - 1)^2}}^{\sqrt{9 - x^2}}\frac{1}{y^2}\,dy = \int\limits_0^3\br{\frac{1}{\sqrt{4 - (x - 1)^2}} - \frac{1}{\sqrt{9 - x^2}}}dx =\\ = \left.\br{\arcsin\frac{x - 1}{2} - \arcsin\frac{x}{3}}\right|_0^3 = 0 - \br{-\frac{\pi}{6}} = \frac{\pi}{6}.
+		\sigma(U) = \int\limits_0^3 \d x\int\limits_{\sqrt{4 - (x - 1)^2}}^{\sqrt{9 - x^2}}\frac{1}{y^2}\d y = \int\limits_0^3\br{\frac{1}{\sqrt{4 - (x - 1)^2}} - \frac{1}{\sqrt{9 - x^2}}}\d x =\\ = \left.\br{\arcsin\frac{x - 1}{2} - \arcsin\frac{x}{3}}\right|_0^3 = 0 - \br{-\frac{\pi}{6}} = \frac{\pi}{6}.
 	\end{multline*}
 
 	\begin{figure}[H]
@@ -853,15 +853,15 @@
 	\begin{enumerate}[nolistsep, label=(\arabic*)]
 		\item Если поверхность задана в параметрической форме $\vec{r} = \vec{r}(u, v)$ и $V$ --- такая область на плоскости $(u, v)$, что $\vec{r}(V) = U$, то
 			\[
-				\sigma(U) = \iint\limits_{V}\abs{\vec{r}_u \times \vec{r}_v}dudv.
+				\sigma(U) = \iint\limits_{V}\abs{\vec{r}_u \times \vec{r}_v}\d u\d v.
 			\]
 		\item Если поверхность задана как график функции $z = f(x, y)$ и область $U$ проектируется на область $V$ на плоскости $(x, y)$, то
 			\[
-				\sigma(U) = \iint\limits_{V}\sqrt{1 + f_x^2 + f_y^2}\,dxdy.
+				\sigma(U) = \iint\limits_{V}\sqrt{1 + f_x^2 + f_y^2}\d x\d y.
 			\]
 		\item Если поверхность задана уравнением $F(x, y, z) = 0$, $F_z \ne 0$ в области $U$, которая проектируется на область $V$ на плоскости $(x, y)$. Тогда
 			\[
-				\sigma(U) = \iint\limits_{V}\frac{\abs{\grad F}}{\abs{F_z}}\,dxdy.
+				\sigma(U) = \iint\limits_{V}\frac{\abs{\grad F}}{\abs{F_z}}\d x\d y.
 			\]
 	\end{enumerate}
 \end{example}
@@ -900,7 +900,7 @@
 	\]
 	Считаем искомую площадь:
 	\begin{multline*}
-		\sigma = \iint\limits_{\varphi, \psi}\sqrt{\det\G}\,d\varphi d\psi = \int\limits_0^{2\pi}d\varphi\int\limits_0^{2\pi}(R + r\cos\psi)r\,d\psi =\\ = 2\pi r\int\limits_0^{2\pi}(R + r\cos\psi)\,d\psi = 2\pi r \cdot 2\pi R = 4\pi^2 Rr.
+		\sigma = \iint\limits_{\varphi, \psi}\sqrt{\det\G}\d\varphi\d\psi = \int\limits_0^{2\pi}\d\varphi\int\limits_0^{2\pi}(R + r\cos\psi)r\d\psi =\\ = 2\pi r\int\limits_0^{2\pi}(R + r\cos\psi)\d\psi = 2\pi r \cdot 2\pi R = 4\pi^2 Rr.
 	\end{multline*}
 \end{solution}
 
@@ -917,11 +917,11 @@
 \]
 записанное в локальных координатах, сохраняет длины всех кривых, если и только если
 \begin{equation} \label{eq:Isometry}
-	\widetilde{g}_{ij}\big|_{\vec{f}(u^1, u^2)}\,d\widetilde{u}^id\widetilde{u}^j = g_{kl}\big|_{(u^1, u^2)}\,du^kdu^l,
+	\widetilde{g}_{ij}\big|_{\vec{f}(u^1, u^2)}\d\widetilde{u}^i\d\widetilde{u}^j = g_{kl}\big|_{(u^1, u^2)}\d u^k\d u^l,
 \end{equation}
-где $g_{kl}\,du^kdu^l$ и $\widetilde{g}_{ij}\,d\widetilde{u}^id\widetilde{u}^j$ --- первые квадратичные формы поверхностей. Идейно тут всё понятно --- это условие и означает, что на поверхностях <<одинаково измеряются расстояния>>. Распишем строго: пусть $\vec{\gamma}(t) = (u^1(t), u^2(t))$ --- кривая и $\widetilde{\vec{\gamma}}(t)$ --- её образ, $a \leqslant t \leqslant b$,
+где $g_{kl}\d u^k\d u^l$ и $\widetilde{g}_{ij}\d\widetilde{u}^i\d\widetilde{u}^j$ --- первые квадратичные формы поверхностей. Идейно тут всё понятно --- это условие и означает, что на поверхностях <<одинаково измеряются расстояния>>. Распишем строго: пусть $\vec{\gamma}(t) = (u^1(t), u^2(t))$ --- кривая и $\widetilde{\vec{\gamma}}(t)$ --- её образ, $a \leqslant t \leqslant b$,
 \[
-	\int\limits_a^b\sqrt{g_{kl}(\vec{\gamma}(t))\,\dot{u}^k\dot{u}^l}\,dt = \int\limits_a^b\sqrt{\widetilde{g}_{ij}(\widetilde{\vec{\gamma}}(t))\,\dot{\widetilde{u}}{}^i\dot{\widetilde{u}}{}^j}\,dt.
+	\int\limits_a^b\sqrt{g_{kl}(\vec{\gamma}(t))\,\dot{u}^k\dot{u}^l}\d t = \int\limits_a^b\sqrt{\widetilde{g}_{ij}(\widetilde{\vec{\gamma}}(t))\,\dot{\widetilde{u}}{}^i\dot{\widetilde{u}}{}^j}\d t.
 \]
 
 При локальной изометрии это равенство выполняется для любой кривой $\vec{r}(t)$, что равносильно соотношению \eqref{eq:Isometry}.
@@ -969,7 +969,7 @@
 		\vec{r}_u = (\sin v, \cos v, 0),\quad \vec{r}_v = (u\cos v, -u\sin v, 1),\nonumber\\
 		g_{11} = \langle\vec{r}_u, \vec{r}_u\rangle = {\underbrace{\sin^2v + \cos^2v}_{1}} = 1,\quad g_{12} = \langle\vec{r}_u, \vec{r}_v\rangle = 0,\nonumber\\
 		g_{22} = \langle\vec{r}_v, \vec{r}_v\rangle = u^2{\underbrace{(\sin^2v + \cos^2v)}_{1}} + 1 = u^2 + 1,\nonumber\\
-		ds^2 = du^2 + (u^2 + 1)\,dv^2.
+		\d s^2 = \d u^2 + (u^2 + 1)\d v^2.
 	\end{gather}
 	Для катеноида:
 	\begin{gather}
@@ -977,12 +977,12 @@
 		\widetilde{g}_{11} = \langle\widetilde{\vec{r}}_{\widetilde{u}}, \widetilde{\vec{r}}_{\widetilde{u}}\rangle = \sh^2\widetilde{u}\,{\underbrace{(\cos^2\widetilde{v} + \sin^2\widetilde{v})}_{1}} + 1 = \sh^2\widetilde{u} + 1 = \ch^2\widetilde{u},\nonumber\\
 		\widetilde{g}_{12} = \langle\widetilde{\vec{r}}_{\widetilde{u}}, \widetilde{\vec{r}}_{\widetilde{v}}\rangle = 0,\quad
 		\widetilde{g}_{22} = \langle\widetilde{\vec{r}}_{\widetilde{v}}, \widetilde{\vec{r}}_{\widetilde{v}}\rangle = \ch^2\widetilde{u}\,{\underbrace{(\sin^2\widetilde{v} + \cos^2\widetilde{v})}_{1}} = \ch^2\widetilde{u},\nonumber\\
-		d\widetilde{s}^2 = \ch^2\widetilde{u}\,d\widetilde{u}^2 + \ch^2\widetilde{u}\,d\widetilde{v}^2. \label{eq:CatenoidI}
+		\d\widetilde{s}^2 = \ch^2\widetilde{u}\d\widetilde{u}^2 + \ch^2\widetilde{u}\d\widetilde{v}^2. \label{eq:CatenoidI}
 	\end{gather}
 
-	Согласно определению локальной изометрии, нам нужно в окрестности каждой точки предъявить диффеоморфизм, сохраняющий длины кривых. Попробуем вместо этого угадать <<глобальный>> диффеоморфизм такой, что форма \eqref{eq:HelicoidI} перейдёт в \eqref{eq:CatenoidI}. Здесь, например, подойдёт отображение $u = \sh\widetilde{u}$, $v = \widetilde{v}$. Действительно,
+	Согласно определению локальной изометрии, нам нужно в окрестности каждой точки предъявить диффеоморфизм, сохраняющий длины кривых. Попробуем найти <<глобальный>> диффеоморфизм такой, что форма \eqref{eq:HelicoidI} перейдёт в \eqref{eq:CatenoidI}. Мы хотим, чтобы было выполнено $\d u = \ch\widetilde{u}\d \widetilde{u}$. Проинтегрировав обе части, получаем $u = \sh\widetilde{u}$. Тогда можем взять $v = \widetilde{v}$, и получим
 	\[
-		du^2 = (d\sh\widetilde{u})^2 = \ch^2\widetilde{u}^2\,d\widetilde{u}^2,\quad(\sh^2\widetilde{u} + 1)\,d\widetilde{v}^2 = \ch^2\widetilde{u}\,d\widetilde{v}^2.
+		\d u^2 = (\d\sh\widetilde{u})^2 = \ch^2\widetilde{u}^2\d\widetilde{u}^2,\quad(\sh^2\widetilde{u} + 1)\d\widetilde{v}^2 = \ch^2\widetilde{u}\d\widetilde{v}^2.
 	\]
 \end{solution}
 
@@ -1014,7 +1014,7 @@
 	\]
 	(Эту матрицу легко выписать в уме, ведь поверхность по сути задана крафиком, а для такого задания мы уже выводили формулы в примере \ref{example:IFormOnSurfaces}). Форма площади есть
 	\[
-		d\sigma = \sqrt{\G_0}\,dudv = \sqrt{1 + u^2 + v^2}\,dudv.
+		\d\sigma = \sqrt{\G_0}\d u\d v = \sqrt{1 + u^2 + v^2}\d u\d v.
 	\]
 	Деформация, описанная в условии, даёт метрику
 	\[
@@ -1026,9 +1026,9 @@
 	\]
 	Легко видеть, что форма площади равна
 	\[
-		d\sigma_t = \sqrt{\G_t}\,dudv = \sqrt{1 + u^2 + v^2}\,dudv.
+		\d\sigma_t = \sqrt{\G_t}\d u\d v = \sqrt{1 + u^2 + v^2}\d u\d v.
 	\]
-	Итак, $d\sigma = d\sigma_t$ при любом $t$, так что данная деформация сохраняет площадь.
+	Итак, $\d\sigma = \d\sigma_t$ при любом $t$, так что данная деформация сохраняет площадь.
 \end{solution}
 
 % TODO: Написать про конформные отображения + условия Коши-Римана!
@@ -1043,7 +1043,7 @@
 \begin{definition}
 	\textit{Вторую квадратичную форму} определим как выражение
 	\[
-		L\,du^2 + 2M\,dudv + N\,dv^2,
+		L\d u^2 + 2M\d u\d v + N\d v^2,
 	\]
 	где
 	\[
@@ -1051,7 +1051,7 @@
 	\]
 	Полагая $u^1 = u$, $u^2 = v$, будем также записывать её в виде
 	\[
-		b_{ij}\,du^idu^j,
+		b_{ij}\d u^i\d u^j,
 	\]
 	где
 	\[
@@ -1091,7 +1091,7 @@
 
 Подытожим наши рассуждения. В касательном пространстве к каждой точке поверхности определены две квадратичные формы --- $\I$ и $\II$, --- при этом форма $\I$ положительно определена. Из курса линейной алгебры известно, что тогда эти квадратичные формы можно привести к главным осям, то есть выбрать базис (в касательном пространстве), в котором матрица формы $\I$ будет единичной, а матрица формы $\II$ --- диагональной.
 
-Кратно напомним, как это делать. Сначала нужно найти собственные значение пары квадратичных форм, то есть решить уравнение
+Кратно напомним, как это делать. Сначала нужно найти собственные значение пары квадратичных форм\footnotemark{}, то есть решить уравнение
 \begin{equation} \label{eq:MainAxes}
 	\det(\B - \lambda\G) = 0
 \end{equation}
@@ -1100,6 +1100,8 @@
 	\lambda^2 -H\lambda + K = 0
 \]
 имеет смысл как-то обозначить.
+
+\footnotetext{На самом деле, мы находим собственные значения линейного оператора $g^{ik}b_{kj}$, полученного поднятием индекса у второй квадратичной формы. Полезно держать это в голове.}
 
 \begin{definition}
 	Коэффициент $H$ называется \textit{средней кривизной} поверхности в данной точке\footnotemark, а коэффициент $K$ --- \textit{гауссовой кривизной}. Корни $\lambda_1$ и $\lambda_2$ уравнения \eqref{eq:MainAxes} называются \textit{главными кривизнами}. (По теореме Виета имеем $H = \lambda_1 + \lambda_2$, $K = \lambda_1\lambda_2$.)
@@ -1136,7 +1138,7 @@
 	\]
 \end{example}
 
-\begin{problem}
+\begin{problem} \label{problem:PseudosphereHK}
 	Найти главные направления, гауссову и среднюю кривизны у псевдосферы
 	\[
 		x = a\sin u\cos v,\quad y = a\sin u\sin v,\quad z = a\br{\ln\tg\frac{u}{2} + \cos u},
@@ -1302,15 +1304,15 @@
 
  Обозначим через $\vec{n}_\rho$ вектор главной нормали кривой $\vec{\rho}$ в рассматриваемой точке, а через $\theta$ --- угол между ним и вектором нормали к поверхности, то есть $\theta = \angle(\vec{n}_\rho, \vec{n})$. Кривизна\footnotemark{} кривой $\vec{\rho}$ определяется из соотношения
 \[
-	\frac{d^2\vec{\rho}}{ds^2} = k\vec{n}_\rho,
+	\frac{\d^2\vec{\rho}}{\d s^2} = k\vec{n}_\rho,
 \]
 где $s$ --- натуральный параметр на кривой. Напишем
 \[
-	\left\langle\frac{d^2\vec{\rho}}{ds^2}, \vec{n}\right\rangle = b_{11}\br{\frac{du}{ds}}^2 + 2b_{12}\frac{du}{ds}\frac{dv}{ds} + b_{22}\br{\frac{dv}{ds}}^2 = \frac{b_{ij}\,du^idu^j}{ds^2},
+	\left\langle\frac{\d^2\vec{\rho}}{\d s^2}, \vec{n}\right\rangle = b_{11}\br{\frac{\d u}{\d s}}^2 + 2b_{12}\frac{\d u}{\d s}\frac{\d v}{\d s} + b_{22}\br{\frac{\d v}{\d s}}^2 = \frac{b_{ij}\d u^i\d u^j}{\d s^2},
 \]
-причём $ds^2 = \abs{\dot{\vec{\rho}}}^2dt^2 = \I(\dot{\vec{\rho}})dt^2$. Согласно предложению \ref{proposition:GeomII},
+причём $\d s^2 = \abs{\dot{\vec{\rho}}}^2\d t^2 = \I(\dot{\vec{\rho}})\d t^2$. Согласно предложению \ref{proposition:GeomII},
 \[
-	k\underbrace{\langle\vec{n}_\rho, \vec{n}\rangle}_{\cos\theta} = \left\langle\frac{d^2\vec{\rho}}{ds^2}, \vec{n}\right\rangle = \frac{b_{ij}\dot{u}^i\dot{u}^j}{\I(\dot{\vec{\rho}})} = \frac{\II(\dot{\vec{\rho}})}{\I(\dot{\vec{\rho}})},
+	k\underbrace{\langle\vec{n}_\rho, \vec{n}\rangle}_{\cos\theta} = \left\langle\frac{\d^2\vec{\rho}}{\d s^2}, \vec{n}\right\rangle = \frac{b_{ij}\dot{u}^i\dot{u}^j}{\I(\dot{\vec{\rho}})} = \frac{\II(\dot{\vec{\rho}})}{\I(\dot{\vec{\rho}})},
 \]
 Таким образом, нами доказана следующая теорема.
 
@@ -1360,6 +1362,21 @@
 
 Положим для определённости $\lambda_1 \leqslant \lambda_2$. Тогда главные кривизны $\lambda_1$ и $\lambda_2$ --- минимум и максимум, соответственно, кривизн нормальных сечений в рассматриваемой точке. (Функция $\lambda_1\cos^2\varphi + \lambda_2\cos^2\varphi$ определена на окружности, а окружность компактна, поэтому максимум и минимум достигаются.) При этом все значения между $\lambda_1$ и $\lambda_2$ достигаются в силу непрерывности. Отметим, что если $\lambda_1\lambda_2 \leqslant 0$, то существует нормальное сечение с нулевой кривизной, то есть прямая.
 
+\begin{problem} \label{problem:EllipseCurvature}
+	Найти кривизну эллипса с полуосями $a$ и $b$ (причём, $a < b$) в его вершинах.
+\end{problem}
+
+\begin{solution}
+	Рассмотрим цилиндр $x^2 + y^2 = a^2$ и его плоское сечение под углом $\theta$ с плоскостью $z = 0$, где $\cos\theta = \frac{a}{b}$. Нормальное сечение есть окружность радиуса $a$, его кривизна равна $k_n = 1 / a$. Сечение наклонённой плоскостью есть эллипс с полуосями $a$ и $b$, согласно теореме Менье его кривизна в вершине, соответствующей большой полуоси, равна
+	\[
+		k_b = \frac{k_n}{\cos\theta} = \frac{b}{a^2}.
+	\]
+	Теперь рассмотрим его вершину, соответствующую меньшей полуоси. В ней нормальные сечения, соответствующие главным направлениям, есть прямая и окружность радиуса $1 / a$. Угол, соответствующий нашему сечению, есть $\theta$. Таким образом, по формуле Эйлера имеем
+	\[
+		k_a = \frac{1}{a}\cos^2\theta + 0\sin^2\theta = \frac{a}{b^2}.
+	\]
+\end{solution}
+
 Легко видеть справедливость следующих двух следствий. Отметим, что первое из них может быть полезным для вычисления средней кривизны без подсчёта главных кривизн. Действительно, ведь значение второй квадратичной формы на единичном касательном векторе есть просто кривизна нормального сечения в направлении этого вектора, которую часто можно найти из геометрических соображений с помощью теоремы Менье.
 
 \begin{corollary}
@@ -1367,10 +1384,46 @@
 \end{corollary}
 
 \begin{corollary}
-	$\ds H = \frac{1}{\pi}\int\limits_0^{2\pi}k_{\cos\varphi \cdot \vec{\xi}_1 + \sin\varphi \cdot \vec{\xi}_2}d\varphi$.
+	$\ds H = \frac{1}{\pi}\int\limits_0^{2\pi}k_{\vec{\xi}_1\cos\varphi\,+\,\vec{\xi}_2\sin\varphi}\d\varphi$.
 \end{corollary}
 
 Таким образом, средняя кривизна оправдывает своё название не только и даже не столько тем, что является удвоенным средним арифметическим главных кривизн. Она является удвоенным усреднённым значением по всем направлениям нормальной кривизны.
+
+\begin{problem}
+	На поверхности $z = 2z^2 + 9y^2$ найти среднюю кривизну в начале координат.
+\end{problem}
+
+\begin{solution}
+	Данная поверхность является цилиндром над эллипсом
+	\[
+		\frac{(z - 1 / 4)^2}{1 / 16} + \frac{y^2}{1 / 72} = 1
+	\]
+	в плоскости $x = 0$. Нормальные сечения вдоль главных направлений в начале координат есть прямая и этот эллипс, так что средняя кривизна равна
+	\[
+		H = 0 + \frac{1 / 4}{1 / 72} = 18.
+	\]
+\end{solution}
+
+\begin{problem}
+	На поверхности $x^2 + y^2 - 2z^2 = 0$ найти среднюю кривизну в точке $(1, 1, 1)$.
+\end{problem}
+
+\begin{solution}
+	Данная нам поверхность есть цилиндр. Нормальные сечения вдоль главных направлений в точке $(1, 1, 1)$ есть (образующая цилиндра) и некоторый эллипс. Можно геометрически искать полуоси этого эллипса, но мы поступим в духе решения задачи \ref{problem:EllipseCurvature}.
+
+	Сечение конуса плоскостью $z = 1$ есть окружность $x^2 + y^2 = 2$, её кривизна равна $1 / \sqrt{2}$, а вектор её главной нормали в рассматриваемой точке направлена по вектору $\widetilde{\vec{n}} = \br{-1, -1, 0}$. Нормаль поверхности в данной точке имеет направление $\vec{n} = -\frac{1}{2}(\grad F)|_{(1, 1, 1)} = (-1, -1, 2)$. Косинус угла между плоскостями, содержащими эти сечения, равен
+	\[
+		\cos\theta = \frac{\langle\widetilde{\vec{n}}, \vec{n}\rangle}{\langle\widetilde{\vec{n}}, \widetilde{\vec{n}}\rangle\langle\vec{n}, \vec{n}\rangle} = \frac{2}{\sqrt{2} \sqrt{6}} = \frac{1}{\sqrt{3}}.
+	\]
+	По теореме Менье,
+	\[
+		k_{\theta} = \frac{1 / \sqrt{2}}{\cos\theta} = \frac{1}{\sqrt{6}}.
+	\]
+	Итак, средняя кривизна в рассматриваемой точке равна
+	\[
+		H = 0 + \frac{1}{\sqrt{6}} = \frac{1}{\sqrt{6}}.
+	\]
+\end{solution}
 
 \subsection{Минимальные поверхности}
 
@@ -1395,7 +1448,7 @@
 	\]
 	где $\vec{n}$, как обычно, --- вектор нормали. При каждом фиксированном $t$ из достаточно малой окрестности нуля эта формула задаёт регулярную параметризацию некоторой поверхности $\mathcal{N}_t$ с тем же краем, что и $\mathcal{N}$. Так что по построению $\sigma(\mathcal{N}_t) \geqslant \sigma(\mathcal{N})$. Напомним формулу для площади на поверхности:
 	\[
-		\sigma(\mathcal{N}) = \iint\limits_{\mathcal{N}}\sqrt{\det\G}\,dudv,
+		\sigma(\mathcal{N}) = \iint\limits_{\mathcal{N}}\sqrt{\det\G}\d u\d v,
 	\]
 	где $\G$ --- риманова метрика на поверхности $\mathcal{N}$. Для регулярной параметризации подынтегральное выражение гладко зависит от первых производных радиус-вектора $\vec{r}$ по $u$ и $v$, поэтому $\sigma(\mathcal{N}_t)$ --- гладкая функция от $t$. Будем понимать $g(t)$ определитель матрицы первой квадратичной формы поверхности $\mathcal{N}_t$. Далее хотим найти производную $\ds\frac{\partial}{\partial t}\sqrt{g}$.
 	\[
@@ -1409,17 +1462,17 @@
 	\[
 		\frac{\sqrt{g(t)}}{\sqrt{g(0)}} = \abs{\det(E + t\varphi C)} + \o(t) = 1 + t\varphi\tr C + \o(t) = 1 + t\varphi H + \o(t)
 	\]
-	как следствие теоремы \ref{theorem:Weingarten}. Отсюда получаем $g^\prime = \sqrt{\det \G}\varphi H$. Таким образом,
+	как следствие теоремы \ref{theorem:Weingarten}. Отсюда получаем $\ds\frac{\partial}{\partial t}\sqrt{g}^\prime = \sqrt{\det \G}\varphi H$. Таким образом,
 	\[
-		\sigma(\mathcal{N}_t) = \sigma(\mathcal{N}) + t\iint\limits_{\mathcal{N}}\sqrt{\det \G}\varphi H\,dudv + \o(t).
+		\sigma(\mathcal{N}_t) = \sigma(\mathcal{N}) + t\iint\limits_{\mathcal{N}}\sqrt{\det \G}\varphi H\d u\d v + \o(t).
 	\]
-	Посколько площадь поверхности $\mathcal{N}_t$ достигает минимума при $t = 0$ мы должны иметь
+	Поскольку площадь поверхности $\mathcal{N}_t$ достигает минимума при $t = 0$ мы должны иметь
 	\[
-		0 = \left.\frac{d\sigma(\mathcal{N}_t)}{dt}\right|_{t = 0} = \iint\limits_{\mathcal{N}}\sqrt{\det \G}\varphi H\,dudv
+		0 = \left.\frac{d\sigma(\mathcal{N}_t)}{dt}\right|_{t = 0} = \iint\limits_{\mathcal{N}}\sqrt{\det \G}\varphi H\d u\d v
 	\]
 	при любом выборе функции $\varphi$. Покажем, что неравенство $H \ne 0$ ведёт к противоречию с этим условием. Возьмём новую функцию $\widetilde{\varphi} = \varphi^2H$. Получим
 	\[
-		\iint\limits_{\mathcal{N}}\sqrt{\det \G}\widetilde{\varphi}H\,dudv = \iint\limits_{\mathcal{N}}\sqrt{\det\G}\varphi^2H^2\,dudv > 0,
+		\iint\limits_{\mathcal{N}}\sqrt{\det \G}\widetilde{\varphi}H\d u\d v = \iint\limits_{\mathcal{N}}\sqrt{\det\G}\varphi^2H^2\d u\d v > 0,
 	\]
 	так как подынтегральная функция неотрицательна, причём в точке $\vec{x}$ она положительна.
 \end{proof}
@@ -1573,13 +1626,9 @@
 
 Таким образом, векторные поля с операцией коммутирования образуют алгебру Ли. Известными примерами алгебр Ли служат также пространство $\R^3$ с операцией векторного произведения и пространство линейных матриц $n \times n$ с коммутатором $[A, B] = AB - BA$.
 
-
-
 \subsection{Про обозначения для частных производных}
 
-Рассмотрим некоторую функцию $f$, заданную на плоскости $\R^2$. Мы можем ввести на этой плоскости две разные системы координат --- обычную декартову $(x, y)$, а также немного необычную --- $(x, \varphi)$. Здесь $x$ --- это координата вдоль оси $y = 0$ в декартовых координатах, а $\varphi$ --- полярный угол. Эта система координат имеет особенность в виде прямой $x = 0$, но нас это не волнует, в дальнейшем мы будем рассматривать область, где особенностей нет.
+Фраза, упомянутая в эпиграфе, была сказана Александром Александровичем на одном из семинаров в контексте неудачного выбора обозначений для частных производных. Аналогичное замечание я обнаружил в книге \cite{A24}, так что привожу его ниже.
 
-В обеих системах координат мы можем написать частную производную $\partial f / \partial x$. Проблема в том, что это разные выражения для разных систем координат. Действительно, ведь в первых координатах это производная вдоль направления $y = \const$, а во вторых --- вдоль направления $\varphi = \const$. Почти всюду эти направления не совпадают (кроме оси $x = 0$), и мы будем получать, вообще говоря, разные результаты.
-
-Эту яму и вырыли для нас наши предшественники --- стандартное обозначение для частной производной нас обманывает. На самом деле, выражение $\partial f / \partial x$ зависит не только от переменной $x$, но и от второй переменной: $y$ или $\varphi$, но наши обозначения этого не отражают. Решение этой проблемы простое --- при заменах координат следует обозначать все координаты разными буквами, тогда путаницы не возникнет.
+При работе с частными производными нужно твёрдо понимать, что в самом их обозначении кроется опасность: частная производная функции $f$ по $x$ зависит не только от того, какая функция в рассматриваемой области принята за координату $x$, но в ещё большей мере от того, как выбраны прочие координаты. Например, на плоскости с координатами $(x, y)$ частная производная $\partial f / \partial x$ функции $y$ равна нулю, но частная производная $\partial f / \partial x$ по той же функции точки плоскости по той же переменной $x$ в системе координат $(x, z)$, где $z = x + y$, равна $-1$. Следовало бы писать $\partial f / \partial x|_{y = \const}$, $\partial f / \partial x|_{z = \const}$.
 
