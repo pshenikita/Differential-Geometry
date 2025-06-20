@@ -197,11 +197,23 @@
 	{{\bfseries Пример \thecnt.}}{{\bfseries Пример \thecnt\;{\mdseries(#1)}.}}
 }{\par\smallskip}
 
-% Оболочка для доказательства
+% Оболочки для доказательства
 \renewenvironment{proof}{
 	\smallskip\noindent{\bfseries Доказательство.}
 }{
 	\hfill\text{\blacksquare}\par\smallskip
+}
+
+\newenvironment{firstproof}{
+	\smallskip\noindent{\bfseries Доказательство 1.}
+}{
+	\hfill$\blacksquare$\par\smallskip
+}
+
+\newenvironment{secondproof}{
+	\smallskip\noindent{\bfseries Доказательство 2.}
+}{
+	\hfill$\blacksquare$\par\smallskip
 }
 
 % Оболочки для решения

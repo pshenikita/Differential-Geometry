@@ -144,7 +144,25 @@
 	\end{array}
 \]
 
-Также в курсе дифференциальной геометрии мы регулярно будем работать с тензорами, так что нам необходимо вспомнить соответствующие понятия и факты.
+Следующая формула из курса аналитической геометрии понадобится нам всего один раз для решения интересной задачи, для развития теории она нам не пригодится.
+
+\begin{lemma}
+	В $\R^3$ результатом поворота вектора $\vec{v}$ вокруг оси, направленной вдоль единичного вектора $\vec{e}$, на угол $\theta$ является вектор
+	\begin{equation} \label{eq:RodrigaR3}
+		\widetilde{\vec{v}} = \cos\theta \cdot \vec{v} + \sin\theta \cdot (\vec{e} \times \vec{v}) + \langle\vec{e}, \vec{v}\rangle(1 - \cos\theta) \cdot \vec{e}.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Разложим вектор $\vec{v}$ на нормальную и параллельную компоненты к оси поворота: $\vec{v} = \vec{v}^\perp + \vec{v}^\parallel$, где $\vec{v}^\parallel = \langle\vec{e}, \vec{v}\rangle\vec{e}$. При повороте вокруг оси $\vec{e}$ параллельная компонента не меняется, а нормальная поворачивается на угол $\theta$ в плоскости, ортогональной вектору $\vec{e}$.
+
+	Так как базис $(\vec{e}, \vec{v}, \vec{e} \times \vec{v})$ положительно ориентирован, то $(\vec{v}, \vec{e} \times \vec{v})$ --- ортогональный положительно ориентированный базис ортогональной плоскости. В нём можем записать $\widetilde{\vec{v}}^\perp = \cos\theta \cdot \vec{v}^\perp + \sin\theta \cdot (\vec{e} \times \vec{v}^\perp)$. Собираем вектор $\widetilde{\vec{v}}$ из двух его компонент:
+	\begin{multline*}
+		\widetilde{\vec{v}} = \widetilde{\vec{v}}^\perp + \widetilde{\vec{v}}^\parallel = \cos\theta \cdot \vec{v}^\perp + \sin\theta \cdot (\vec{e} \times \vec{v}^\perp) + \vec{v}^\parallel =\\ = \cos\theta \cdot (\vec{v} - \langle\vec{e}, \vec{v}\rangle\vec{e}) + \sin\theta \cdot (\vec{e} \times (\vec{v} - \langle\vec{e}, \vec{v}\rangle\vec{e})) + \langle\vec{e}, \vec{v}\rangle\vec{e} =\\ = \cos\theta \cdot \vec{v} + \sin\theta \cdot (\vec{e} \times \vec{v}) + \langle\vec{e}, \vec{v}\rangle(1 - \cos\theta) \cdot \vec{e}.
+	\end{multline*}
+\end{proof}
+
+В курсе дифференциальной геометрии мы регулярно будем сталкиваться с тензорами, так что нам необходимо вспомнить соответствующие понятия и важные факты.
 
 \begin{definition}
 	\textit{Тензором} называется объект, задаваемый в каждой системе координат $(u^1, \ldots, u^n)$ набором чисел $T^{i_1, \ldots, i_p}_{j_1, \ldots, j_q}$, которые при замене координат $(u^1, \ldots, u^n) \mapsto (v^1, \ldots, v^n)$, преобразуются по следующему правилу:
