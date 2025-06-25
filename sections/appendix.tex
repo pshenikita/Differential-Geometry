@@ -555,24 +555,39 @@ $\begin{pmatrix}
 	\begin{multline*}
 		\sigma(U) = \int\limits_0^3 \d x\int\limits_{\sqrt{4 - (x - 1)^2}}^{\sqrt{9 - x^2}}\frac{1}{y^2}\d y = \int\limits_0^3\br{\frac{1}{\sqrt{4 - (x - 1)^2}} - \frac{1}{\sqrt{9 - x^2}}}\d x =\\ = \left.\br{\arcsin\frac{x - 1}{2} - \arcsin\frac{x}{3}}\right|_0^3 = 0 - \br{-\frac{\pi}{6}} = \frac{\pi}{6}.
 	\end{multline*}
-
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=6cm]{./img/CurveTriangle.pdf}
-		\caption{Переход к повторному интегралу}
-	\end{figure}
 \end{firstsolution}
 
-% TODO: добавить второе решение через углы
+\begin{secondsolution}
+	Сосчитав углы данного криволинейного треугольника, получаем:
+	\[
+		\sigma(U) = \pi - 0 - \frac{\pi}{2} - \frac{\pi}{3} = \frac{\pi}{6}.
+	\]
+\end{secondsolution}
 
-%\subsection{Разбор контрольной работы О.\, И. Мохова}
-%
-%\newcounter{problem}[section]
-%\renewenvironment{problem}[1][]{\refstepcounter{problem}
-%	\par\smallskip\noindent
-%	\ifthenelse{\equal{#1}{}}
-%	{{\bfseries Задача \theproblem.}}{{\bfseries Задача \theproblem\;{\mdseries(#1)}.}}
-%}{\par\smallskip}
-%
-%Олег Иванович проводит в своей группе одну контрольную работу в конце семестра. Варианты этой работы давно известны, найти их нетрудно. Ниже приведён разбор одного из этих вариантов.
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}{.4\textwidth}
+		\centering
+		\includegraphics[width=5.3cm]{./img/CurveTriangle.pdf}
+	\end{minipage}
+	\hspace{1cm}
+	\begin{minipage}{.4\textwidth}
+		\centering
+		\includegraphics[width=5.3cm]{./img/CurveAngles.pdf}
+	\end{minipage}
+	\vspace{.3cm}
+
+	\begin{minipage}{.4\textwidth}
+		\centering
+		Переход к повторному интегралу
+	\end{minipage}
+	\hspace{1cm}
+	\begin{minipage}{.4\textwidth}
+		\centering
+		Углы криволинейного треугольника
+	\end{minipage}
+	
+	\caption[format=empty]{}
+\end{figure}
 

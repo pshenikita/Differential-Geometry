@@ -1,4 +1,4 @@
-NAME = CurveTriangle
+NAME = CurveAngles
 
 all: $(NAME).pdf
 
