@@ -72,16 +72,16 @@
 	Для любых векторных полей $\vec{v}$, $\vec{v}_1$, $\vec{v}_2$ и векторов $\vec{w}$, $\vec{w}_1$, $\vec{w}_2$ в фиксированной точке $\vec{x}$ поверхности, гладкой функции $f\colon \M \to \R$, а также чисел $\lambda_1$, $\lambda_2$ выполнено:
 	\begin{gather*}
 		\nabla_{\vec{w}}(\vec{v}_1 + \vec{v}_2) = \nabla_{\vec{w}}\vec{v}_1 + \nabla_{\vec{w}}\vec{v}_2,\\
-		\nabla_{\vec{w}}(f\vec{v}) = (L_{\vec{w}}f)\vec{v} + f(\nabla_{\vec{w}}\vec{v}),\\
+		\nabla_{\vec{w}}(f\vec{v}) = (\partial_{\vec{w}}f)\vec{v} + f(\nabla_{\vec{w}}\vec{v}),\\
 		\nabla_{\lambda_1\vec{w}_1 + \lambda_2\vec{w}_2}\vec{v} = \lambda_1\nabla_{\vec{w}_1}\vec{v} + \lambda_2\nabla_{\vec{w}_2}\vec{v},\\
-		L_{\vec{w}}\langle\vec{v}_1, \vec{v}_2\rangle = \langle\nabla_{\vec{w}}\vec{v}_1, \vec{v}_2\rangle + \langle\vec{v}_1, \nabla_{\vec{w}}\vec{v}_2\rangle.
+		\partial_{\vec{w}}\langle\vec{v}_1, \vec{v}_2\rangle = \langle\nabla_{\vec{w}}\vec{v}_1, \vec{v}_2\rangle + \langle\vec{v}_1, \nabla_{\vec{w}}\vec{v}_2\rangle.
 	\end{gather*}
 \end{proposition}
 
 \begin{proof}
 	Первые три равенства проверяются непосредственно. Для доказательства последнего нам пригодится тождество \eqref{eq:AlmostCristoffelIdentity}:
 	\begin{multline*}
-		L_{\vec{w}}\langle\vec{v}_1, \vec{v}_2\rangle = W^k\frac{\partial}{\partial u^k}(V_1^iV_2^jg_{ij}) = W^k\br{\frac{\partial V_1^i}{\partial u^k}V_2^jg_{ij} + V_1^i\frac{\partial V_2^j}{\partial u^k}g_{ij} + V_1^iV_2^j\frac{\partial g_{ij}}{\partial u^k}} =\\ = W^k\br{\frac{\partial V_1^i}{\partial u^k}V_2^jg_{ij} + V_1^i\frac{\partial V_2^j}{\partial u^k}g_{ij} + V_1^iV_2^j(g_{js}\Gamma_{ik}^s + g_{is}\Gamma_{jk}^s)} =\\ = \underbrace{W^k\br{\frac{\partial V_1^i}{\partial u^k} + \Gamma_{sk}^iV_1^s}}_{\nabla_{\vec{w}}\vec{v}_1}V_2^jg_{ij} + \underbrace{W^k\br{\frac{\partial V_2^j}{\partial u^k} + \Gamma_{sk}^jV_2^s}}_{\nabla_{\vec{w}}\vec{v}_2}V_1^ig_{ij} = \langle\nabla_{\vec{w}}\vec{v}_1, \vec{v}_2\rangle + \langle\vec{v}_1, \nabla_{\vec{w}}\vec{v}_2\rangle.
+		\partial_{\vec{w}}\langle\vec{v}_1, \vec{v}_2\rangle = W^k\frac{\partial}{\partial u^k}(V_1^iV_2^jg_{ij}) = W^k\br{\frac{\partial V_1^i}{\partial u^k}V_2^jg_{ij} + V_1^i\frac{\partial V_2^j}{\partial u^k}g_{ij} + V_1^iV_2^j\frac{\partial g_{ij}}{\partial u^k}} =\\ = W^k\br{\frac{\partial V_1^i}{\partial u^k}V_2^jg_{ij} + V_1^i\frac{\partial V_2^j}{\partial u^k}g_{ij} + V_1^iV_2^j(g_{js}\Gamma_{ik}^s + g_{is}\Gamma_{jk}^s)} =\\ = \underbrace{W^k\br{\frac{\partial V_1^i}{\partial u^k} + \Gamma_{sk}^iV_1^s}}_{\nabla_{\vec{w}}\vec{v}_1}V_2^jg_{ij} + \underbrace{W^k\br{\frac{\partial V_2^j}{\partial u^k} + \Gamma_{sk}^jV_2^s}}_{\nabla_{\vec{w}}\vec{v}_2}V_1^ig_{ij} = \langle\nabla_{\vec{w}}\vec{v}_1, \vec{v}_2\rangle + \langle\vec{v}_1, \nabla_{\vec{w}}\vec{v}_2\rangle.
 	\end{multline*}
 	В предпоследнем равенстве мы переобозначили несколько индексов. Выкладка выглядит не совсем прозрачной, но в ней нетрудно разобраться.
 \end{proof}
